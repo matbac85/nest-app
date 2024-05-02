@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <%= if true do %>
+  <script type="module">
+  //  import RefreshRuntime from "http://localhost:5174/@react-refresh";
+  //  RefreshRuntime.injectIntoGlobalHook(window);
+    window.$RefreshReg$ = () => {};
+    window.$RefreshSig$ = () => (type) => type;
+    window.__vite_plugin_react_preamble_installed__ = true;
+  </script>
+  <script type="module" src="http://localhost:5174/@vite/client"></script>
+  <script type="module" src="http://localhost:5174/src/main.js"></script>
+<% else %>
+  <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/main.css")}/>
+  <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/main.js")}></script>
+<% end %>
+  <body>
+  <div id="app"></div>
+    <%= @inner_content %>
+  </body>
+</html>
