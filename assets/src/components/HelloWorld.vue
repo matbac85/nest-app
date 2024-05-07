@@ -1,18 +1,27 @@
 <script setup>
-import { ref } from 'vue'
+const c = fetch("http://localhost:4000/cabans")
+import { ref, watchEffect } from 'vue'
 
 defineProps({
   msg: String,
 })
+const cabins = ref(null)
+
+watchEffect(async () => {
+
+  const url = "http://localhost:4000/cabans";
+  cabins.value = await (await fetch(url)).json()
+})
 
 const count = ref(0)
-const cabans = await fetch("http://localhost:4000/cabans")
-console.log(await cabans.json())
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
 
+  <li v-for="cabin in cabins">
+    {{ cabin.name }}
+  </li>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
