@@ -20,6 +20,7 @@ defmodule NestWeb.Router do
     get "/", PageController, :home
     get "/cabans", CabanController, :index
 
+    get "/*path", PageController, :home
   end
 
   # Other scopes may use custom stacks.
