@@ -48,7 +48,7 @@
           />
         </div>
         <button
-          class="block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 lg:min-w-fit lg:px-4"
+          class="block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide transition hover:bg-primary_500 lg:min-w-fit lg:px-4"
         >
           Rechercher
         </button>

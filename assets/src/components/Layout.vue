@@ -6,12 +6,13 @@
     >
       <slot name="content"></slot>
     </main>
-    <Footer class="hidden md:block" />
+    <Footer />
   </div>
 </template>
 
 <script setup>
 import Header from "./Header.vue";
+import Footer from "./Footer.vue";
 </script>
 
 <style>
