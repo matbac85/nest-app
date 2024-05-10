@@ -1,16 +1,16 @@
 <template>
   <nav
-    class="flex justify-between items-center bg-primary_200 py-4 px-4 items-start flex-none drop-shadow"
+    class="flex justify-between items-center bg-primary_200 py-4 px-4 flex-none drop-shadow md:px-6"
   >
     <img
-      src="../assets/logo-mobile.svg"
+      src="../assets/logo-desktop.svg"
       alt="logo"
       class="max-w-[3rem] max-h-[3rem] lg:hidden"
     />
     <img
       src="../assets/logo-desktop.svg"
       alt=""
-      class="hidden max-h-[4rem] lg:block"
+      class="hidden max-h-[3rem] lg:block"
     />
     <burgerMenu class="lg:hidden" />
     <ul class="hidden flex-row gap-4 lg:flex">
