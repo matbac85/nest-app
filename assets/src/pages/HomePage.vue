@@ -1,6 +1,7 @@
 <template>
-  <Layout class="min-h-screen">
+  <Layout>
     <template #content>
+      <Banner />
       <SearchForm />
     </template>
   </Layout>
@@ -9,4 +10,5 @@
 <script setup>
 import Layout from "../components/Layout.vue";
 import SearchForm from "../components/SearchForm.vue";
+import Banner from "../components/Banner.vue";
 </script>

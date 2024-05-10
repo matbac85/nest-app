@@ -17,5 +17,9 @@ module.exports = {
       primary_700: "#51746F",
       primary_800: "#0D1312",
     },
+    fontFamily: {
+      ubuntu: ["Ubuntu Sans", "sans-serif"],
+      dosis: ["Dosis", "sans-serif"],
+    },
   },
 };
