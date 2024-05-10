@@ -14,19 +14,20 @@ defmodule NestWeb.Router do
     plug :accepts, ["json"]
   end
 
+
+
+
+  # Other scopes may use custom stacks.
+  scope "/api", NestWeb do
+    pipe_through :api
+    get "/cabins", CabinController, :index
+  end
+
   scope "/", NestWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-    get "/cabans", CabanController, :index
-
     get "/*path", PageController, :home
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", NestWeb do
-  #   pipe_through :api
-  # end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:nest, :dev_routes) do
