@@ -4,14 +4,14 @@
   >
     <p class="font-ubuntu text-sm text-primary_800">© Copyright 2024</p>
     <div class="flex gap-4">
-      <a href="">
+      <a href="https://www.instagram.com/matbac/">
         <img
           src="../assets/instagram-icon.svg"
           alt=""
           class="block min-w-[1.5rem]"
         />
       </a>
-      <a href="">
+      <a href="https://www.facebook.com/">
         <img
           src="../assets/facebook-icon.svg"
           alt=""
