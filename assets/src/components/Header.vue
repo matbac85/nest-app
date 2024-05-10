@@ -25,6 +25,15 @@
           >Enregistrer une cabane</RouterLink
         >
       </li>
+      <li>
+        <button>
+          <img
+            src="../assets/user-account-icon.svg"
+            alt=""
+            class="min-w-[2rem]"
+          />
+        </button>
+      </li>
     </ul>
   </nav>
 </template>
