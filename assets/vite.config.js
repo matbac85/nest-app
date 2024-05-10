@@ -24,7 +24,7 @@ export default function defineConfig({ command }) {
       manifest: false, // do not generate manifest.json
       rollupOptions: {
         input: {
-          main: "./src/App.vue"
+          main: "./src/main.js"
         },
         output: {
           entryFileNames: "assets/[name].js", // remove hash
