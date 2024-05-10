@@ -13,14 +13,53 @@
       class="hidden max-h-[3rem] lg:block"
     />
     <burgerMenu class="lg:hidden" />
-    <ul class="hidden flex-row gap-4 lg:flex">
-      <li>Accueil</li>
-      <li>Se connecter</li>
-      <li>Enregistrer une cabane</li>
+    <ul class="hidden flex-row gap-8 text-primary_800 text-lg lg:flex">
+      <li>
+        <RouterLink class="nav-link" to="/">Accueil</RouterLink>
+      </li>
+      <li>
+        <RouterLink class="nav-link" to="/login">Se connecter</RouterLink>
+      </li>
+      <li>
+        <RouterLink class="nav-link" to="/register"
+          >Enregistrer une cabane</RouterLink
+        >
+      </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
 import BurgerMenu from "./BurgerMenu.vue";
+import { RouterLink } from "vue-router";
 </script>
+
+<style scoped>
+.nav-link {
+  display: inline-block;
+  position: relative;
+  color: #51746f;
+}
+
+.nav-link:hover {
+  color: #87c1b9;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #87c1b9;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+</style>
