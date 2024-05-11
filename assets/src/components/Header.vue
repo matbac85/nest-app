@@ -3,7 +3,7 @@
     class="flex justify-between items-center bg-primary_200 py-4 px-4 flex-none drop-shadow md:px-6"
   >
     <img
-      src="../assets/logo-desktop.svg"
+      src="../assets/logo-mobile.svg"
       alt="logo"
       class="max-w-[3rem] max-h-[3rem] lg:hidden"
     />
@@ -12,13 +12,15 @@
       alt=""
       class="hidden max-h-[3rem] lg:block"
     />
-    <burgerMenu class="lg:hidden" />
+    <button>
+      <burgerMenu class="lg:hidden" />
+    </button>
     <ul class="hidden flex-row gap-8 text-primary_800 text-lg lg:flex">
       <li>
         <RouterLink class="nav-link" to="/">Accueil</RouterLink>
       </li>
       <li>
-        <RouterLink class="nav-link" to="/login">Se connecter</RouterLink>
+        <RouterLink class="nav-link" to="/cabins">Se connecter</RouterLink>
       </li>
       <li>
         <RouterLink class="nav-link" to="/register"
@@ -27,11 +29,7 @@
       </li>
       <li>
         <button>
-          <img
-            src="../assets/user-account-icon.svg"
-            alt=""
-            class="min-w-[2rem]"
-          />
+          <User />
         </button>
       </li>
     </ul>
@@ -41,9 +39,10 @@
 <script setup>
 import BurgerMenu from "./BurgerMenu.vue";
 import { RouterLink } from "vue-router";
+import User from "./User.vue";
 </script>
 
-<style scoped>
+<style>
 .nav-link {
   display: inline-block;
   position: relative;

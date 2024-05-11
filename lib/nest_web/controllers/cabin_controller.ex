@@ -13,7 +13,7 @@ defmodule NestWeb.CabinController do
         name: cabin.name,
         description: cabin.description,
         images: Enum.map(1..5, fn(image_id) ->
-          "../assets/cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
+          "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
         end)
       }
     end)

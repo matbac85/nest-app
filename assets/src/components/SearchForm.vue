@@ -15,7 +15,7 @@
           >
           <select
             id="areas"
-            class="appearance-none font-ubuntu text-base text-slate-400 rounded-lg block py-3 px-4 min-w-full min-h-3 focus:outline-none border border-primary_700"
+            class="appearance-none font-ubuntu text-base text-slate-400 rounded-lg block py-3 px-4 min-w-full min-h-3 focus:outline-none border border-primary_700 focus:border-primary_500"
           >
             <option selected>Sélectionnez une région</option>
             <option value="WA">Wallonie</option>
@@ -44,7 +44,7 @@
             >Voyageurs</label
           ><input
             type="number"
-            class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700"
+            class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
           />
         </div>
         <button
@@ -72,6 +72,10 @@ const date = ref();
   padding: 0.75rem 1rem;
 }
 
+.dp__input_focus {
+  border: solid 1px #87c1b9;
+}
+
 .dp__action_buttons .dp__action_select {
   background: #51746f;
 }
@@ -87,5 +91,10 @@ const date = ref();
 .dp__action_cancel,
 .dp__action_button {
   font-family: "ubuntu", "sans-serif";
+}
+
+.dp__theme_light {
+  --dp-primary-color: #51746f;
+  --dp-primary-disabled-color: #87c1b9;
 }
 </style>

@@ -1,7 +1,17 @@
 <template>
-  <div></div>
+  <Layout>
+    <template #content>
+      <main
+        class="bg-primary_500 flex-1 flex flex-col justify-center items-center"
+      >
+        <CabinList />
+      </main>
+    </template>
+  </Layout>
 </template>
 
-<script setup></script>
-
+<script setup>
+import Layout from "../components/Layout.vue";
+import CabinList from "../components/CabinList.vue";
+</script>
 <style lang="scss" scoped></style>
