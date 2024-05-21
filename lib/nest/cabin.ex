@@ -6,6 +6,7 @@ defmodule Nest.Cabin do
     field :name, :string
     field :description, :string
     field :area, :string
+    field :city, :string
     field :max_guests, :integer
     field :price, :integer
     field :rating, :float

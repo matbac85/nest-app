@@ -11,6 +11,10 @@ defmodule NestWeb.CabinController do
       %{
         id: cabin.id,
         name: cabin.name,
+        price: cabin.price,
+        max_guests: cabin.max_guests,
+        area: cabin.area,
+        city: cabin.city,
         description: cabin.description,
         images: Enum.map(1..5, fn(image_id) ->
           "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
