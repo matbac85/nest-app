@@ -97,4 +97,8 @@ const date = ref();
   --dp-primary-color: #51746f;
   --dp-primary-disabled-color: #87c1b9;
 }
+
+.dp__menu_inner {
+  font-family: "Ubuntu Sans", sans-serif;
+}
 </style>
