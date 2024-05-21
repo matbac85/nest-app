@@ -1,11 +1,15 @@
 <template>
   <div>
-    <ul class="grid grid-cols-4 gap-4 m-10">
+    <ul class="grid m-6 gap-4 lg:grid-cols-4 lg:gap-4 lg:m-10">
       <li v-for="cabin in cabins" :key="cabin.id">
-        <CabinDetails :name="cabin.name" :src="cabin.images[0]" />
+        <CabinDetails
+          :name="cabin.name"
+          :src="cabin.images[0]"
+          :city="cabin.city"
+          :price="cabin.price"
+        />
       </li>
     </ul>
-    {{ cabins }}
   </div>
 </template>
 

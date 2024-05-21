@@ -97,7 +97,8 @@ cabins = [
     description: "Nichée au sommet des arbres, notre cabane vous offre une vue imprenable sur la nature environnante. Vous pourrez observer les étoiles la nuit depuis votre terrasse privée, et vous réveiller au son des oiseaux le matin. Une expérience unique de vie en pleine nature vous attend.",
     max_guests: 2,
     area: "Région flamande",
-    price: 45
+    price: 45,
+    city: "Leuven"
   },
   %{
     name: "L'Arbre Magique",
@@ -112,7 +113,8 @@ cabins = [
     description: "Éloignez-vous de la ville et découvrez la sérénité de la nature en séjournant dans notre cabane perchée dans les arbres. Vous pourrez profiter d'une vue imprenable sur la forêt environnante, tout en étant confortablement installé dans votre cabane. Une expérience unique et paisible vous attend.",
     max_guests: 2,
     area: "Région flamande",
-    price: 80
+    price: 80,
+    city: "Mechelen"
   },
   %{
     name: "La Cime Perchée",
@@ -159,7 +161,8 @@ cabins = [
     description: "Cette cabane perchée est nichée dans la canopée, accessible par une échelle en bois. La cabane est équipée d'un grand lit double, d'une salle de bains avec douche et de toilettes, d'une kitchenette avec des ustensiles de cuisine de base et d'un petit coin salon. Les grandes baies vitrées offrent une vue panoramique sur la forêt environnante, créant une sensation de plongée au cœur de la nature. La terrasse privée est équipée de chaises longues pour se détendre et admirer la vue.",
     max_guests: 4,
     area: "Région wallonne",
-    price: 230
+    price: 230,
+    city: "Charleroi"
   },
   %{
     name: "L'Arbre aux Mille Feuilles",
@@ -175,7 +178,7 @@ cabins = [
     max_guests: 3,
     area: "Région flamande",
     price: 40,
-    city: "Louvain"
+    city: "Leuven"
   },
   %{
     name: "La Cabane Étoilée",
