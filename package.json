@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "swiper": "^11.1.3"
+  },
+  "devDependencies": {
+    "vue-concise-slider": "^4.2.5"
+  }
+}

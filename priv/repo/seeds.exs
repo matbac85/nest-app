@@ -33,7 +33,8 @@ cabins = [
     description: "Nous vous invitons à venir séjourner dans notre cabane perchée dans les arbres, une expérience unique et inoubliable. Vous serez entouré d'une nature luxuriante, avec une vue imprenable sur la forêt environnante. Vous pourrez observer les animaux sauvages depuis votre terrasse privée, pour un moment de calme et de détente.",
     max_guests: 4,
     area: "Région wallonne",
-    price: 90
+    price: 90,
+    city: "Namur"
   },
   %{
     name: "La Cabane de la Canopée",

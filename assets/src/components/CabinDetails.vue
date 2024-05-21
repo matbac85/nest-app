@@ -1,12 +1,6 @@
 <template>
   <div class="bg-primary_200 rounded-xl drop-shadow">
-    <div class="rounded-t-xl">
-      <img
-        :src="src"
-        alt=""
-        class="block min-w-full rounded-t-xl max-h-[218px] min-h-[218px]"
-      />
-    </div>
+    <Slider :src="src" />
     <div class="px-6 py-6">
       <h2 class="text-primary_700 font-dosis font-bold text-xl">
         {{ name }}
@@ -23,10 +17,11 @@
 
 <script setup>
 import { defineProps } from "vue";
+import Slider from "./Slider.vue";
 
 const props = defineProps({
   name: String,
-  src: String,
+  src: Array,
   city: String,
   price: Number,
 });

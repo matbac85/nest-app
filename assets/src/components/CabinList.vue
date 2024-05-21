@@ -4,7 +4,7 @@
       <li v-for="cabin in cabins" :key="cabin.id">
         <CabinDetails
           :name="cabin.name"
-          :src="cabin.images[0]"
+          :src="cabin.images"
           :city="cabin.city"
           :price="cabin.price"
         />
