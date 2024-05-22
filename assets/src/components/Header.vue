@@ -28,18 +28,44 @@
         >
       </li>
       <li>
-        <button>
+        <button @click="toggleMenu">
           <User />
         </button>
+        <DropDownMenu v-if="isOpen">
+          <a
+            href="#"
+            class="text-primary_800 block px-4 py-2 text-sm hover:bg-primary_300"
+            role="menuitem"
+            tabindex="-1"
+            id="menu-item-0"
+            >Se connecter</a
+          >
+          <a
+            href="#"
+            class="text-primary_800 block px-4 py-2 text-sm hover:bg-primary_300"
+            role="menuitem"
+            tabindex="-1"
+            id="menu-item-1"
+            >Enregistrer une cabane</a
+          ></DropDownMenu
+        >
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
+import { ref } from "vue";
 import BurgerMenu from "./BurgerMenu.vue";
 import { RouterLink } from "vue-router";
 import User from "./User.vue";
+import DropDownMenu from "./DropDownMenu.vue";
+
+const isOpen = ref(false);
+
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value;
+};
 </script>
 
 <style>

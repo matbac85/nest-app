@@ -1,6 +1,7 @@
 <template>
   <div>
     <form
+      @submit.prevent="submit"
       novalidate
       class="bg-primary_200 px-6 py-8 min-w-[21.4375rem] rounded-xl drop-shadow"
     >
@@ -14,13 +15,14 @@
             >Régions</label
           >
           <select
+            v-model="form.area"
             id="areas"
             class="appearance-none font-ubuntu text-base text-slate-400 rounded-lg block py-3 px-4 min-w-full min-h-3 focus:outline-none border border-primary_700 focus:border-primary_500"
           >
             <option selected>Sélectionnez une région</option>
-            <option value="WA">Wallonie</option>
-            <option value="FL">Flandres</option>
-            <option value="BR">Bruxelles</option>
+            <option value="Wallonie">Wallonie</option>
+            <option value="Flandres">Flandres</option>
+            <option value="Bruxelles">Bruxelles</option>
           </select>
         </div>
         <div>
@@ -30,7 +32,7 @@
             >Arrivée - Départ</label
           >
           <Datepicker
-            v-model="date"
+            v-model="form.date"
             :range="{ partialRange: false }"
             :enable-time-picker="false"
             input-class-name="dp-custom-input dp-custom-calendar"
@@ -43,6 +45,7 @@
             class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
             >Voyageurs</label
           ><input
+            v-model="form.travellers"
             type="number"
             class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
           />
@@ -61,8 +64,19 @@
 import { ref } from "vue";
 import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
+import { useRouter } from "vue-router";
 
-const date = ref();
+const router = useRouter();
+
+const form = ref({
+  date: "",
+  travellers: null,
+  area: "",
+});
+
+const submit = () => {
+  router.push({ name: "CabinList", query: form.value });
+};
 </script>
 
 <style>
