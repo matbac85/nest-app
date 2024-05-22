@@ -15,12 +15,14 @@
     <button>
       <burgerMenu class="lg:hidden" />
     </button>
-    <ul class="hidden flex-row gap-8 text-primary_800 text-lg lg:flex">
+    <ul
+      class="hidden items-center flex-row gap-8 text-primary_800 text-lg lg:flex"
+    >
       <li>
         <RouterLink class="nav-link" to="/">Accueil</RouterLink>
       </li>
       <li>
-        <RouterLink class="nav-link" to="/cabins">Se connecter</RouterLink>
+        <RouterLink class="nav-link" to="/login">Se connecter</RouterLink>
       </li>
       <li>
         <RouterLink class="nav-link" to="/register"
@@ -28,7 +30,7 @@
         >
       </li>
       <li>
-        <button @click="toggleMenu">
+        <button @click="toggleMenu" class="flex items-center">
           <User />
         </button>
         <DropDownMenu v-if="isOpen">
@@ -93,6 +95,12 @@ const toggleMenu = () => {
 }
 
 .nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.router-link-active::after,
+.router-link-exact-active::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }

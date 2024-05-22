@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="grid m-6 gap-4 lg:grid-cols-4 lg:gap-4 lg:m-10">
+    <ul class="grid m-6 gap-4 lg:grid-cols-4 lg:gap-6 lg:m-10">
       <li v-for="cabin in cabins" :key="cabin.id">
         <CabinDetails
           :name="cabin.name"
@@ -35,7 +35,9 @@ async function fetchData(id) {
   console.log("load");
   try {
     const response = await fetch(
-      `/api/cabins?max_guests=${route.query.travellers}`
+      `/api/cabins?max_guests=${route.query.travellers || ""}&area=${
+        route.query.area || ""
+      }&date=${route.query.date || ""}`
     );
     cabins.value = await response.json();
   } catch (err) {
