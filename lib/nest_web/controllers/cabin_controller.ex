@@ -33,11 +33,16 @@ defmodule NestWeb.CabinController do
     |> Repo.all()
   end
 
+  def filter_area(query, ""), do: query
+
   def filter_area(query, nil), do: query
 
   def filter_area(query, area) do
     from cabins in query, where: cabins.area == ^area
   end
+
+
+  def filter_max_guests(query, ""), do: query
 
   def filter_max_guests(query, nil), do: query
 
