@@ -14,4 +14,4 @@
 import Layout from "../components/Layout.vue";
 import CabinList from "../components/CabinList.vue";
 </script>
-<style lang="scss" scoped></style>
+<style scoped></style>
