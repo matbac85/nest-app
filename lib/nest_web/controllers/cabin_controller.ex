@@ -1,8 +1,11 @@
 defmodule NestWeb.CabinController do
   use NestWeb, :controller
+  import Ecto.Query, only: [from: 2]
+  alias Nest.Cabin
+  alias Nest.Repo
 
-  def index(conn, _params) do
-    cabins = Nest.Repo.all(Nest.Cabin)
+  def index(conn, params) do
+    cabins = list_cabins(params)
     json(conn, render_cabins(cabins))
   end
 
@@ -22,6 +25,26 @@ defmodule NestWeb.CabinController do
       }
     end)
   end
+
+  def list_cabins(params) do
+    Cabin
+    |> filter_area(Map.get(params, "area"))
+    |> filter_max_guests(Map.get(params, "max_guests"))
+    |> Repo.all()
+  end
+
+  def filter_area(query, nil), do: query
+
+  def filter_area(query, area) do
+    from cabins in query, where: cabins.area == ^area
+  end
+
+  def filter_max_guests(query, nil), do: query
+
+  def filter_max_guests(query, max_guests) do
+    from cabins in query, where: cabins.max_guests >= ^max_guests
+  end
+
 
   defp resize(n) do
     if n <= 9, do: "0#{n}", else: n
