@@ -4,6 +4,7 @@ import CabinListPage from "./pages/CabinListPage.vue";
 import LoginPage from "./pages/LoginPage.vue";
 import CabinDetailsPage from "./pages/CabinDetailsPage.vue";
 import RegistrationPage from "./pages/RegistrationPage.vue";
+import RegistrationCabinPage from "./pages/RegistrationCabinPage.vue";
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: "/register",
     name: "Register",
     component: RegistrationPage,
+  },
+  {
+    path: "/registercabin",
+    name: "RegisterCabin",
+    component: RegistrationCabinPage,
   },
 ];
 

@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex justify-between items-center bg-primary_200 py-4 px-4 flex-none drop-shadow md:px-6"
+    class="flex justify-between items-center bg-primary_200 py-4 px-4 flex-none drop-shadow md:px-6 z-50"
   >
     <img
       src="../assets/logo-mobile.svg"
@@ -22,10 +22,7 @@
         <RouterLink class="nav-link" to="/">Accueil</RouterLink>
       </li>
       <li>
-        <RouterLink class="nav-link" to="/login">Se connecter</RouterLink>
-      </li>
-      <li>
-        <RouterLink class="nav-link" to="/register"
+        <RouterLink class="nav-link" to="/registercabin"
           >Enregistrer une cabane</RouterLink
         >
       </li>
@@ -34,23 +31,17 @@
           <User />
         </button>
         <DropDownMenu v-if="isOpen">
-          <a
-            href="#"
+          <RouterLink
             class="text-primary_800 block px-4 py-2 text-sm hover:bg-primary_300"
-            role="menuitem"
-            tabindex="-1"
-            id="menu-item-0"
-            >Se connecter</a
+            to="/login"
+            >Se connecter</RouterLink
           >
-          <a
-            href="#"
+          <RouterLink
             class="text-primary_800 block px-4 py-2 text-sm hover:bg-primary_300"
-            role="menuitem"
-            tabindex="-1"
-            id="menu-item-1"
-            >Enregistrer une cabane</a
-          ></DropDownMenu
-        >
+            to="/register"
+            >S'enregistrer</RouterLink
+          >
+        </DropDownMenu>
       </li>
     </ul>
   </nav>

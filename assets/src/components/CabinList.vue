@@ -7,6 +7,7 @@
           :src="cabin.images"
           :city="cabin.city"
           :price="cabin.price"
+          :id="cabin.id"
         />
       </li>
     </ul>
