@@ -22,6 +22,7 @@ defmodule NestWeb.Router do
     pipe_through :api
     get "/cabins", CabinController, :index
     post "/users", UserController, :create
+    post "/sessions", SessionController, :create
 
   end
 
