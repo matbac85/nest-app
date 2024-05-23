@@ -25,6 +25,7 @@ defmodule NestWeb.Router do
   scope "/api", NestWeb do
     pipe_through :api
     get "/cabins", CabinController, :index
+    get "/cabins/:id", CabinController, :show
     post "/users", UserController, :create
     post "/sessions", SessionController, :create
     pipe_through :api_with_auth

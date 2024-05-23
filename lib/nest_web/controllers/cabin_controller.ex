@@ -9,20 +9,29 @@ defmodule NestWeb.CabinController do
     json(conn, render_cabins(cabins))
   end
 
+  def show(conn, %{"id" => id}) do
+    cabin = Repo.get(Cabin, id)
+    json(conn, render_cabin(cabin))
+  end
+
+  def render_cabin(cabin) do
+    %{
+      id: cabin.id,
+      name: cabin.name,
+      price: cabin.price,
+      max_guests: cabin.max_guests,
+      area: cabin.area,
+      city: cabin.city,
+      description: cabin.description,
+      images: Enum.map(1..5, fn(image_id) ->
+        "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
+      end)
+    }
+  end
+
   def render_cabins(cabins) do
     Enum.map(cabins, fn(cabin) ->
-      %{
-        id: cabin.id,
-        name: cabin.name,
-        price: cabin.price,
-        max_guests: cabin.max_guests,
-        area: cabin.area,
-        city: cabin.city,
-        description: cabin.description,
-        images: Enum.map(1..5, fn(image_id) ->
-          "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
-        end)
-      }
+      render_cabin(cabin)
     end)
   end
 
