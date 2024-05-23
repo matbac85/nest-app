@@ -24,6 +24,6 @@ defmodule Nest.Guardian do
     {:ok,  resource}
   end
   def resource_from_claims(_claims) do
-    {:error, :reason_for_error}
+    {:error, :user_not_found}
   end
 end

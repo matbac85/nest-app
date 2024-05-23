@@ -10,6 +10,15 @@ defmodule NestWeb.UserController do
     end
   end
 
+  def me(conn, _params) do
+    user = conn.assigns.user
+    json(conn, %{
+      email: user.email,
+      firstname: user.firstname,
+      password: user.lastname
+    })
+  end
+
   defp render_user(user) do
     %{
       firstname: user.firstname,
