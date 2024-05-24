@@ -15,6 +15,7 @@
           name=""
           id="email"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          v-model="form.email"
         />
       </div>
       <div>
@@ -27,6 +28,7 @@
           name=""
           id="password"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          v-model="form.password"
         />
       </div>
       <button
@@ -43,6 +45,37 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { userStore } from "../stores/userStore";
+
+const router = useRouter();
+
+const form = ref({
+  email: "",
+  password: "",
+});
+
+const submit = async () => {
+  const response = await fetch(`/api/sessions`, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(form.value),
+  });
+  console.log(response.status);
+  if (response.status === 200) {
+    const user = await response.json();
+    userStore.setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+    router.push({ name: "Home" });
+  } else {
+    console.log(await response.json());
+  }
+};
+</script>
 
 <style lang="scss" scoped></style>

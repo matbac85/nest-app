@@ -7,13 +7,14 @@
     >
       <div>
         <label
-          for="sirname"
+          for="lastname"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Nom</label
         ><input
-          id="sirname"
+          id="lastname"
           type="text"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          v-model="form.lastname"
         />
       </div>
       <div>
@@ -25,6 +26,7 @@
           id="firstname"
           type="text"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          v-model="form.firstname"
         />
       </div>
       <div class="md:col-span-2">
@@ -37,6 +39,7 @@
           name=""
           id="email"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          v-model="form.email"
         />
       </div>
       <div>
@@ -49,6 +52,7 @@
           name=""
           id="password"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          v-model="form.password"
         />
       </div>
       <div>
@@ -61,6 +65,7 @@
           name=""
           id="passwordconfirmation"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          v-model="form.passwordconfirmation"
         />
       </div>
       <button
@@ -72,6 +77,36 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const form = ref({
+  lastname: "",
+  firstname: "",
+  email: "",
+  password: "",
+  passwordconfirmation: "",
+});
+
+const submit = async () => {
+  const response = await fetch(`/api/users`, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    body: JSON.stringify(form.value), // body data type must match "Content-Type" header
+  });
+  console.log(response.status);
+  if (response.status === 200) {
+    router.push({ name: "Login", query: form.value });
+  } else {
+    console.log(await response.json());
+  }
+};
+</script>
 
 <style scoped></style>

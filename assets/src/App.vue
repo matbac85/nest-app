@@ -1,14 +1,16 @@
 <script setup>
 import { defineProps } from "vue";
-// import { useRouter } from "vue-router";
-
+import { userStore } from "./stores/userStore";
 const props = defineProps();
+const user = localStorage.getItem("user");
+if (user) {
+  userStore.setUser(JSON.parse(user));
+}
 // const router = useRouter();
 </script>
 
 <template>
   <div>
     <router-view />
-    <!-- C'est ici que les composants de page seront affichés -->
   </div>
 </template>
