@@ -4,10 +4,9 @@ defmodule NestWeb.UserController do
   alias Nest.User
 
   def create(conn, params) do
-    IO.inspect(params)
     case create_user(params) do
       {:ok, user} -> json(conn, render_user(user))
-      {:error, changeset} -> 
+      {:error, changeset} ->
         conn
         |> put_status(422)
         |> json(render_errors(changeset))

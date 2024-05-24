@@ -2,7 +2,7 @@ defmodule Nest.Cabin do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "cabin" do
+  schema "cabins" do
     field :name, :string
     field :description, :string
     field :area, :string

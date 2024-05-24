@@ -2,7 +2,7 @@ defmodule Nest.Repo.Migrations.CreateCabin do
   use Ecto.Migration
 
   def change do
-    create table(:cabin) do
+    create table(:cabins) do
       add :name, :string
       add :area, :string
       add :city, :string
