@@ -14,6 +14,10 @@ defmodule NestWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :api_with_auth do
+    plug Nest.PlugAuth
+  end
+
 
 
 
@@ -21,6 +25,12 @@ defmodule NestWeb.Router do
   scope "/api", NestWeb do
     pipe_through :api
     get "/cabins", CabinController, :index
+    get "/cabins/:id", CabinController, :show
+    post "/users", UserController, :create
+    post "/sessions", SessionController, :create
+    pipe_through :api_with_auth
+    get "/me", UserController, :me
+
   end
 
   scope "/", NestWeb do

@@ -67,6 +67,10 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+
+config :nest, Nest.Guardian,
+       issuer: "nest",
+       secret_key: "dnRda4QdYSVdpj8vUDJjenUWgeJMTpFIH0Q+P6/LfjQJkKtHTTptk+oqxGI5Q7+3"
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
