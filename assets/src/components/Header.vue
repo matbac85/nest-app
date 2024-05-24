@@ -2,16 +2,18 @@
   <nav
     class="flex justify-between items-center bg-primary_200 py-4 px-4 flex-none drop-shadow md:px-6 z-50"
   >
-    <img
-      src="../assets/logo-mobile.svg"
-      alt="logo"
-      class="max-w-[3rem] max-h-[3rem] lg:hidden"
-    />
-    <img
-      src="../assets/logo-desktop.svg"
-      alt=""
-      class="hidden max-h-[3rem] lg:block"
-    />
+    <RouterLink to="/">
+      <img
+        src="../assets/logo-mobile.svg"
+        alt="logo"
+        class="w-[3rem] h-[3rem] lg:hidden"
+      />
+      <img
+        src="../assets/logo-desktop.svg"
+        alt=""
+        class="hidden h-[3rem] lg:block"
+      />
+    </RouterLink>
     <button>
       <burgerMenu class="lg:hidden" />
     </button>
@@ -32,12 +34,12 @@
         </button>
         <DropDownMenu v-if="isOpen">
           <RouterLink
-            class="text-primary_800 block px-4 py-2 text-sm hover:bg-primary_300"
+            class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
             to="/login"
             >Se connecter</RouterLink
           >
           <RouterLink
-            class="text-primary_800 block px-4 py-2 text-sm hover:bg-primary_300"
+            class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
             to="/register"
             >S'enregistrer</RouterLink
           >

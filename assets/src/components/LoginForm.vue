@@ -35,7 +35,7 @@
         Se connecter
       </button>
       <routerLink
-        class="block font-ubuntu text-sm font-medium text-primary_700 mb-1 ml-1 tracking-wide underline text-center hover:text-primary_500"
+        class="block font-ubuntu text-sm font-semibold text-primary_700 mb-1 ml-1 tracking-wide underline text-center hover:text-primary_500"
         to="/register"
         >Pas de Compte ? Inscrivez vous !</routerLink
       >

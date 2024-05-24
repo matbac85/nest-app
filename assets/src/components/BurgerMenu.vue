@@ -1,17 +1,64 @@
 <template>
   <div>
-    <button>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="48px"
-        viewBox="0 -960 960 960"
-        width="48px"
-        fill="#51746F"
+    <div
+      :class="[
+        'tham',
+        'tham-e-squeeze',
+        'tham-w-6',
+        { 'tham-active': isActive },
+      ]"
+      @click="toggleActive"
+      class="tham-w-8"
+    >
+      <div class="tham-box">
+        <div class="tham-inner z-50" />
+      </div>
+      <div
+        v-if="isActive"
+        class="absolute right-0 top-0 bg-primary_200 min-h-screen flex flex-col justify-center items-start w-screen"
       >
-        <path
-          d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z"
-        />
-      </svg>
-    </button>
+        <RouterLink
+          class="block px-8 py-4 text-xl font-semibold text-primary_700"
+          to="/"
+          >Accueil</RouterLink
+        >
+        <RouterLink
+          class="block px-8 py-4 text-xl font-semibold text-primary_700"
+          to="/registercabin"
+          >Enregistrer une cabane</RouterLink
+        >
+        <RouterLink
+          class="block px-8 py-4 text-xl font-semibold text-primary_700"
+          to="/login"
+          >Se connecter</RouterLink
+        >
+        <RouterLink
+          class="block px-8 py-4 text-xl font-semibold text-primary_700"
+          to="/register"
+          >S'enregistrer</RouterLink
+        >
+      </div>
+    </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from "vue";
+import DropDownMenu from "./DropDownMenu.vue";
+
+const isActive = ref(false);
+
+const toggleActive = () => {
+  isActive.value = !isActive.value;
+};
+</script>
+
+<style scoped>
+.tham-inner {
+  background-color: #51746f;
+}
+
+.tham:hover {
+  opacity: 1;
+}
+</style>

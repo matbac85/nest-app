@@ -8,7 +8,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwind-hamburgers")],
   theme: {
     colors: {
       primary_200: "#F3F9F8",
