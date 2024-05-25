@@ -16,5 +16,6 @@ defmodule Nest.Reservation do
     reservation
     |> cast(attrs, [:start_date, :end_date, :cabin_id, :user_id])
     |> validate_required([:start_date, :end_date, :cabin_id, :user_id])
+    |> exclusion_constraint(:date, name: "unique_daterange_reservation", message: "La cabane est réservée à cette période")
   end
 end

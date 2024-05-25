@@ -8,5 +8,9 @@ defmodule Nest.Repo.Migrations.CreateReservations do
       add :start_date, :date
       add :end_date, :date
     end
+
+    execute "CREATE EXTENSION IF NOT EXISTS btree_gist"
+    create constraint("reservations", :unique_daterange_reservation, exclude: ~s|gist (cabin_id WITH =, daterange(start_date, end_date, '[]') WITH &&)|)
+
   end
 end
