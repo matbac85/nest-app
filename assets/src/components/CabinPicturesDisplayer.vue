@@ -3,6 +3,7 @@
     <!-- mobile -->
     <div class="relative min-w-screen h-60 overflow-hidden md:hidden">
       <img
+        v-if="pictures"
         :src="pictures.at(imageIndex)"
         alt=""
         class="min-w-full min-h-full object-cover"
@@ -24,7 +25,7 @@
     <!-- desktop -->
 
     <div
-      class="hidden md:rouded-xl md:grid md:grid-cols-4 md:grid-rows-2 md:gap-2 md:max-h-[500px]"
+      class="hidden md:rouded-xl md:grid md:grid-cols-4 md:grid-rows-2 md:gap-2 md:max-h-[400px]"
     >
       <img
         v-for="(picture, index) in pictures"

@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage.vue";
 import CabinDetailsPage from "./pages/CabinDetailsPage.vue";
 import RegistrationPage from "./pages/RegistrationPage.vue";
 import RegistrationCabinPage from "./pages/RegistrationCabinPage.vue";
+import PaymentPage from "./pages/PaymentPage.vue";
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: "/registercabin",
     name: "RegisterCabin",
     component: RegistrationCabinPage,
+  },
+  {
+    path: "/payment",
+    name: "Payment",
+    component: PaymentPage,
   },
 ];
 
