@@ -21,7 +21,7 @@ defmodule Nest.Guardian do
     # found in the `"sub"` key. In above `subject_for_token/2` we returned
     # the resource id so here we'll rely on that to look it up.
     resource = Repo.get(User, id)
-    {:ok,  resource}
+    if resource, do: {:ok,  resource}, else:  {:error, :user_not_found}
   end
   def resource_from_claims(_claims) do
     {:error, :user_not_found}

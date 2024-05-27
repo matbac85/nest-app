@@ -39,9 +39,11 @@ defmodule NestWeb.CabinController do
     Cabin
     |> filter_area(Map.get(params, "area"))
     |> filter_max_guests(Map.get(params, "max_guests"))
+    |> filter_date_range(Map.get(params, "start_date"), Map.get(params, "end_date"))
     |> Repo.all()
   end
 
+  @spec filter_area(any(), any()) :: any()
   def filter_area(query, ""), do: query
 
   def filter_area(query, nil), do: query
@@ -58,6 +60,26 @@ defmodule NestWeb.CabinController do
   def filter_max_guests(query, max_guests) do
     from cabins in query, where: cabins.max_guests >= ^max_guests
   end
+
+  def filter_date_range(query, nil, nil), do: query
+
+  def filter_date_range(query, "", ""), do: query
+
+  def filter_date_range(query, start_date, end_date) do
+    from cabins in query,
+    left_join: reservations in assoc(cabins, :reservations),
+    where: fragment(
+      "(not (daterange(?, ?) && daterange(?, ?))) or ? is null or ? is null ",
+      reservations.start_date,
+      reservations.end_date,
+      ^(Date.from_iso8601!(start_date)),
+      ^(Date.from_iso8601!(end_date)),
+      reservations.start_date,
+      reservations.end_date
+    ),
+    distinct: cabins.id
+  end
+
 
 
   defp resize(n) do

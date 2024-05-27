@@ -30,7 +30,7 @@ defmodule NestWeb.Router do
     post "/sessions", SessionController, :create
     pipe_through :api_with_auth
     get "/me", UserController, :me
-
+    post "/cabins/:cabin_id/reservations", ReservationController, :create
   end
 
   scope "/", NestWeb do

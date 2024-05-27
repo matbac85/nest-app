@@ -1,8 +1,9 @@
 defmodule Nest.Cabin do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Nest.Reservation
 
-  schema "cabin" do
+  schema "cabins" do
     field :name, :string
     field :description, :string
     field :area, :string
@@ -10,7 +11,7 @@ defmodule Nest.Cabin do
     field :max_guests, :integer
     field :price, :integer
     field :rating, :float
-
+    has_many :reservations, Reservation
   end
 
   @doc false
