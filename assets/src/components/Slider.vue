@@ -3,7 +3,7 @@
     <img
       :src="src.at(imageIndex)"
       alt=""
-      class="block min-w-full rounded-t-xl max-h-[218px] min-h-[218px]"
+      class="block min-w-full rounded-t-xl max-h-[218px] min-h-[218px] max-w-[322px]"
     />
     <button
       class="absolute p-1 rounded-full bg-primary_200 flex items-center justify-center top-1/2 transform -translate-y-1/2 right-2 opacity-80 transition ease-in-out delay-150 hover:scale-110 hover:drop-shadow hover:bg-white hover:opacity-100 duration-300"

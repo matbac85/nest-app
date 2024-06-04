@@ -21,5 +21,10 @@ module.exports = {
       ubuntu: ["Ubuntu Sans", "sans-serif"],
       dosis: ["Dosis", "sans-serif"],
     },
+    screens: {
+      md: "768px",
+      lg: "1024px",
+      xl: "1700px",
+    },
   },
 };

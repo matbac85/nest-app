@@ -1,6 +1,8 @@
 <template>
   <div>
-    <ul class="grid m-6 gap-4 lg:grid-cols-4 lg:gap-6 lg:m-10">
+    <ul
+      class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-6 xl:grid-cols-5"
+    >
       <li v-for="cabin in cabins" :key="cabin.id">
         <CabinDetails
           :name="cabin.name"

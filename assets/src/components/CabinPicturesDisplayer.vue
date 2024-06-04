@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- mobile -->
-    <div class="relative min-w-screen h-60 overflow-hidden md:hidden">
+    <div
+      class="relative min-w-screen h-60 overflow-hidden rounded-xl md:hidden"
+    >
       <img
         v-if="pictures"
         :src="pictures.at(imageIndex)"

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="hidden items-center lg:flex bg-primary_200 px-6 py-4 justify-between"
+    class="hidden items-center lg:flex bg-primary_200 py-4 px-4 justify-between md:px-6 xl:px-14"
   >
     <p class="font-ubuntu text-sm text-primary_800">© Copyright 2024</p>
     <div class="flex gap-4">
