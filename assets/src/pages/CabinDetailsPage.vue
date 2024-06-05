@@ -2,16 +2,18 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_300 flex-1 flex flex-col justify-start p-6 md:p-10 xl:p-20"
+        class="bg-primary_300 flex-1 flex flex-col justify-start p-6 md:p-10 xl:p-20 md:flex-row"
       >
-        <CabinPicturesDisplayer :pictures="cabin.images" class="mb-6" />
-        <CabinDetailsDescription
-          :name="cabin.name"
-          :city="cabin.city"
-          :area="cabin.area"
-          :description="cabin.description"
-        />
-        <OrderForm />
+        <div>
+          <CabinPicturesDisplayer :pictures="cabin.images" class="mb-6" />
+          <CabinDetailsDescription
+            :name="cabin.name"
+            :city="cabin.city"
+            :area="cabin.area"
+            :description="cabin.description"
+          />
+          <OrderForm />
+        </div>
       </main>
     </template>
   </Layout>
@@ -24,6 +26,7 @@ import { watch, ref } from "vue";
 import CabinPicturesDisplayer from "../components/CabinPicturesDisplayer.vue";
 import CabinDetailsDescription from "../components/CabinDetailsDescription.vue";
 import OrderForm from "../components/OrderForm.vue";
+import SearchFormOnDetail from "../components/SearchFormOnDetail.vue";
 
 const route = useRoute();
 const cabin = ref({});
