@@ -9,14 +9,16 @@
         <label
           for="areas"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Régions</label
+          >Région</label
         >
         <select
           v-model="form.area"
           id="areas"
-          class="appearance-none font-ubuntu text-base text-slate-400 rounded-lg block py-3 px-4 min-w-full min-h-3 focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="appearance-none font-ubuntu text-base rounded-lg block py-3 px-4 min-w-full min-h-3 focus:outline-none border border-primary_700 focus:border-primary_500"
         >
-          <option selected>Sélectionnez une région</option>
+          <option option value="" disabled selected>
+            Sélectionnez une région
+          </option>
           <option value="Wallonie">Wallonie</option>
           <option value="Flandres">Flandres</option>
           <option value="Bruxelles">Bruxelles</option>
@@ -33,7 +35,9 @@
           :range="{ partialRange: false }"
           :enable-time-picker="false"
           input-class-name="dp-custom-input dp-custom-calendar"
+          class="placeholder:text-red-500"
           hide-input-icon
+          placeholder="JJ/MM/AAAA - JJ/MM/AAAA"
         />
       </div>
       <div>
@@ -44,7 +48,8 @@
         ><input
           v-model="form.travellers"
           type="number"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
+          placeholder="3"
         />
       </div>
       <button
@@ -76,6 +81,14 @@ const submit = () => {
 </script>
 
 <style>
+#placeholder::placeholder {
+  color: #afbdbb;
+}
+
+select {
+  color: #0d1312;
+}
+
 .dp-custom-input {
   border: 1px solid #51746f;
   border-radius: 0.5rem;
@@ -84,6 +97,10 @@ const submit = () => {
 
 .dp__input_focus {
   border: solid 1px #87c1b9;
+}
+
+.dp-custom-input::placeholder {
+  color: #afbdbb;
 }
 
 .dp__action_buttons .dp__action_select {

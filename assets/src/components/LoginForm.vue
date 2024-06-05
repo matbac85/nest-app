@@ -5,7 +5,7 @@
       novalidate
       class="bg-primary_200 rounded-xl drop-shadow grid grid-cols-1 gap-4 px-6 py-8 min-w-[21.4375rem]"
     >
-      <div>
+      <div class="relative">
         <label
           for="email"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -14,11 +14,18 @@
           type="email"
           name=""
           id="email"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           v-model="form.email"
+          placeholder="exemple@email.com"
         />
+        <p
+          v-if="emailError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ emailError }}
+        </p>
       </div>
-      <div>
+      <div class="relative">
         <label
           for="password"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -27,12 +34,19 @@
           type="password"
           name=""
           id="password"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           v-model="form.password"
+          placeholder="MoTdEpAsSeCompliqué!"
         />
+        <p
+          v-if="passwordError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ passwordError }}
+        </p>
       </div>
       <button
-        class="transition ease-in-out delay-150 block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-2 hover:scale-105 duration-300 lg:px-4"
+        class="transition ease-in-out delay-150 block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4"
       >
         Se connecter
       </button>
@@ -41,6 +55,7 @@
         to="/register"
         >Pas de Compte ? Inscrivez vous !</routerLink
       >
+      <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
     </form>
   </div>
 </template>
@@ -51,6 +66,8 @@ import { useRouter } from "vue-router";
 import { userStore } from "../stores/userStore";
 
 const router = useRouter();
+const emailError = ref("");
+const passwordError = ref("");
 
 const form = ref({
   email: "",
@@ -58,6 +75,21 @@ const form = ref({
 });
 
 const submit = async () => {
+  // Vérifie si les champs email et password sont vides
+  emailError.value = "";
+  passwordError.value = "";
+
+  if (!form.value.email) {
+    emailError.value = "Veuillez entrer votre adresse e-mail.";
+  }
+  if (!form.value.password) {
+    passwordError.value = "Veuillez entrer votre mot de passe.";
+  }
+
+  if (!form.value.email || !form.value.password) {
+    return;
+  }
+
   const response = await fetch(`/api/sessions`, {
     headers: {
       Accept: "application/json",

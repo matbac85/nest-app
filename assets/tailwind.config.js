@@ -13,9 +13,11 @@ module.exports = {
     colors: {
       primary_200: "#F3F9F8",
       primary_300: "#DBECEA",
+      primary_400: "#afbdbb",
       primary_500: "#87C1B9",
       primary_700: "#51746F",
       primary_800: "#0D1312",
+      accent: "#ec132c",
     },
     fontFamily: {
       ubuntu: ["Ubuntu Sans", "sans-serif"],

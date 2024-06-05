@@ -5,7 +5,7 @@
       novalidate
       class="bg-primary_200 rounded-xl drop-shadow grid grid-cols-1 gap-4 px-6 py-8 min-w-[21.4375rem] md:min-w-[48rem] md:grid-cols-2 mt-10 mb-10 md:m-0 md:gap-y-6"
     >
-      <div>
+      <div class="relative">
         <label
           for="lastname"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -13,11 +13,18 @@
         ><input
           id="lastname"
           type="text"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           v-model="form.lastname"
+          placeholder="Baclin"
         />
+        <p
+          v-if="lastnameError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ lastnameError }}
+        </p>
       </div>
-      <div>
+      <div class="relative">
         <label
           for="firstname"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -25,11 +32,18 @@
         ><input
           id="firstname"
           type="text"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           v-model="form.firstname"
+          placeholder="Mathilde"
         />
+        <p
+          v-if="firstnameError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ firstnameError }}
+        </p>
       </div>
-      <div class="md:col-span-2">
+      <div class="md:col-span-2 relative">
         <label
           for="email"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide md:col-span-2"
@@ -38,11 +52,18 @@
           type="email"
           name=""
           id="email"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           v-model="form.email"
+          placeholder="exemple@email.com"
         />
+        <p
+          v-if="emailError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ emailError }}
+        </p>
       </div>
-      <div>
+      <div class="relative">
         <label
           for="password"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -51,11 +72,18 @@
           type="password"
           name=""
           id="password"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           v-model="form.password"
+          placeholder="MoTdEpAsSeCompliqué!"
         />
+        <p
+          v-if="passwordError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ passwordError }}
+        </p>
       </div>
-      <div>
+      <div class="relative">
         <label
           for="passwordconfirmation"
           class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -64,12 +92,19 @@
           type="password"
           name=""
           id="passwordconfirmation"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           v-model="form.passwordconfirmation"
+          placeholder="MoTdEpAsSeCompliqué!"
         />
+        <p
+          v-if="passwordconfirmationError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ passwordconfirmationError }}
+        </p>
       </div>
       <button
-        class="transition ease-in-out delay-150 block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-2 hover:scale-105 duration-300 lg:px-4 md:col-start-2 md:mt-0"
+        class="transition ease-in-out delay-150 block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4 md:col-start-2 md:mt-2 md place-self-end md:max-w-fit"
       >
         S'inscrire
       </button>
@@ -91,7 +126,45 @@ const form = ref({
   passwordconfirmation: "",
 });
 
+const lastnameError = ref("");
+const firstnameError = ref("");
+const emailError = ref("");
+const passwordError = ref("");
+const passwordconfirmationError = ref("");
+
 const submit = async () => {
+  lastnameError.value = "";
+  firstnameError.value = "";
+  emailError.value = "";
+  passwordError.value = "";
+  passwordconfirmationError.value = "";
+
+  if (!form.value.lastname) {
+    lastnameError.value = "Veuillez entrer votre nom de famille.";
+  }
+  if (!form.value.firstname) {
+    firstnameError.value = "Veuillez entrer votre prénom.";
+  }
+  if (!form.value.email) {
+    emailError.value = "Veuillez entrer votre adresse e-mail.";
+  }
+  if (!form.value.password) {
+    passwordError.value = "Veuillez entrer votre mot de passe.";
+  }
+  if (!form.value.passwordconfirmation) {
+    passwordconfirmationError.value = "Veuillez confirmer votre mot de passe.";
+  }
+
+  if (
+    !form.value.lastname ||
+    !form.value.firstname ||
+    !form.value.email ||
+    !form.value.password ||
+    !form.value.passwordconfirmation
+  ) {
+    return;
+  }
+
   const response = await fetch(`/api/users`, {
     headers: {
       Accept: "application/json",
