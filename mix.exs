@@ -77,11 +77,7 @@ defmodule Nest.MixProject do
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind nest", "esbuild nest"],
-      "assets.deploy": [
-        "tailwind nest --minify",
-        "esbuild nest --minify",
-        "phx.digest"
-      ]
+      "assets.deploy": ["cmd --cd assets yarn build", "phx.digest"]
     ]
   end
 end
