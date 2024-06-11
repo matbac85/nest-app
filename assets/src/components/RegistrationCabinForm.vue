@@ -8,7 +8,7 @@
       <div class="md:col-span-2 relative">
         <label
           for="cabinname"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Nom de la cabane</label
         ><input
           id="cabinname"
@@ -26,7 +26,7 @@
       <div class="relative">
         <label
           for="city"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Localité</label
         ><input
           id="city"
@@ -44,7 +44,7 @@
       <div class="relative">
         <label
           for="area"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide md:col-span-2"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide md:col-span-2"
           >Région</label
         ><input
           type="text"
@@ -63,7 +63,7 @@
       <div class="relative">
         <label
           for="travellers"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Nombre de voyageurs</label
         ><input
           type="number"
@@ -82,7 +82,7 @@
       <div class="relative">
         <label
           for="price"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Prix par nuit</label
         ><input
           type="number"
@@ -99,7 +99,7 @@
         </p>
       </div>
       <button
-        class="transition ease-in-out delay-150 block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4 md:col-start-2 md:mt-0"
+        class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4 md:col-start-2 md:mt-0"
       >
         Enregistrer
       </button>

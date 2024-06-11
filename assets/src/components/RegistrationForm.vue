@@ -8,7 +8,7 @@
       <div class="relative">
         <label
           for="lastname"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Nom</label
         ><input
           id="lastname"
@@ -27,7 +27,7 @@
       <div class="relative">
         <label
           for="firstname"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Prénom</label
         ><input
           id="firstname"
@@ -46,7 +46,7 @@
       <div class="md:col-span-2 relative">
         <label
           for="email"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide md:col-span-2"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide md:col-span-2"
           >E-mail</label
         ><input
           type="email"
@@ -66,7 +66,7 @@
       <div class="relative">
         <label
           for="password"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Mot de passe</label
         ><input
           type="password"
@@ -86,7 +86,7 @@
       <div class="relative">
         <label
           for="passwordconfirmation"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Confirmer votre mot de passe</label
         ><input
           type="password"
@@ -104,7 +104,7 @@
         </p>
       </div>
       <button
-        class="transition ease-in-out delay-150 block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4 md:col-start-2 md:mt-2 md place-self-end md:max-w-fit"
+        class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4 md:col-start-2 md:mt-2 md place-self-end md:max-w-fit"
       >
         S'inscrire
       </button>

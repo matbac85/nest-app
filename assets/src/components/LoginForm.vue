@@ -8,7 +8,7 @@
       <div class="relative">
         <label
           for="email"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >E-mail</label
         ><input
           type="email"
@@ -28,7 +28,7 @@
       <div class="relative">
         <label
           for="password"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Mot de passe</label
         ><input
           type="password"
@@ -46,12 +46,12 @@
         </p>
       </div>
       <button
-        class="transition ease-in-out delay-150 block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4"
+        class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4"
       >
         Se connecter
       </button>
       <routerLink
-        class="block font-ubuntu text-sm font-semibold text-primary_700 mb-1 ml-1 tracking-wide underline text-center hover:text-primary_500"
+        class="block text-sm font-semibold text-primary_700 mb-1 ml-1 tracking-wide underline text-center hover:text-primary_500"
         to="/register"
         >Pas de Compte ? Inscrivez vous !</routerLink
       >

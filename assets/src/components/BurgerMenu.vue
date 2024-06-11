@@ -44,7 +44,6 @@
 
 <script setup>
 import { ref } from "vue";
-import DropDownMenu from "./DropDownMenu.vue";
 
 const isActive = ref(false);
 

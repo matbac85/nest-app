@@ -8,13 +8,13 @@
       <div>
         <label
           for="areas"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Région</label
         >
         <select
           v-model="form.area"
           id="areas"
-          class="appearance-none font-ubuntu text-base rounded-lg block py-3 px-4 min-w-full min-h-3 focus:outline-none border border-primary_700 focus:border-primary_500"
+          class="appearance-none text-base rounded-lg block py-3 px-4 min-w-full min-h-3 focus:outline-none border border-primary_700 focus:border-primary_500"
         >
           <option option value="" disabled selected>
             Sélectionnez une région
@@ -27,7 +27,7 @@
       <div>
         <label
           for="date-range"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Arrivée - Départ</label
         >
         <Datepicker
@@ -43,7 +43,7 @@
       <div>
         <label
           for="voyageurs"
-          class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
           >Voyageurs</label
         ><input
           v-model="form.travellers"
@@ -53,7 +53,7 @@
         />
       </div>
       <button
-        class="block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide transition mt-2 hover:bg-primary_500 lg:px-4"
+        class="block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide transition mt-2 hover:bg-primary_500 lg:px-4"
       >
         Rechercher
       </button>

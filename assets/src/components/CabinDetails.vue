@@ -8,10 +8,10 @@
         <h2 class="text-primary_700 font-dosis font-bold text-xl">
           {{ name }}
         </h2>
-        <p class="text-primary_800 font-ubuntu font-normal text-base">
+        <p class="text-primary_800 font-normal text-base">
           {{ city }}
         </p>
-        <p class="text-primary_800 font-ubuntu font-normal text-base">
+        <p class="text-primary_800 font-normal text-base">
           <strong>{{ price }} €</strong> par voyageur
         </p>
       </div>

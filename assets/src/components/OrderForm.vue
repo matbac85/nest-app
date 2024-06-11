@@ -11,7 +11,7 @@
     <div>
       <label
         for="date-range"
-        class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+        class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
         >Arrivée - Départ</label
       >
       <Datepicker
@@ -27,7 +27,7 @@
     <div>
       <label
         for="voyageurs"
-        class="block font-ubuntu text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
+        class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
         >Voyageurs</label
       ><input
         v-model="form.travellers"
@@ -38,7 +38,7 @@
     </div>
     <RouterLink
       to="/payment"
-      class="transition ease-in-out delay-150 block font-ubuntu text-base font-semibold text-primary_200 bg-primary_700 py-3 px-4 rounded-lg min-w-fit tracking-wide xl:text-xl hover:bg-primary_500 hover:scale-105 duration-300"
+      class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 px-4 rounded-lg min-w-fit tracking-wide xl:text-xl hover:bg-primary_500 hover:scale-105 duration-300"
     >
       Demande de réservation
     </RouterLink>
