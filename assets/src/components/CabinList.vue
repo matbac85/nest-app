@@ -35,12 +35,13 @@ watch(() => route.query, fetchData, { immediate: true });
 async function fetchData(id) {
   error.value = cabins.value = null;
   loading.value = true;
-  console.log("load");
   try {
     const response = await fetch(
       `/api/cabins?max_guests=${route.query.travellers || ""}&area=${
         route.query.area || ""
-      }&date=${route.query.date || ""}`
+      }&start_date=${route.query.startDate || ""}&end_date=${
+        route.query.endDate || ""
+      }`
     );
     cabins.value = await response.json();
   } catch (err) {

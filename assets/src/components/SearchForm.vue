@@ -70,13 +70,24 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const form = ref({
-  date: "",
+  date: Date,
   travellers: null,
   area: "",
 });
 
 const submit = () => {
-  router.push({ name: "CabinList", query: form.value });
+  const startDate = form.value.date[0].toISOString().split("T")[0];
+  const endDate = form.value.date[1].toISOString().split("T")[0];
+  console.log(startDate);
+  router.push({
+    name: "CabinList",
+    query: {
+      travellers: form.value.travellers,
+      area: form.value.area,
+      startDate: startDate,
+      endDate: endDate,
+    },
+  });
 };
 </script>
 
