@@ -44,6 +44,12 @@
         >
           {{ passwordError }}
         </p>
+        <p
+          v-if="globalLoginError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ globalLoginError }}
+        </p>
       </div>
       <button
         class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4"
@@ -55,7 +61,6 @@
         to="/register"
         >Pas de Compte ? Inscrivez vous !</routerLink
       >
-      <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
     </form>
   </div>
 </template>
@@ -68,6 +73,7 @@ import { userStore } from "../stores/userStore";
 const router = useRouter();
 const emailError = ref("");
 const passwordError = ref("");
+const globalLoginError = ref("");
 
 const form = ref({
   email: "",
@@ -78,6 +84,7 @@ const submit = async () => {
   // Vérifie si les champs email et password sont vides
   emailError.value = "";
   passwordError.value = "";
+  globalLoginError.value = "";
 
   if (!form.value.email) {
     emailError.value = "Veuillez entrer votre adresse e-mail.";
@@ -105,7 +112,7 @@ const submit = async () => {
     localStorage.setItem("user", JSON.stringify(user));
     router.push({ name: "Home" });
   } else {
-    console.log(await response.json());
+    globalLoginError.value = (await response.json()).error;
   }
 };
 </script>

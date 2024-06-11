@@ -36,11 +36,27 @@
           <RouterLink
             class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
             to="/login"
+            v-if="!userStore.user"
             >Se connecter</RouterLink
           >
           <RouterLink
             class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
+            to="/profile"
+            v-if="userStore.user"
+            >Compte</RouterLink
+          >
+          <button
+            class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
+            to="/login"
+            v-if="userStore.user"
+            @click="userStore.logOut()"
+          >
+            Se déconnecter
+          </button>
+          <RouterLink
+            class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
             to="/register"
+            v-if="!userStore.user"
             >S'enregistrer</RouterLink
           >
         </DropDownMenu>
@@ -55,6 +71,7 @@ import BurgerMenu from "./BurgerMenu.vue";
 import { RouterLink } from "vue-router";
 import User from "./User.vue";
 import DropDownMenu from "./DropDownMenu.vue";
+import { userStore } from "../stores/userStore";
 
 const isOpen = ref(false);
 

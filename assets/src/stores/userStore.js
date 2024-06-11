@@ -5,4 +5,8 @@ export const userStore = reactive({
   setUser(user) {
     this.user = user;
   },
+  logOut() {
+    localStorage.removeItem("user");
+    this.user = null;
+  },
 });
