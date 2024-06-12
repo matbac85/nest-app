@@ -10,6 +10,7 @@
           :city="cabin.city"
           :price="cabin.price"
           :id="cabin.id"
+          :query="route.query"
         />
       </li>
     </ul>

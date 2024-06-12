@@ -30,11 +30,21 @@
         <RouterLink
           class="block px-8 py-4 text-xl font-semibold text-primary_700"
           to="/login"
+          v-if="!userStore.user"
           >Se connecter</RouterLink
         >
+        <button
+          class="block px-8 py-4 text-xl font-semibold text-primary_700"
+          to="/login"
+          @click="userStore.logOut()"
+          v-if="userStore.user"
+        >
+          Se déconnecter
+        </button>
         <RouterLink
           class="block px-8 py-4 text-xl font-semibold text-primary_700"
           to="/register"
+          v-if="!userStore.user"
           >S'enregistrer</RouterLink
         >
       </div>
@@ -44,6 +54,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { userStore } from "../stores/userStore";
 
 const isActive = ref(false);
 

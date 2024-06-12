@@ -8,36 +8,9 @@
         >
       </p>
     </div>
-    <div>
-      <label
-        for="date-range"
-        class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-        >Arrivée - Départ</label
-      >
-      <Datepicker
-        v-model="form.date"
-        :range="{ partialRange: false }"
-        :enable-time-picker="false"
-        input-class-name="dp-custom-input dp-custom-calendar"
-        class="placeholder:text-red-500"
-        hide-input-icon
-        placeholder="JJ/MM/AAAA - JJ/MM/AAAA"
-      />
-    </div>
-    <div>
-      <label
-        for="voyageurs"
-        class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-        >Voyageurs</label
-      ><input
-        v-model="form.travellers"
-        type="number"
-        class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-        placeholder="3"
-      />
-    </div>
+
     <RouterLink
-      to="/payment"
+      :to="{ name: 'Payment', params: { id: props.id }, query: props.query }"
       class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 px-4 rounded-lg min-w-fit tracking-wide xl:text-xl hover:bg-primary_500 hover:scale-105 duration-300"
     >
       Demande de réservation
@@ -48,15 +21,13 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
 
-const form = ref({
-  date: "",
-  travellers: null,
+const props = defineProps({
+  id: Number,
+  query: Object,
 });
 
-// watch(() => route.query, fetchData, { immediate: true });
+console.log(props);
 </script>
 
 <style>

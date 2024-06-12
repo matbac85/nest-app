@@ -1,5 +1,7 @@
 <template>
-  <RouterLink :to="{ name: 'CabinDetails', params: { id: id } }">
+  <RouterLink
+    :to="{ name: 'CabinDetails', params: { id: id }, query: props.query }"
+  >
     <div
       class="bg-primary_200 rounded-xl drop-shadow transition ease-in-out delay-150 hover:scale-105 duration-300"
     >
@@ -29,6 +31,7 @@ const props = defineProps({
   city: String,
   price: Number,
   id: Number,
+  query: Object,
 });
 </script>
 

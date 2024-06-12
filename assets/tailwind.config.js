@@ -11,6 +11,7 @@ module.exports = {
   plugins: [require("tailwind-hamburgers")],
   theme: {
     colors: {
+      primary_100: "#FFF",
       primary_200: "#F3F9F8",
       primary_300: "#DBECEA",
       primary_400: "#afbdbb",

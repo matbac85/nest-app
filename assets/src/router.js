@@ -7,6 +7,7 @@ import RegistrationPage from "./pages/RegistrationPage.vue";
 import RegistrationCabinPage from "./pages/RegistrationCabinPage.vue";
 import PaymentPage from "./pages/PaymentPage.vue";
 import ProfilePage from "./pages/ProfilePage.vue";
+import ThankYouPage from "./pages/ThankYouPage.vue";
 import NotFoundPage from "./pages/NotFoundPage.vue";
 
 const routes = [
@@ -42,7 +43,7 @@ const routes = [
     component: RegistrationCabinPage,
   },
   {
-    path: "/payment",
+    path: "/payment/:id",
     name: "Payment",
     component: PaymentPage,
   },
@@ -50,6 +51,11 @@ const routes = [
     path: "/profile",
     name: "Profile",
     component: ProfilePage,
+  },
+  {
+    path: "/thanks",
+    name: "ThankYou",
+    component: ThankYouPage,
   },
   {
     path: "/:pathMatch(.*)*",

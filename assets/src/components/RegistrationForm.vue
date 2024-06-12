@@ -173,7 +173,6 @@ const submit = async () => {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     body: JSON.stringify(form.value), // body data type must match "Content-Type" header
   });
-  console.log(response.status);
   if (response.status === 200) {
     router.push({ name: "Login", query: form.value });
   } else {

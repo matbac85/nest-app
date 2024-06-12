@@ -78,7 +78,6 @@ const form = ref({
 const submit = () => {
   const startDate = form.value.date[0].toISOString().split("T")[0];
   const endDate = form.value.date[1].toISOString().split("T")[0];
-  console.log(startDate);
   router.push({
     name: "CabinList",
     query: {

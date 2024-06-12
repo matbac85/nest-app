@@ -105,7 +105,6 @@ const submit = async () => {
     method: "POST",
     body: JSON.stringify(form.value),
   });
-  console.log(response.status);
   if (response.status === 200) {
     const user = await response.json();
     userStore.setUser(user);
