@@ -2,6 +2,7 @@ defmodule NestWeb.CabinController do
   use NestWeb, :controller
   import Ecto.Query, only: [from: 2]
   alias Nest.Cabin
+  alias Nest.Reservation
   alias Nest.Repo
 
   def index(conn, params) do
@@ -67,17 +68,18 @@ defmodule NestWeb.CabinController do
 
   def filter_date_range(query, start_date, end_date) do
     from cabins in query,
-    left_join: reservations in assoc(cabins, :reservations),
-    where: fragment(
-      "(not (daterange(?, ?) && daterange(?, ?))) or ? is null or ? is null ",
-      reservations.start_date,
-      reservations.end_date,
-      ^(Date.from_iso8601!(start_date)),
-      ^(Date.from_iso8601!(end_date)),
-      reservations.start_date,
-      reservations.end_date
-    ),
-    distinct: cabins.id
+    as: :cabins,
+    where: not exists(
+      from(reservations in Reservation,
+      where: reservations.cabin_id == parent_as(:cabins).id,
+      where: fragment(
+        "( (daterange(?, ?) && daterange(?, ?))) ",
+        reservations.start_date,
+        reservations.end_date,
+        ^(Date.from_iso8601!(start_date)),
+        ^(Date.from_iso8601!(end_date))
+      )
+    ))
   end
 
 
