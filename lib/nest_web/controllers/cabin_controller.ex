@@ -24,23 +24,25 @@ defmodule NestWeb.CabinController do
       area: cabin.area,
       city: cabin.city,
       description: cabin.description,
-      images: Enum.map(1..5, fn(image_id) ->
-        "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
-      end),
-      comments: Enum.map(cabin.comments, fn(comment) ->
-         %{
-           id: comment.id,
-           text: comment.text,
-           user_firstname: comment.user.firstname,
-           user_lastname: comment.user.lastname,
-           created_at: comment.inserted_at
-         }
-      end)
+      images:
+        Enum.map(1..5, fn image_id ->
+          "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
+        end),
+      comments:
+        Enum.map(cabin.comments, fn comment ->
+          %{
+            id: comment.id,
+            text: comment.text,
+            user_firstname: comment.user.firstname,
+            user_lastname: comment.user.lastname,
+            created_at: comment.inserted_at
+          }
+        end)
     }
   end
 
   def render_cabins(cabins) do
-    Enum.map(cabins, fn(cabin) ->
+    Enum.map(cabins, fn cabin ->
       render_cabin(cabin)
     end)
   end
@@ -63,7 +65,6 @@ defmodule NestWeb.CabinController do
     from cabins in query, where: cabins.area == ^area
   end
 
-
   def filter_max_guests(query, ""), do: query
 
   def filter_max_guests(query, nil), do: query
@@ -78,21 +79,22 @@ defmodule NestWeb.CabinController do
 
   def filter_date_range(query, start_date, end_date) do
     from cabins in query,
-    as: :cabins,
-    where: not exists(
-      from(reservations in Reservation,
-      where: reservations.cabin_id == parent_as(:cabins).id,
-      where: fragment(
-        "( (daterange(?, ?) && daterange(?, ?))) ",
-        reservations.start_date,
-        reservations.end_date,
-        ^(Date.from_iso8601!(start_date)),
-        ^(Date.from_iso8601!(end_date))
-      )
-    ))
+      as: :cabins,
+      where:
+        not exists(
+          from(reservations in Reservation,
+            where: reservations.cabin_id == parent_as(:cabins).id,
+            where:
+              fragment(
+                "( (daterange(?, ?) && daterange(?, ?))) ",
+                reservations.start_date,
+                reservations.end_date,
+                ^Date.from_iso8601!(start_date),
+                ^Date.from_iso8601!(end_date)
+              )
+          )
+        )
   end
-
-
 
   defp resize(n) do
     if n <= 9, do: "0#{n}", else: n

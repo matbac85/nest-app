@@ -7,7 +7,9 @@ defmodule NestWeb.CommentController do
     user = conn.assigns.user
 
     case create_comment(params, user) do
-      {:ok, _user} -> json(conn, :ok)
+      {:ok, _user} ->
+        json(conn, :ok)
+
       {:error, changeset} ->
         conn
         |> put_status(422)
@@ -16,8 +18,8 @@ defmodule NestWeb.CommentController do
   end
 
   defp create_comment(params, user) do
-      %Comment{user_id: user.id}
-      |> Comment.changeset(params)
-      |> Repo.insert
+    %Comment{user_id: user.id}
+    |> Comment.changeset(params)
+    |> Repo.insert()
   end
 end

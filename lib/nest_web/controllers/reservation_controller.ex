@@ -7,7 +7,9 @@ defmodule NestWeb.ReservationController do
     user = conn.assigns.user
 
     case create_reservation(params, user) do
-      {:ok, user} -> json(conn, render_reservation(user))
+      {:ok, user} ->
+        json(conn, render_reservation(user))
+
       {:error, changeset} ->
         conn
         |> put_status(422)
@@ -18,7 +20,7 @@ defmodule NestWeb.ReservationController do
   defp create_reservation(params, user) do
     %Reservation{user_id: user.id}
     |> Reservation.changeset(params)
-    |> Repo.insert
+    |> Repo.insert()
   end
 
   defp render_reservation(reservation) do
@@ -30,5 +32,4 @@ defmodule NestWeb.ReservationController do
       cabin_id: reservation.cabin_id
     }
   end
-
 end

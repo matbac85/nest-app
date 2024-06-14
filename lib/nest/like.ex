@@ -3,8 +3,6 @@ defmodule Nest.Like do
   import Ecto.Changeset
 
   schema "likes" do
-
-
     timestamps(type: :utc_datetime)
   end
 

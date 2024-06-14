@@ -2,14 +2,12 @@ defmodule Nest.PlugAuth do
   import Plug.Conn
   @jwt_header "authorization"
 
-
   def init(default), do: default
 
-  def call( conn, _default) do
+  def call(conn, _default) do
     with {:ok, jwt} <- get_jwt(conn),
-         {:ok, claims} <-  Nest.Guardian.decode_and_verify(jwt),
-         {:ok, user} <- Nest.Guardian.resource_from_claims(claims)
-    do
+         {:ok, claims} <- Nest.Guardian.decode_and_verify(jwt),
+         {:ok, user} <- Nest.Guardian.resource_from_claims(claims) do
       assign(conn, :user, user)
     else
       _ ->
@@ -23,5 +21,4 @@ defmodule Nest.PlugAuth do
       jwt -> {:ok, String.replace_prefix(jwt, "Bearer ", "")}
     end
   end
-
 end

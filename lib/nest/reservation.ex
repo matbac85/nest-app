@@ -8,7 +8,6 @@ defmodule Nest.Reservation do
     belongs_to :cabin, Cabin
     field :start_date, :date
     field :end_date, :date
-
   end
 
   @doc false
@@ -16,6 +15,9 @@ defmodule Nest.Reservation do
     reservation
     |> cast(attrs, [:start_date, :end_date, :cabin_id, :user_id])
     |> validate_required([:start_date, :end_date, :cabin_id, :user_id])
-    |> exclusion_constraint(:date, name: "unique_daterange_reservation", message: "La cabane est réservée à cette période")
+    |> exclusion_constraint(:date,
+      name: "unique_daterange_reservation",
+      message: "La cabane est réservée à cette période"
+    )
   end
 end

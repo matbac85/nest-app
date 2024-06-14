@@ -7,7 +7,6 @@ defmodule Nest.Repo.Migrations.CreateComments do
       add :user_id, references(:users)
       add :text, :text
       timestamps(type: :utc_datetime)
-
     end
   end
 end

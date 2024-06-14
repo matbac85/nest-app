@@ -25,12 +25,12 @@ defmodule NestWeb.Endpoint do
     gzip: false,
     only: NestWeb.static_paths()
 
-    if Mix.env() == :dev do
-      plug Plug.Static,
-        at: "/",
-        from: "assets",
-        gzip: false
-    end
+  if Mix.env() == :dev do
+    plug Plug.Static,
+      at: "/",
+      from: "assets",
+      gzip: false
+  end
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

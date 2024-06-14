@@ -13,7 +13,6 @@ defmodule Nest.Cabin do
     field :rating, :float
     has_many :reservations, Reservation
     has_many :comments, Comment
-
   end
 
   @doc false

@@ -10,7 +10,6 @@ defmodule Nest.Repo.Migrations.CreateCabin do
       add :price, :integer
       add :description, :text
       add :rating, :float
-
     end
   end
 end
