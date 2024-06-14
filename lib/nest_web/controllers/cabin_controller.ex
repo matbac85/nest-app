@@ -2,6 +2,7 @@ defmodule NestWeb.CabinController do
   use NestWeb, :controller
   import Ecto.Query, only: [from: 2]
   alias Nest.Cabin
+  alias Nest.Reservation
   alias Nest.Repo
 
   def index(conn, params) do
@@ -10,7 +11,7 @@ defmodule NestWeb.CabinController do
   end
 
   def show(conn, %{"id" => id}) do
-    cabin = Repo.get(Cabin, id)
+    cabin = Repo.get(Cabin, id) |> Repo.preload(comments: :user)
     json(conn, render_cabin(cabin))
   end
 
@@ -25,6 +26,15 @@ defmodule NestWeb.CabinController do
       description: cabin.description,
       images: Enum.map(1..5, fn(image_id) ->
         "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
+      end),
+      comments: Enum.map(cabin.comments, fn(comment) ->
+         %{
+           id: comment.id,
+           text: comment.text,
+           user_firstname: comment.user.firstname,
+           user_lastname: comment.user.lastname,
+           created_at: comment.inserted_at
+         }
       end)
     }
   end
@@ -41,6 +51,7 @@ defmodule NestWeb.CabinController do
     |> filter_max_guests(Map.get(params, "max_guests"))
     |> filter_date_range(Map.get(params, "start_date"), Map.get(params, "end_date"))
     |> Repo.all()
+    |> Repo.preload(comments: :user)
   end
 
   @spec filter_area(any(), any()) :: any()
@@ -67,17 +78,18 @@ defmodule NestWeb.CabinController do
 
   def filter_date_range(query, start_date, end_date) do
     from cabins in query,
-    left_join: reservations in assoc(cabins, :reservations),
-    where: fragment(
-      "(not (daterange(?, ?) && daterange(?, ?))) or ? is null or ? is null ",
-      reservations.start_date,
-      reservations.end_date,
-      ^(Date.from_iso8601!(start_date)),
-      ^(Date.from_iso8601!(end_date)),
-      reservations.start_date,
-      reservations.end_date
-    ),
-    distinct: cabins.id
+    as: :cabins,
+    where: not exists(
+      from(reservations in Reservation,
+      where: reservations.cabin_id == parent_as(:cabins).id,
+      where: fragment(
+        "( (daterange(?, ?) && daterange(?, ?))) ",
+        reservations.start_date,
+        reservations.end_date,
+        ^(Date.from_iso8601!(start_date)),
+        ^(Date.from_iso8601!(end_date))
+      )
+    ))
   end
 
 
