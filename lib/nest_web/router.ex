@@ -29,6 +29,7 @@ defmodule NestWeb.Router do
     get "/me", UserController, :me
     post "/cabins/:cabin_id/reservations", ReservationController, :create
     post "/cabins/:cabin_id/comments", CommentController, :create
+    post "/cabins/:cabin_id/favorites/toggle", FavoriteController, :toggle
   end
 
   scope "/", NestWeb do
