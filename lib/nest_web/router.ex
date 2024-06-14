@@ -31,6 +31,8 @@ defmodule NestWeb.Router do
     pipe_through :api_with_auth
     get "/me", UserController, :me
     post "/cabins/:cabin_id/reservations", ReservationController, :create
+    post "/cabins/:cabin_id/comments", CommentController, :create
+
   end
 
   scope "/", NestWeb do

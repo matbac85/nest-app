@@ -44,7 +44,7 @@ defmodule NestWeb do
 
       import Plug.Conn
       import NestWeb.Gettext
-
+      import NestWeb.Helpers
       unquote(verified_routes())
     end
   end
