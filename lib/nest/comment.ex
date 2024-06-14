@@ -1,6 +1,7 @@
 defmodule Nest.Comment do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Nest.{Cabin, User}
 
   schema "comments" do
     belongs_to :user, User

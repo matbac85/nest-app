@@ -11,7 +11,7 @@ defmodule NestWeb.CabinController do
   end
 
   def show(conn, %{"id" => id}) do
-    cabin = Repo.get(Cabin, id)
+    cabin = Repo.get(Cabin, id) |> Repo.preload(comments: :user)
     json(conn, render_cabin(cabin))
   end
 
@@ -26,6 +26,14 @@ defmodule NestWeb.CabinController do
       description: cabin.description,
       images: Enum.map(1..5, fn(image_id) ->
         "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
+      end),
+      comments: Enum.map(cabin.comments, fn(comment) ->
+         %{
+           id: comment.id,
+           text: comment.text,
+           user_firstname: comment.user.firstname,
+           user_lastname: comment.user.lastname
+         }
       end)
     }
   end
@@ -42,6 +50,7 @@ defmodule NestWeb.CabinController do
     |> filter_max_guests(Map.get(params, "max_guests"))
     |> filter_date_range(Map.get(params, "start_date"), Map.get(params, "end_date"))
     |> Repo.all()
+    |> Repo.preload(comments: :user)
   end
 
   @spec filter_area(any(), any()) :: any()
