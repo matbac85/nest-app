@@ -9,7 +9,12 @@
       class="absolute top-4 p-1 right-2 rounded-full bg-primary_800 bg-opacity-70 w-8 h-8 hover:scale-110"
       @click.prevent="toggleImageSrc"
     >
-      <img :src="imageSrc" alt="" class="min-w-full min-h-full" />
+      <img
+        v-if="imageSrc"
+        :src="imageSrc"
+        alt=""
+        class="min-w-full min-h-full"
+      />
     </button>
     <button
       class="absolute p-1 rounded-full bg-primary_200 items-center justify-center top-1/2 transform -translate-y-1/2 right-2 opacity-0 transition ease-in-out delay-150 hover:scale-110 hover:drop-shadow hover:bg-white group-hover:opacity-80 duration-300"
@@ -28,21 +33,21 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref, defineProps, computed } from "vue";
 
 const imageIndex = ref(0);
-const imageSrc = ref("../assets/favorite_border.svg");
+const imageSrc = ref("../assets/favorite-border.svg");
 
 const props = defineProps({
   src: Array,
 });
 
-const toggleImageSrc = () => {
+const toggleImageSrc = computed(() => {
   imageSrc.value =
-    imageSrc.value === "../assets/favorite_border.svg"
-      ? "../assets/favorite_filled.svg"
-      : "../assets/favorite_border.svg";
-};
+    imageSrc.value === "../assets/favorite-border.svg"
+      ? "../assets/favorite-filled.svg"
+      : "../assets/favorite-border.svg";
+});
 
 const slideRight = (src) => {
   imageIndex.value = (imageIndex.value + 1) % src.length;
