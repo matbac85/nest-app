@@ -34,6 +34,7 @@
           v-model="form.date"
           :range="{ partialRange: false }"
           :enable-time-picker="false"
+          :min-date="new Date()"
           input-class-name="dp-custom-input dp-custom-calendar"
           class="placeholder:text-red-500"
           hide-input-icon
@@ -54,6 +55,8 @@
         ><input
           v-model="form.travellers"
           type="number"
+          min="1"
+          step="1"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           placeholder="3"
         />
@@ -111,6 +114,12 @@ const submit = () => {
     }
     if (!form.value.travellers) {
       travellersError.value = "Veuillez entrer le nombre de voyageurs.";
+    }
+    if (form.value.travellers < 0) {
+      travellersError.value = "Veuillez entrer un nombre positif.";
+    }
+    if (!Number.isInteger(form.value.travellers)) {
+      travellersError.value = "Veuillez entrer un nombre entier.";
     }
     if (!form.value.date || !form.value.travellers) {
       return;
