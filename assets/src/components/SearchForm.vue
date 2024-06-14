@@ -3,7 +3,7 @@
     <form
       @submit.prevent="submit"
       novalidate
-      class="bg-primary_200 px-6 py-8 min-w-[21.4375rem] rounded-xl drop-shadow grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-end lg:justify-between lg:min-w-[65rem] lg:px-8 lg:pt-6"
+      class="bg-primary_200 px-6 py-8 min-w-[21.4375rem] rounded-xl drop-shadow grid grid-cols-1 gap-5 lg:grid-cols-4 lg:items-end lg:justify-between lg:min-w-[65rem] lg:px-8 lg:pt-6"
     >
       <div>
         <label
@@ -24,7 +24,7 @@
           <option value="Bruxelles">Bruxelles</option>
         </select>
       </div>
-      <div>
+      <div class="relative">
         <label
           for="date-range"
           class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -39,8 +39,14 @@
           hide-input-icon
           placeholder="JJ/MM/AAAA - JJ/MM/AAAA"
         />
+        <p
+          v-if="dateError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ dateError }}
+        </p>
       </div>
-      <div>
+      <div class="relative">
         <label
           for="voyageurs"
           class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -51,9 +57,16 @@
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
           placeholder="3"
         />
+        <p
+          v-if="travellersError"
+          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+        >
+          {{ travellersError }}
+        </p>
       </div>
+
       <button
-        class="block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide transition mt-2 hover:bg-primary_500 lg:px-4"
+        class="block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide transition mt-3 hover:bg-primary_500 lg:px-4"
       >
         Rechercher
       </button>
@@ -68,25 +81,41 @@ import "@vuepic/vue-datepicker/dist/main.css";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+const dateError = ref("");
+const travellersError = ref("");
 
 const form = ref({
-  date: Date,
+  date: "",
   travellers: null,
   area: "",
 });
 
 const submit = () => {
-  const startDate = form.value.date[0].toISOString().split("T")[0];
-  const endDate = form.value.date[1].toISOString().split("T")[0];
-  router.push({
-    name: "CabinList",
-    query: {
-      travellers: form.value.travellers,
-      area: form.value.area,
-      startDate: startDate,
-      endDate: endDate,
-    },
-  });
+  if (form.value.date && form.value.travellers) {
+    const startDate = form.value.date[0].toISOString().split("T")[0];
+    const endDate = form.value.date[1].toISOString().split("T")[0];
+    router.push({
+      name: "CabinList",
+      query: {
+        travellers: form.value.travellers,
+        area: form.value.area,
+        startDate: startDate,
+        endDate: endDate,
+      },
+    });
+  } else {
+    dateError.value = "";
+    travellersError.value = "";
+    if (!form.value.date) {
+      dateError.value = "Veuillez entrer les dates de votre séjour.";
+    }
+    if (!form.value.travellers) {
+      travellersError.value = "Veuillez entrer le nombre de voyageurs.";
+    }
+    if (!form.value.date || !form.value.travellers) {
+      return;
+    }
+  }
 };
 </script>
 

@@ -67,9 +67,11 @@
 
 <script setup>
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { userStore } from "../stores/userStore";
+import { redirectStore } from "../stores/redirectStore";
 
+const route = useRoute();
 const router = useRouter();
 const emailError = ref("");
 const passwordError = ref("");
@@ -109,7 +111,12 @@ const submit = async () => {
     const user = await response.json();
     userStore.setUser(user);
     localStorage.setItem("user", JSON.stringify(user));
-    router.push({ name: "Home" });
+    if (redirectStore.url !== null) {
+      router.push(redirectStore.url);
+      //  redirectStore.resetUrl();
+    } else {
+      router.push({ name: "Home" });
+    }
   } else {
     globalLoginError.value = (await response.json()).error;
   }

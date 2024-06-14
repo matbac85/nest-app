@@ -21,7 +21,7 @@
       <h2
         class="font-dosis text-xl font-semibold text-start text-primary_800 mb-6"
       >
-        Détails du prix
+        Détail du prix
       </h2>
       <div class="flex flex-row justify-between">
         <p>{{ cabin.price }} € x {{ numberOfNights }} nuits</p>
