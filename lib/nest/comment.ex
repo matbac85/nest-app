@@ -7,6 +7,8 @@ defmodule Nest.Comment do
     belongs_to :user, User
     belongs_to :cabin, Cabin
     field :text, :string
+    timestamps(type: :utc_datetime)
+
   end
 
   @doc false

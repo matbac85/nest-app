@@ -32,7 +32,8 @@ defmodule NestWeb.CabinController do
            id: comment.id,
            text: comment.text,
            user_firstname: comment.user.firstname,
-           user_lastname: comment.user.lastname
+           user_lastname: comment.user.lastname,
+           created_at: comment.inserted_at
          }
       end)
     }
