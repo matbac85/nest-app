@@ -62,6 +62,7 @@ defmodule NestWeb.CabinController do
 
   def cabin_query(nil) do
     from cabin in Cabin,
+    as: :cabin,
     preload: [comments: :user],
     select: %{favorite: false, cabin: cabin},
     order_by: cabin.id
