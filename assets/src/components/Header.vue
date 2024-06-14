@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex justify-between items-center bg-primary_200 py-4 px-4 flex-none drop-shadow md:px-6 xl:px-14 z-50"
+    class="fixed top-0 left-0 right-0 flex justify-between items-center bg-primary_200 py-4 px-4 flex-none drop-shadow md:px-6 xl:px-14 z-50"
   >
     <RouterLink to="/">
       <img

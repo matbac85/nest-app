@@ -19,7 +19,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { RouterLink } from "vue-router";
 
 const props = defineProps({
@@ -27,8 +26,6 @@ const props = defineProps({
   query: Object,
   price: Number,
 });
-
-console.log(props);
 </script>
 
 <style>

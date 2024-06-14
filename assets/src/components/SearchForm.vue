@@ -5,7 +5,7 @@
       novalidate
       class="bg-primary_200 px-6 py-8 min-w-[21.4375rem] rounded-xl drop-shadow grid grid-cols-1 gap-5 lg:grid-cols-4 lg:items-end lg:justify-between lg:min-w-[65rem] lg:px-8 lg:pt-6"
     >
-      <div>
+      <div class="select-wrapper">
         <label
           for="areas"
           class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
@@ -191,5 +191,22 @@ select {
 
 .dp__menu_inner {
   font-family: "Ubuntu Sans", sans-serif;
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.select-wrapper select {
+  appearance: none; /* Supprime l'apparence par défaut */
+  -webkit-appearance: none; /* Pour Safari */
+  -moz-appearance: none; /* Pour Firefox */
+  padding-right: 2.5rem; /* Ajoute un espace pour la flèche */
+  background-image: url("../assets/arrow_drop_down.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center; /* Positionne la flèche à droite et centrée verticalement */
+  background-size: 1.5rem; /* Ajuste la taille de l'image de la flèche */
 }
 </style>
