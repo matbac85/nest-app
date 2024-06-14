@@ -93,8 +93,42 @@ const form = ref({
   area: "",
 });
 
+const validateTravellers = () => {
+  if (form.value.travellers === null) {
+    travellersError.value = "Veuillez entrer le nombre de voyageurs.";
+    return false;
+  }
+  if (form.value.travellers <= 0) {
+    travellersError.value = "Veuillez entrer un nombre positif.";
+    return false;
+  }
+  if (!Number.isInteger(form.value.travellers)) {
+    travellersError.value = "Veuillez entrer un nombre entier.";
+    return false;
+  }
+  travellersError.value = "";
+  return true;
+};
+
+const validateForm = () => {
+  let isValid = true;
+
+  if (!form.value.date) {
+    dateError.value = "Veuillez entrer les dates de votre séjour.";
+    isValid = false;
+  } else {
+    dateError.value = "";
+  }
+
+  if (!validateTravellers()) {
+    isValid = false;
+  }
+
+  return isValid;
+};
+
 const submit = () => {
-  if (form.value.date && form.value.travellers) {
+  if (validateForm()) {
     const startDate = form.value.date[0].toISOString().split("T")[0];
     const endDate = form.value.date[1].toISOString().split("T")[0];
     router.push({
@@ -106,24 +140,6 @@ const submit = () => {
         endDate: endDate,
       },
     });
-  } else {
-    dateError.value = "";
-    travellersError.value = "";
-    if (!form.value.date) {
-      dateError.value = "Veuillez entrer les dates de votre séjour.";
-    }
-    if (!form.value.travellers) {
-      travellersError.value = "Veuillez entrer le nombre de voyageurs.";
-    }
-    if (form.value.travellers < 0) {
-      travellersError.value = "Veuillez entrer un nombre positif.";
-    }
-    if (!Number.isInteger(form.value.travellers)) {
-      travellersError.value = "Veuillez entrer un nombre entier.";
-    }
-    if (!form.value.date || !form.value.travellers) {
-      return;
-    }
   }
 };
 </script>

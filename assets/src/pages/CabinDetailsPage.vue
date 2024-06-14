@@ -12,7 +12,7 @@
             :area="cabin.area"
             :description="cabin.description"
           />
-          <OrderForm :id="cabin.id" :query="route.query" />
+          <OrderForm :id="cabin.id" :query="route.query" :price="cabin.price" />
         </div>
       </main>
     </template>

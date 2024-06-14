@@ -2,7 +2,7 @@
   <div class="min-w-full flex justify-between items-end gap-3 md:justify-start">
     <div class="text-base flex justify-center">
       <p class="font-semibold xl:text-3xl">
-        70 €
+        {{ props.price }} €
         <strong class="text-sm font-base font-normal xl:text-xl"
           >par nuit</strong
         >
@@ -25,6 +25,7 @@ import { RouterLink } from "vue-router";
 const props = defineProps({
   id: Number,
   query: Object,
+  price: Number,
 });
 
 console.log(props);
