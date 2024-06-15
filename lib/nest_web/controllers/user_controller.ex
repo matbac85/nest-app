@@ -41,7 +41,8 @@ defmodule NestWeb.UserController do
         Enum.map(user.favorites, fn favorite ->
           %{
             id: favorite.id,
-            cabin_name: favorite.cabin.name
+            cabin_name: favorite.cabin.name,
+            cabin_price: favorite.cabin.price
           }
         end),
       reservations:
