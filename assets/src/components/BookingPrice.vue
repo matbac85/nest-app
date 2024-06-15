@@ -35,7 +35,7 @@
       <hr class="my-6 text-primary_300 border-1" />
       <div class="flex flex-row justify-between">
         <p>Total</p>
-        <p>{{ totalWithTax }} €</p>
+        <p>{{ totalWithTax.toFixed(1) }} €</p>
       </div>
     </div>
   </div>

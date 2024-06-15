@@ -13,6 +13,7 @@
             :description="cabin.description"
           />
           <OrderForm :id="cabin.id" :query="route.query" :price="cabin.price" />
+          <CommentForm :id="cabin.id" />
         </div>
       </main>
     </template>
@@ -26,6 +27,7 @@ import { watch, ref } from "vue";
 import CabinPicturesDisplayer from "../components/CabinPicturesDisplayer.vue";
 import CabinDetailsDescription from "../components/CabinDetailsDescription.vue";
 import OrderForm from "../components/OrderForm.vue";
+import CommentForm from "../components/CommentForm.vue";
 
 const route = useRoute();
 const cabin = ref({});

@@ -132,6 +132,54 @@ const emailError = ref("");
 const passwordError = ref("");
 const passwordconfirmationError = ref("");
 
+const validateForm = () => {
+  lastnameError.value = form.value.lastname
+    ? ""
+    : "Veuillez entrer votre nom de famille.";
+  firstnameError.value = form.value.firstname
+    ? ""
+    : "Veuillez entrer votre prénom.";
+  emailError.value = form.value.email
+    ? ""
+    : "Veuillez entrer votre adresse e-mail.";
+  passwordError.value = form.value.password
+    ? ""
+    : "Veuillez entrer votre mot de passe.";
+  passwordconfirmationError.value = form.value.passwordconfirmation
+    ? ""
+    : "Veuillez confirmer votre mot de passe.";
+
+  if (form.value.password !== form.value.passwordconfirmation) {
+    passwordconfirmationError.value = "Les mots de passe ne correspondent pas.";
+  }
+
+  return !(
+    lastnameError.value ||
+    firstnameError.value ||
+    emailError.value ||
+    passwordError.value ||
+    passwordconfirmationError.value
+  );
+};
+
+const handleBackendErrors = (responseData) => {
+  if (responseData.password) {
+    passwordError.value = responseData.password[0];
+  }
+  if (responseData.email) {
+    emailError.value = responseData.email[0];
+  }
+  if (responseData.lastname) {
+    lastnameError.value = responseData.lastname[0];
+  }
+  if (responseData.firstname) {
+    firstnameError.value = responseData.firstname[0];
+  }
+  if (responseData.passwordconfirmation) {
+    passwordconfirmationError.value = responseData.passwordconfirmation[0];
+  }
+};
+
 const submit = async () => {
   lastnameError.value = "";
   firstnameError.value = "";
@@ -139,29 +187,7 @@ const submit = async () => {
   passwordError.value = "";
   passwordconfirmationError.value = "";
 
-  if (!form.value.lastname) {
-    lastnameError.value = "Veuillez entrer votre nom de famille.";
-  }
-  if (!form.value.firstname) {
-    firstnameError.value = "Veuillez entrer votre prénom.";
-  }
-  if (!form.value.email) {
-    emailError.value = "Veuillez entrer votre adresse e-mail.";
-  }
-  if (!form.value.password) {
-    passwordError.value = "Veuillez entrer votre mot de passe.";
-  }
-  if (!form.value.passwordconfirmation) {
-    passwordconfirmationError.value = "Veuillez confirmer votre mot de passe.";
-  }
-
-  if (
-    !form.value.lastname ||
-    !form.value.firstname ||
-    !form.value.email ||
-    !form.value.password ||
-    !form.value.passwordconfirmation
-  ) {
+  if (!validateForm()) {
     return;
   }
 
@@ -170,13 +196,16 @@ const submit = async () => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    body: JSON.stringify(form.value), // body data type must match "Content-Type" header
+    method: "POST",
+    body: JSON.stringify(form.value),
   });
+
+  const responseData = await response.json();
+
   if (response.status === 200) {
     router.push({ name: "Login", query: form.value });
   } else {
-    console.log(await response.json());
+    handleBackendErrors(responseData);
   }
 };
 </script>
