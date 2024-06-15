@@ -42,6 +42,8 @@ const form = ref({
   text: "",
 });
 
+console.log(form.value.text);
+
 const isUserLoggedIn = computed(() => !!userStore.user);
 
 const publish = async () => {
@@ -55,9 +57,9 @@ const publish = async () => {
     body: JSON.stringify(form.value),
   });
   if (response.status === 200) {
+    form.value.text = "";
     const comment = await response.json();
     props.cabin.comments.unshift(comment);
-
     console.log("merci pour ton commentaire, marraine!");
   } else {
     console.log(`réservation ratée, marraine!!`);
