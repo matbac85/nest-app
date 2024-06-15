@@ -14,8 +14,14 @@ defmodule NestWeb.CabinController do
 
   def show(conn, %{"id" => id}) do
     user = PlugAuth.get_user(conn)
-    cabin = Repo.get(cabin_query(user) |> IO.inspect(), id)
+
+    cabin = get_cabin(id, user)
     json(conn, render_cabin(cabin))
+  end
+
+
+  def get_cabin(id, user) do
+    Repo.get(cabin_query(user), id)
   end
 
 
