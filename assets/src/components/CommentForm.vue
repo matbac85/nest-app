@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, getCurrentInstance } from "vue";
 import { userStore } from "../stores/userStore";
 import { redirectStore } from "../stores/redirectStore";
 
@@ -55,8 +55,9 @@ const publish = async () => {
     body: JSON.stringify(form.value),
   });
   if (response.status === 200) {
-    console.log(props.cabin.value);
-    props.cabin.value = await response.json();
+    const comment = await response.json();
+    props.cabin.comments.unshift(comment);
+
     console.log("merci pour ton commentaire, marraine!");
   } else {
     console.log(`réservation ratée, marraine!!`);

@@ -14,7 +14,7 @@
           />
           <OrderForm :id="cabin.id" :query="route.query" :price="cabin.price" />
           <CommentForm :cabin="cabin" />
-          <CommentsSection :comments="cabin.comments" />
+          <CommentsSection :cabin="cabin" />
         </div>
       </main>
     </template>
@@ -33,6 +33,7 @@ import CommentsSection from "../components/CommentsSection.vue";
 
 const route = useRoute();
 const cabin = ref({});
+const commentsKey = ref(0);
 // watch the params of the route to fetch the data again
 watch(() => route.query, fetchData, { immediate: true });
 

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <ul class="flex flex-col items-start gap-4">
-      <li v-for="(comment, index) in props.comments" :key="index">
-        <div class="flex items-center justify-between">
+    <ul class="flex flex-col items-start gap-4 w-full">
+      <li v-for="(comment, index) in props.cabin.comments" :key="index">
+        <div class="w-full flex items-center justify-between">
           <p
             class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"
           >
@@ -28,7 +28,7 @@
 
 <script setup>
 const props = defineProps({
-  comments: Array,
+  cabin: Object,
 });
 
 const formatDate = (dateString) => {
