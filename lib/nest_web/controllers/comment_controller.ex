@@ -8,9 +8,15 @@ defmodule NestWeb.CommentController do
     user = conn.assigns.user
 
     case create_comment(params, user) do
-      {:ok, _comment} ->
-        cabin = CabinController.get_cabin(params["cabin_id"], user)
-        json(conn, CabinController.render_cabin(cabin))
+      {:ok, comment} ->
+        comment = Repo.preload(comment, :user)
+        json(conn, %{
+          id: comment.id,
+          text: comment.text,
+          user_firstname: comment.user.firstname,
+          user_lastname: comment.user.lastname,
+          created_at: comment.inserted_at
+        })
       {:error, changeset} ->
         conn
         |> put_status(422)
