@@ -13,7 +13,8 @@
             :description="cabin.description"
           />
           <OrderForm :id="cabin.id" :query="route.query" :price="cabin.price" />
-          <CommentForm :id="cabin.id" />
+          <CommentForm :cabin="cabin" />
+          <CommentsSection :comments="cabin.comments" />
         </div>
       </main>
     </template>
@@ -28,6 +29,7 @@ import CabinPicturesDisplayer from "../components/CabinPicturesDisplayer.vue";
 import CabinDetailsDescription from "../components/CabinDetailsDescription.vue";
 import OrderForm from "../components/OrderForm.vue";
 import CommentForm from "../components/CommentForm.vue";
+import CommentsSection from "../components/CommentsSection.vue";
 
 const route = useRoute();
 const cabin = ref({});
@@ -38,6 +40,7 @@ async function fetchData(id) {
   try {
     const response = await fetch(`/api/cabins/${route.params.id}`);
     cabin.value = await response.json();
+    console.log(cabin.value);
   } catch (err) {
   } finally {
   }

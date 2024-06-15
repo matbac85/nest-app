@@ -5,7 +5,7 @@
     >
       <label for="comment" class="sr-only">Your comment</label>
       <textarea
-        v-model="form.comment"
+        v-model="form.text"
         id="comment"
         rows="6"
         class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
@@ -35,29 +35,31 @@ import { userStore } from "../stores/userStore";
 import { redirectStore } from "../stores/redirectStore";
 
 const props = defineProps({
-  id: Number,
+  cabin: Object,
 });
 
 const form = ref({
-  comment: "",
+  text: "",
 });
 
 const isUserLoggedIn = computed(() => !!userStore.user);
 
 const publish = async () => {
-  const response = await fetch(`/api/cabins/${cabin}/`, {
+  const response = await fetch(`/api/cabins/${props.cabin.id}/comments`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       authorization: `Bearer ${userStore.user.jwt}`,
     },
     method: "POST",
-    body: JSON.stringify(form),
+    body: JSON.stringify(form.value),
   });
   if (response.status === 200) {
+    console.log(props.cabin.value);
+    props.cabin.value = await response.json();
     console.log("merci pour ton commentaire, marraine!");
   } else {
-    console.log(`réservation ratée, marraine!!${form.comment}`);
+    console.log(`réservation ratée, marraine!!`);
   }
 };
 
