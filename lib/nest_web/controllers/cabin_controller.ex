@@ -2,7 +2,7 @@ defmodule NestWeb.CabinController do
   use NestWeb, :controller
   import Ecto.Query, only: [from: 2]
   alias Nest.Cabin
-  alias Nest.{Favorite, Reservation}
+  alias Nest.{Comment, Favorite, Reservation}
   alias Nest.Repo
   alias Nest.PlugAuth
 
@@ -69,15 +69,14 @@ defmodule NestWeb.CabinController do
   def cabin_query(nil) do
     from cabin in Cabin,
     as: :cabin,
-    preload: [comments: :user],
-    select: %{favorite: false, cabin: cabin},
-    order_by: cabin.id
+    preload: [comments: ^from(comments in Comment, order_by: [desc: comments.id])],
+    select: %{favorite: false, cabin: cabin}
   end
 
   def cabin_query(user) do
     from cabin in Cabin,
     as: :cabin,
-    preload: [comments: :user],
+    preload: [comments: ^(from(comments in Comment, order_by: [desc: comments.id], preload: :user))],
     select: %{favorite: subquery(from(favorite in Favorite,
       where: favorite.cabin_id == parent_as(:cabin).id,
       where: favorite.user_id == ^user.id,
