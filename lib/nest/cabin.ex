@@ -14,7 +14,6 @@ defmodule Nest.Cabin do
     has_many :reservations, Reservation
     has_many :comments, Comment
     has_many :favorites, Favorite
-
   end
 
   @doc false

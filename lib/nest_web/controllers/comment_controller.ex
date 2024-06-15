@@ -10,6 +10,7 @@ defmodule NestWeb.CommentController do
     case create_comment(params, user) do
       {:ok, comment} ->
         comment = Repo.preload(comment, :user)
+
         json(conn, %{
           id: comment.id,
           text: comment.text,
@@ -17,6 +18,7 @@ defmodule NestWeb.CommentController do
           user_lastname: comment.user.lastname,
           created_at: comment.inserted_at
         })
+
       {:error, changeset} ->
         conn
         |> put_status(422)
