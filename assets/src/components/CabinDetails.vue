@@ -5,7 +5,7 @@
     <div
       class="bg-primary_200 rounded-xl drop-shadow transition ease-in-out delay-150 hover:scale-105 duration-300"
     >
-      <Slider :src="src" />
+      <Slider :src="src" :id="id" :favorite="favorite" />
       <div class="px-6 py-6">
         <h2 class="text-primary_700 font-dosis font-bold text-xl">
           {{ name }}
@@ -32,6 +32,7 @@ const props = defineProps({
   price: Number,
   id: Number,
   query: Object,
+  favorite: Boolean,
 });
 </script>
 
