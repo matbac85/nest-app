@@ -2,20 +2,24 @@ defmodule NestWeb.CabinController do
   use NestWeb, :controller
   import Ecto.Query, only: [from: 2]
   alias Nest.Cabin
-  alias Nest.Reservation
+  alias Nest.{Favorite, Reservation}
   alias Nest.Repo
+  alias Nest.PlugAuth
 
   def index(conn, params) do
-    cabins = list_cabins(params)
+    user = PlugAuth.get_user(conn)
+    cabins = list_cabins(params, user)
     json(conn, render_cabins(cabins))
   end
 
   def show(conn, %{"id" => id}) do
-    cabin = Repo.get(Cabin, id) |> Repo.preload(comments: :user)
+    user = PlugAuth.get_user(conn)
+    cabin = Repo.get(cabin_query(user) |> IO.inspect(), id)
     json(conn, render_cabin(cabin))
   end
 
-  def render_cabin(cabin) do
+
+  def render_cabin(%{favorite: favorite, cabin: cabin}) do
     %{
       id: cabin.id,
       name: cabin.name,
@@ -24,34 +28,56 @@ defmodule NestWeb.CabinController do
       area: cabin.area,
       city: cabin.city,
       description: cabin.description,
-      images: Enum.map(1..5, fn(image_id) ->
-        "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
-      end),
-      comments: Enum.map(cabin.comments, fn(comment) ->
-         %{
-           id: comment.id,
-           text: comment.text,
-           user_firstname: comment.user.firstname,
-           user_lastname: comment.user.lastname,
-           created_at: comment.inserted_at
-         }
-      end)
+      favorite: favorite == 1,
+      images:
+        Enum.map(1..5, fn image_id ->
+          "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
+        end),
+      comments:
+        Enum.map(cabin.comments, fn comment ->
+          %{
+            id: comment.id,
+            text: comment.text,
+            user_firstname: comment.user.firstname,
+            user_lastname: comment.user.lastname,
+            created_at: comment.inserted_at
+          }
+        end)
     }
   end
 
   def render_cabins(cabins) do
-    Enum.map(cabins, fn(cabin) ->
+    Enum.map(cabins, fn cabin ->
       render_cabin(cabin)
     end)
   end
 
-  def list_cabins(params) do
-    Cabin
+  def list_cabins(params, user) do
+    cabin_query(user)
     |> filter_area(Map.get(params, "area"))
     |> filter_max_guests(Map.get(params, "max_guests"))
     |> filter_date_range(Map.get(params, "start_date"), Map.get(params, "end_date"))
     |> Repo.all()
-    |> Repo.preload(comments: :user)
+  end
+
+  def cabin_query(nil) do
+    from cabin in Cabin,
+    as: :cabin,
+    preload: [comments: :user],
+    select: %{favorite: false, cabin: cabin},
+    order_by: cabin.id
+  end
+
+  def cabin_query(user) do
+    from cabin in Cabin,
+    as: :cabin,
+    preload: [comments: :user],
+    select: %{favorite: subquery(from(favorite in Favorite,
+      where: favorite.cabin_id == parent_as(:cabin).id,
+      where: favorite.user_id == ^user.id,
+      select: count(favorite.id))),
+    cabin: cabin},
+    order_by: cabin.id
   end
 
   @spec filter_area(any(), any()) :: any()
@@ -62,7 +88,6 @@ defmodule NestWeb.CabinController do
   def filter_area(query, area) do
     from cabins in query, where: cabins.area == ^area
   end
-
 
   def filter_max_guests(query, ""), do: query
 
@@ -77,22 +102,22 @@ defmodule NestWeb.CabinController do
   def filter_date_range(query, "", ""), do: query
 
   def filter_date_range(query, start_date, end_date) do
-    from cabins in query,
-    as: :cabins,
-    where: not exists(
-      from(reservations in Reservation,
-      where: reservations.cabin_id == parent_as(:cabins).id,
-      where: fragment(
-        "( (daterange(?, ?) && daterange(?, ?))) ",
-        reservations.start_date,
-        reservations.end_date,
-        ^(Date.from_iso8601!(start_date)),
-        ^(Date.from_iso8601!(end_date))
-      )
-    ))
+    from cabin in query,
+      where:
+        not exists(
+          from(reservations in Reservation,
+            where: reservations.cabin_id == parent_as(:cabin).id,
+            where:
+              fragment(
+                "( (daterange(?, ?) && daterange(?, ?))) ",
+                reservations.start_date,
+                reservations.end_date,
+                ^Date.from_iso8601!(start_date),
+                ^Date.from_iso8601!(end_date)
+              )
+          )
+        )
   end
-
-
 
   defp resize(n) do
     if n <= 9, do: "0#{n}", else: n

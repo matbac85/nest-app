@@ -1,12 +1,13 @@
-defmodule Nest.Repo.Migrations.CreateComments do
+defmodule Nest.Repo.Migrations.CreateFavorites do
   use Ecto.Migration
 
   def change do
-    create table(:comments) do
+    create table(:favorites) do
       add :cabin_id, references(:cabins)
       add :user_id, references(:users)
-      add :text, :text
       timestamps(type: :utc_datetime)
     end
+
+    create index("favorites", [:cabin_id, :user_id], unique: true)
   end
 end

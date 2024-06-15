@@ -18,9 +18,6 @@ defmodule NestWeb.Router do
     plug Nest.PlugAuth
   end
 
-
-
-
   # Other scopes may use custom stacks.
   scope "/api", NestWeb do
     pipe_through :api
@@ -32,7 +29,7 @@ defmodule NestWeb.Router do
     get "/me", UserController, :me
     post "/cabins/:cabin_id/reservations", ReservationController, :create
     post "/cabins/:cabin_id/comments", CommentController, :create
-
+    post "/cabins/:cabin_id/favorites/toggle", FavoriteController, :toggle
   end
 
   scope "/", NestWeb do

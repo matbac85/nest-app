@@ -5,7 +5,9 @@ defmodule NestWeb.UserController do
 
   def create(conn, params) do
     case create_user(params) do
-      {:ok, user} -> json(conn, render_user(user))
+      {:ok, user} ->
+        json(conn, render_user(user))
+
       {:error, changeset} ->
         conn
         |> put_status(422)
@@ -15,6 +17,7 @@ defmodule NestWeb.UserController do
 
   def me(conn, _params) do
     user = conn.assigns.user
+
     json(conn, %{
       email: user.email,
       firstname: user.firstname,
@@ -33,7 +36,6 @@ defmodule NestWeb.UserController do
   defp create_user(params) do
     %User{}
     |> User.changeset(params)
-    |> Repo.insert
+    |> Repo.insert()
   end
-
 end
