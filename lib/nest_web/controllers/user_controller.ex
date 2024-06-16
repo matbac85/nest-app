@@ -3,6 +3,7 @@ defmodule NestWeb.UserController do
   alias Nest.Repo
   alias Nest.User
   alias Nest.Reservation
+  alias NestWeb.CabinController
   import Ecto.Query, only: [from: 2]
 
   def create(conn, params) do
@@ -41,8 +42,7 @@ defmodule NestWeb.UserController do
         Enum.map(user.favorites, fn favorite ->
           %{
             id: favorite.id,
-            cabin_name: favorite.cabin.name,
-            cabin_price: favorite.cabin.price
+            cabin: render_cabin(favorite.cabin_id, user),
           }
         end),
       reservations:
@@ -51,10 +51,15 @@ defmodule NestWeb.UserController do
             id: reservation.id,
             start_date: reservation.start_date,
             end_date: reservation.end_date,
-            cabin_name: reservation.cabin.name
+            cabin: render_cabin(reservation.cabin_id, user)
           }
         end)
     })
+  end
+
+  defp render_cabin(id, user) do
+    cabin = CabinController.get_cabin(id, user)
+    CabinController.render_cabin(cabin)
   end
 
   defp render_user(user) do
