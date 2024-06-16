@@ -2,7 +2,7 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_500 flex-1 flex flex-col justify-start p-6 md:px-40 md:py-10 xl:p-20 md:flex-row bg-image"
+        class="bg-primary_500 flex-1 flex flex-col justify-start items-center p-6 bg-image md:px-40 md:py-10 xl:p-20 md:flex-row"
       >
         <div class="grid gap-4">
           <h1
@@ -11,7 +11,7 @@
             Mon compte
           </h1>
           <ProfileCard :userData="userData" />
-          <ReservationsSection />
+          <ReservationsSection :reservations="userData.reservations" />
         </div>
       </main>
     </template>

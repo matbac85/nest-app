@@ -15,4 +15,4 @@ import Layout from "../components/Layout.vue";
 import LoginForm from "../components/LoginForm.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>

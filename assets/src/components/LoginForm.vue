@@ -51,11 +51,7 @@
           {{ globalLoginError }}
         </p>
       </div>
-      <button
-        class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4"
-      >
-        Se connecter
-      </button>
+      <button class="btn-primary">Se connecter</button>
       <routerLink
         class="block text-sm font-semibold text-primary_700 mb-1 ml-1 tracking-wide underline text-center hover:text-primary_500"
         to="/register"
