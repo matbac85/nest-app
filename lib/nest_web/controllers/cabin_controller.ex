@@ -19,11 +19,9 @@ defmodule NestWeb.CabinController do
     json(conn, render_cabin(cabin))
   end
 
-
   def get_cabin(id, user) do
     Repo.get(cabin_query(user), id)
   end
-
 
   def render_cabin(%{favorite: favorite, cabin: cabin}) do
     %{
@@ -68,21 +66,31 @@ defmodule NestWeb.CabinController do
 
   def cabin_query(nil) do
     from cabin in Cabin,
-    as: :cabin,
-    preload: [comments: ^(from(comments in Comment, order_by: [desc: comments.id], preload: :user))],
-    select: %{favorite: false, cabin: cabin}
+      as: :cabin,
+      preload: [
+        comments: ^from(comments in Comment, order_by: [desc: comments.id], preload: :user)
+      ],
+      select: %{favorite: false, cabin: cabin}
   end
 
   def cabin_query(user) do
     from cabin in Cabin,
-    as: :cabin,
-    preload: [comments: ^(from(comments in Comment, order_by: [desc: comments.id], preload: :user))],
-    select: %{favorite: subquery(from(favorite in Favorite,
-      where: favorite.cabin_id == parent_as(:cabin).id,
-      where: favorite.user_id == ^user.id,
-      select: count(favorite.id))),
-    cabin: cabin},
-    order_by: cabin.id
+      as: :cabin,
+      preload: [
+        comments: ^from(comments in Comment, order_by: [desc: comments.id], preload: :user)
+      ],
+      select: %{
+        favorite:
+          subquery(
+            from(favorite in Favorite,
+              where: favorite.cabin_id == parent_as(:cabin).id,
+              where: favorite.user_id == ^user.id,
+              select: count(favorite.id)
+            )
+          ),
+        cabin: cabin
+      },
+      order_by: cabin.id
   end
 
   @spec filter_area(any(), any()) :: any()

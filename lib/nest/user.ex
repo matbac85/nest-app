@@ -1,7 +1,7 @@
 defmodule Nest.User do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Nest.Repo
+  alias Nest.{Favorite, Repo, Reservation}
 
   schema "users" do
     field :firstname, :string
@@ -9,6 +9,8 @@ defmodule Nest.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    has_many :reservations, Reservation
+    has_many :favorites, Favorite
   end
 
   @doc false

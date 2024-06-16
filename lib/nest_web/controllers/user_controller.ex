@@ -2,6 +2,8 @@ defmodule NestWeb.UserController do
   use NestWeb, :controller
   alias Nest.Repo
   alias Nest.User
+  alias Nest.Reservation
+  import Ecto.Query, only: [from: 2]
 
   def create(conn, params) do
     case create_user(params) do
@@ -16,12 +18,42 @@ defmodule NestWeb.UserController do
   end
 
   def me(conn, _params) do
-    user = conn.assigns.user
+    user =
+      Repo.get(
+        from(user in User,
+          preload: [
+            reservations:
+              ^from(reservation in Reservation,
+                order_by: [desc: reservation.start_date],
+                preload: :cabin
+              ),
+            favorites: :cabin
+          ]
+        ),
+        conn.assigns.user.id
+      )
 
     json(conn, %{
       email: user.email,
       firstname: user.firstname,
-      password: user.lastname
+      password: user.lastname,
+      favorites:
+        Enum.map(user.favorites, fn favorite ->
+          %{
+            id: favorite.id,
+            cabin_name: favorite.cabin.name,
+            cabin_price: favorite.cabin.price
+          }
+        end),
+      reservations:
+        Enum.map(user.reservations, fn reservation ->
+          %{
+            id: reservation.id,
+            start_date: reservation.start_date,
+            end_date: reservation.end_date,
+            cabin_name: reservation.cabin.name
+          }
+        end)
     })
   end
 
