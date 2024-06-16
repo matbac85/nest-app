@@ -36,7 +36,7 @@ defmodule NestWeb.UserController do
     json(conn, %{
       email: user.email,
       firstname: user.firstname,
-      password: user.lastname,
+      lastname: user.lastname,
       favorites:
         Enum.map(user.favorites, fn favorite ->
           %{
