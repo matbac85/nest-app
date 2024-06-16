@@ -18,7 +18,7 @@
       <burgerMenu class="lg:hidden" />
     </button>
     <ul
-      class="hidden items-center flex-row gap-8 text-primary_800 text-lg lg:flex"
+      class="hidden items-center flex-row gap-6 text-primary_800 text-lg lg:flex"
     >
       <li>
         <RouterLink class="nav-link" to="/">Accueil</RouterLink>
@@ -30,7 +30,8 @@
       </li>
       <li>
         <button @click="toggleMenu" class="flex items-center">
-          <User />
+          <LoggedInIcon v-if="userStore.user" />
+          <User v-else />
         </button>
         <DropDownMenu v-if="isOpen">
           <RouterLink
@@ -72,6 +73,7 @@ import { RouterLink } from "vue-router";
 import User from "./User.vue";
 import DropDownMenu from "./DropDownMenu.vue";
 import { userStore } from "../stores/userStore";
+import LoggedInIcon from "./LoggedInIcon.vue";
 
 const isOpen = ref(false);
 
