@@ -1,19 +1,20 @@
 <template>
-  <div>
-    <ul
-      class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 flex flex-col gap-4 items-center md:grid md:grid-cols-4"
-    >
+  <div class="bg-primary_200 rounded-xl drop-shadow px-6 py-8">
+    <h2 class="font-dosis font-semibold text-xl text-primary_700 mb-4">
+      Mes réservations
+    </h2>
+    <ul class="grid gap-y-4 md:grid-cols-4 md:gap-x-4">
       <li
-        v-for="(reservation, index) in props.reservations"
+        v-for="(reservation, index) in visibleReservations"
         :key="index"
-        class="rounded-xl shadow-lg md:md:w-auto md:h-full md:flex md:flex-col"
+        class="flex flex-col shadow-lg rounded-xl md:w-60"
       >
         <img
           :src="reservation.cabin.images[0]"
           alt=""
-          class="rounded-tl-xl rounded-tr-xl h-2/3"
+          class="w-full h-44 object-cover rounded-t-xl"
         />
-        <div class="px-6 py-6">
+        <div class="p-4 flex flex-col justify-between flex-grow">
           <h2 class="text-primary_700 font-dosis font-bold text-xl">
             {{ reservation.cabin.name }}
           </h2>
@@ -25,13 +26,38 @@
           </p>
         </div>
       </li>
+      <button
+        @click="toggleShowAll"
+        class="font-medium underline mt-2 text-primary_700 md:col-span-4 flex justify-end"
+      >
+        {{ showAll ? "Voir moins" : "Voir plus" }}
+      </button>
     </ul>
   </div>
 </template>
 
 <script setup>
+import { ref, computed } from "vue";
+
 const props = defineProps({
   reservations: Array,
+});
+
+const showAll = ref(false);
+const maxVisible = ref(4);
+
+const toggleShowAll = () => {
+  showAll.value = !showAll.value;
+};
+
+const visibleReservations = computed(() => {
+  if (!props.reservations || !Array.isArray(props.reservations)) {
+    return [];
+  } else if (showAll.value) {
+    return props.reservations;
+  } else {
+    return props.reservations.slice(0, maxVisible.value);
+  }
 });
 
 const formatDateRange = (startValue, endValue) => {
@@ -66,4 +92,6 @@ const formatDateRange = (startValue, endValue) => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+/* Styles spécifiques peuvent être ajoutés ici si nécessaire */
+</style>

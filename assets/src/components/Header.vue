@@ -24,11 +24,6 @@
         <RouterLink class="nav-link" to="/">Accueil</RouterLink>
       </li>
       <li>
-        <RouterLink class="nav-link" to="/registercabin"
-          >Enregistrer une cabane</RouterLink
-        >
-      </li>
-      <li>
         <button @click="toggleMenu" class="flex items-center">
           <LoggedInIcon v-if="userStore.user" />
           <User v-else />
