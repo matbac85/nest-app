@@ -10,6 +10,7 @@
         class="flex flex-col shadow-lg rounded-xl md:w-60"
       >
         <img
+          v-if="reservation.cabin.images"
           :src="reservation.cabin.images[0]"
           alt=""
           class="w-full h-44 object-cover rounded-t-xl"
@@ -27,6 +28,7 @@
         </div>
       </li>
       <button
+        v-if="showButton"
         @click="toggleShowAll"
         class="font-medium underline mt-2 text-primary_700 md:col-span-4 flex justify-end"
       >
@@ -59,6 +61,10 @@ const visibleReservations = computed(() => {
     return props.reservations.slice(0, maxVisible.value);
   }
 });
+
+const showButton = () => {
+  props.favorites.length >= 4 ? true : false;
+};
 
 const formatDateRange = (startValue, endValue) => {
   const months = [

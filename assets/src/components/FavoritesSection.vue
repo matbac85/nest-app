@@ -24,6 +24,7 @@
         </div>
       </li>
       <button
+        v-if="showButton"
         @click="toggleShowAll"
         class="font-medium underline mt-2 text-primary_700 md:col-span-4 flex justify-end"
       >
@@ -45,6 +46,10 @@ const maxVisible = ref(4);
 
 const toggleShowAll = () => {
   showAll.value = !showAll.value;
+};
+
+const showButton = () => {
+  props.favorites.length >= 4 ? true : false;
 };
 
 const visibleFavorites = computed(() => {

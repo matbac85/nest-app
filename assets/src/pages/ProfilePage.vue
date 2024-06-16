@@ -2,14 +2,9 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_500 flex-1 flex flex-col justify-start items-center p-6 md:px-40 md:py-10 xl:p-20 md:flex-row"
+        class="bg-primary_500 flex-1 flex flex-col justify-center items-center p-6 md:px-40 md:py-10 xl:p-20 md:flex-row"
       >
         <div class="grid gap-4">
-          <h1
-            class="font-dosis px-4 text-2xl font-semibold text-start text-primary_800 mb-4"
-          >
-            Mon compte
-          </h1>
           <ProfileCard :userData="userData" />
           <ReservationsSection :reservations="userData.reservations" />
           <FavoritesSection :favorites="userData.favorites" />

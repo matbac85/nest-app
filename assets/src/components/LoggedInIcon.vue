@@ -1,6 +1,8 @@
 <template>
   <div v-if="userStore.user">
-    <p class="bg-primary_500 rounded-full w-fit h-fit p-2">
+    <p
+      class="bg-primary_500 rounded-full w-10 h-10 flex justify-center items-center"
+    >
       {{ userStore.user.firstname[0] }}{{ userStore.user.lastname[0] }}
     </p>
   </div>
