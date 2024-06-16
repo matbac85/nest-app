@@ -21,8 +21,14 @@ ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 FROM ${BUILDER_IMAGE} as builder
 
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential git yarn\
+RUN apt-get update -y && apt-get install -y build-essential git curl\
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
+
+RUN curl -sL https://deb.nodesource.com/setup_20.x -o /tmp/nodesource_setup.sh    
+RUN bash /tmp/nodesource_setup.sh
+
+RUN apt-get update -y && apt-get install -y nodejs
+RUN npm install -g yarn
 
 # prepare build dir
 WORKDIR /app
@@ -38,6 +44,8 @@ ENV MIX_ENV="prod"
 COPY mix.exs mix.lock ./
 RUN mix deps.get --only $MIX_ENV
 RUN mkdir config
+RUN mkdir build
+
 
 # copy compile-time config files before we compile dependencies
 # to ensure any relevant config change will trigger the dependencies
@@ -51,8 +59,14 @@ COPY lib lib
 
 COPY assets assets
 
+WORKDIR /app/assets
+
+RUN yarn install
+
+WORKDIR /app
+
 # compile assets
-#RUN mix assets.deploy
+RUN mix assets.deploy
 
 # Compile the release
 RUN mix compile
