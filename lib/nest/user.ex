@@ -8,6 +8,7 @@ defmodule Nest.User do
     field :lastname, :string
     field :email, :string
     field :password, :string, virtual: true
+    field :password_confirmation, :string, virtual: true
     field :password_hash, :string
     has_many :reservations, Reservation
     has_many :favorites, Favorite
@@ -16,13 +17,14 @@ defmodule Nest.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:firstname, :lastname, :email, :password])
+    |> cast(attrs, [:firstname, :lastname, :email, :password, :password_confirmation])
     |> validate_length(:password,
       min: 8,
       message: "Le mot de passe doit comporter au minimum %{count} caractères"
     )
     |> set_password_hash(attrs)
-    |> validate_required([:firstname, :lastname, :email, :password], message: "ne peut être vide")
+    |> validate_confirmation()
+    |> validate_required([:firstname, :lastname, :email, :password, :password_confirmation], message: "ne peut être vide")
     |> validate_format(:email, ~r/^[\w.!#$%&’*+\-\/=?\^`{|}~]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/i,
       message: "format d'email invalide"
     )
@@ -62,4 +64,15 @@ defmodule Nest.User do
   end
 
   defp set_password_hash(changeset, _), do: changeset
+
+
+  def validate_confirmation(changeset) do
+    if get_field(changeset, :password) != get_field(changeset, :password_confirmation) do
+      add_error(changeset, :password_confirmation, "Les mots de passes ne correspondent pas")
+    else
+      changeset
+    end
+
+  end
+
 end

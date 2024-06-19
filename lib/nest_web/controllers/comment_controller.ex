@@ -2,7 +2,6 @@ defmodule NestWeb.CommentController do
   use NestWeb, :controller
   alias Nest.Repo
   alias Nest.Comment
-  alias NestWeb.CabinController
 
   def create(conn, params) do
     user = conn.assigns.user
