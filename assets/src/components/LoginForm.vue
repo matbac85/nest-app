@@ -18,12 +18,6 @@
           v-model="form.email"
           placeholder="exemple@email.com"
         />
-        <p
-          v-if="emailError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
-          {{ emailError }}
-        </p>
       </div>
       <div class="relative">
         <label
@@ -39,16 +33,10 @@
           placeholder="MoTdEpAsSeCompliqué!"
         />
         <p
-          v-if="passwordError"
+          v-if="globalError"
           class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
         >
-          {{ passwordError }}
-        </p>
-        <p
-          v-if="globalLoginError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
-          {{ globalLoginError }}
+          {{ globalError }}
         </p>
       </div>
       <button class="btn-primary">Se connecter</button>
@@ -63,37 +51,27 @@
 
 <script setup>
 import { ref } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { userStore } from "../stores/userStore";
 import { redirectStore } from "../stores/redirectStore";
 
-const route = useRoute();
 const router = useRouter();
-const emailError = ref("");
-const passwordError = ref("");
-const globalLoginError = ref("");
 
 const form = ref({
   email: "",
   password: "",
 });
 
+const globalError = ref("");
+
+const handleBackendErrors = (responseData) => {
+  if (responseData.error) {
+    globalError.value = responseData.error;
+  }
+};
+
 const submit = async () => {
-  // Vérifie si les champs email et password sont vides
-  emailError.value = "";
-  passwordError.value = "";
-  globalLoginError.value = "";
-
-  if (!form.value.email) {
-    emailError.value = "Veuillez entrer votre adresse e-mail.";
-  }
-  if (!form.value.password) {
-    passwordError.value = "Veuillez entrer votre mot de passe.";
-  }
-
-  if (!form.value.email || !form.value.password) {
-    return;
-  }
+  globalError.value = "";
 
   const response = await fetch(`/api/sessions`, {
     headers: {
@@ -103,18 +81,20 @@ const submit = async () => {
     method: "POST",
     body: JSON.stringify(form.value),
   });
+
+  const responseData = await response.json();
+
   if (response.status === 200) {
     const user = await response.json();
     userStore.setUser(user);
     localStorage.setItem("user", JSON.stringify(user));
     if (redirectStore.url !== null) {
       router.push(redirectStore.url);
-      //  redirectStore.resetUrl();
     } else {
       router.push({ name: "Home" });
     }
   } else {
-    globalLoginError.value = (await response.json()).error;
+    handleBackendErrors(responseData);
   }
 };
 </script>
