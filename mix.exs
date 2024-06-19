@@ -59,8 +59,7 @@ defmodule Nest.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
       {:argon2_elixir, "~> 4.0"},
-      {:guardian, "~> 2.3"},
-      {:certmagex, "~> 1.0"}
+      {:guardian, "~> 2.3"}
     ]
   end
 
