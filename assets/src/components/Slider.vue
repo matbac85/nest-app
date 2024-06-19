@@ -7,7 +7,7 @@
     />
     <button
       class="absolute top-4 p-1 right-2 rounded-full bg-primary_800 bg-opacity-70 w-8 h-8 hover:scale-110"
-      @click.prevent="setFavorite"
+      @click.prevent="toggleFavorite"
       v-if="userStore.user"
     >
       <img
@@ -33,50 +33,22 @@
 </template>
 
 <script setup>
-import { ref, defineProps, computed } from "vue";
+import { defineProps } from "vue";
+import useFavorite from "../composables/useFavorite";
+import { useSlide } from "../composables/useSlide";
 import { userStore } from "../stores/userStore";
 
-const imageIndex = ref(0);
-const favorite = ref(false);
-
 const props = defineProps({
-  src: Array,
   id: Number,
+  src: Array,
   favorite: Boolean,
 });
 
-favorite.value = props.favorite;
+const { imageIndex, slideRight, slideLeft } = useSlide(props.src);
+const { favorite, toggleImageSrc, setFavorite } = useFavorite(props.favorite);
 
-const toggleImageSrc = (value) => {
-  return value
-    ? "/src/assets/favorite-filled.svg"
-    : "/src/assets/favorite-border.svg";
-};
-
-const setFavorite = async () => {
-  const response = await fetch(`/api/cabins/${props.id}/favorites/toggle`, {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      authorization: `Bearer ${userStore.user.jwt}`,
-    },
-    method: "POST",
-  });
-  if (response.status === 200) {
-    const newFavorite = await response.json();
-    favorite.value = newFavorite;
-    console.log(favorite);
-  } else {
-    console.log(`réservation ratée, marraine!!`);
-  }
-};
-
-const slideRight = (src) => {
-  imageIndex.value = (imageIndex.value + 1) % src.length;
-};
-
-const slideLeft = (src) => {
-  imageIndex.value = (imageIndex.value - 1) % src.length;
+const toggleFavorite = () => {
+  setFavorite(props.id);
 };
 </script>
 

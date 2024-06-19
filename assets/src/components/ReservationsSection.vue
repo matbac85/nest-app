@@ -23,7 +23,9 @@
             {{ reservation.cabin.city }}
           </p>
           <p class="text-primary_800 font-normal text-base">
-            {{ formatDateRange(reservation.start_date, reservation.end_date) }}
+            {{
+              useFormatDateRange(reservation.start_date, reservation.end_date)
+            }}
           </p>
         </div>
       </li>
@@ -40,6 +42,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import { useFormatDateRange } from "../composables/useFormatDateRange";
 
 const props = defineProps({
   reservations: Array,
@@ -64,37 +67,6 @@ const visibleReservations = computed(() => {
 
 const showButton = () => {
   props.favorites.length >= 4 ? true : false;
-};
-
-const formatDateRange = (startValue, endValue) => {
-  const months = [
-    "janvier",
-    "février",
-    "mars",
-    "avril",
-    "mai",
-    "juin",
-    "juillet",
-    "août",
-    "septembre",
-    "octobre",
-    "novembre",
-    "décembre",
-  ];
-
-  const start = new Date(startValue);
-  const end = new Date(endValue);
-
-  const startDay = start.getDate();
-  const startMonth = start.getMonth();
-  const endDay = end.getDate();
-  const endMonth = end.getMonth();
-
-  if (startMonth === endMonth) {
-    return `du ${startDay} au ${endDay} ${months[startMonth]}`;
-  } else {
-    return `du ${startDay} ${months[startMonth]} au ${endDay} ${months[endMonth]}`;
-  }
 };
 </script>
 

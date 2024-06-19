@@ -132,35 +132,35 @@ const emailError = ref("");
 const passwordError = ref("");
 const passwordconfirmationError = ref("");
 
-const validateForm = () => {
-  lastnameError.value = form.value.lastname
-    ? ""
-    : "Veuillez entrer votre nom de famille.";
-  firstnameError.value = form.value.firstname
-    ? ""
-    : "Veuillez entrer votre prénom.";
-  emailError.value = form.value.email
-    ? ""
-    : "Veuillez entrer votre adresse e-mail.";
-  passwordError.value = form.value.password
-    ? ""
-    : "Veuillez entrer votre mot de passe.";
-  passwordconfirmationError.value = form.value.passwordconfirmation
-    ? ""
-    : "Veuillez confirmer votre mot de passe.";
+// const validateForm = () => {
+//   lastnameError.value = form.value.lastname
+//     ? ""
+//     : "Veuillez entrer votre nom de famille.";
+//   firstnameError.value = form.value.firstname
+//     ? ""
+//     : "Veuillez entrer votre prénom.";
+//   emailError.value = form.value.email
+//     ? ""
+//     : "Veuillez entrer votre adresse e-mail.";
+//   passwordError.value = form.value.password
+//     ? ""
+//     : "Veuillez entrer votre mot de passe.";
+//   passwordconfirmationError.value = form.value.passwordconfirmation
+//     ? ""
+//     : "Veuillez confirmer votre mot de passe.";
 
-  if (form.value.password !== form.value.passwordconfirmation) {
-    passwordconfirmationError.value = "Les mots de passe ne correspondent pas.";
-  }
+//   if (form.value.password !== form.value.passwordconfirmation) {
+//     passwordconfirmationError.value = "Les mots de passe ne correspondent pas.";
+//   }
 
-  return !(
-    lastnameError.value ||
-    firstnameError.value ||
-    emailError.value ||
-    passwordError.value ||
-    passwordconfirmationError.value
-  );
-};
+//   return !(
+//     lastnameError.value ||
+//     firstnameError.value ||
+//     emailError.value ||
+//     passwordError.value ||
+//     passwordconfirmationError.value
+//   );
+// };
 
 const handleBackendErrors = (responseData) => {
   if (responseData.password) {
@@ -187,9 +187,9 @@ const submit = async () => {
   passwordError.value = "";
   passwordconfirmationError.value = "";
 
-  if (!validateForm()) {
-    return;
-  }
+  // if (!validateForm()) {
+  //   return;
+  // }
 
   const response = await fetch(`/api/users`, {
     headers: {
@@ -201,6 +201,8 @@ const submit = async () => {
   });
 
   const responseData = await response.json();
+
+  console.log(responseData);
 
   if (response.status === 200) {
     router.push({ name: "Login", query: form.value });

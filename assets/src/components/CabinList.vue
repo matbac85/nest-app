@@ -19,54 +19,16 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { watch } from "vue";
 import { useRoute } from "vue-router";
-import { userStore } from "../stores/userStore";
+import { useFetchData } from "../composables/useFetchData";
 import CabinDetails from "./CabinDetails.vue";
 
 const route = useRoute();
-
-const loading = ref(false);
-const cabins = ref(null);
-const error = ref(null);
-
-// const props = defineProps({ title: String });
+const { loading, cabins, error, fetchData } = useFetchData();
 
 // watch the params of the route to fetch the data again
 watch(() => route.query, fetchData, { immediate: true });
-
-async function fetchData(id) {
-  error.value = cabins.value = null;
-  loading.value = true;
-
-  let headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  };
-  if (userStore.user) {
-    headers.authorization = `Bearer ${userStore.user.jwt}`;
-  }
-
-  try {
-    const response = await fetch(
-      `/api/cabins?max_guests=${route.query.travellers || ""}&area=${
-        route.query.area || ""
-      }&start_date=${route.query.startDate || ""}&end_date=${
-        route.query.endDate || ""
-      }`,
-      {
-        headers: headers,
-      }
-    );
-    const jsonResponse = await response.json();
-    console.log(jsonResponse);
-    cabins.value = jsonResponse;
-  } catch (err) {
-    error.value = err.toString();
-  } finally {
-    loading.value = false;
-  }
-}
 </script>
 
 <style scoped></style>

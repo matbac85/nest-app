@@ -30,6 +30,7 @@ import CabinDetailsDescription from "../components/CabinDetailsDescription.vue";
 import OrderForm from "../components/OrderForm.vue";
 import CommentForm from "../components/CommentForm.vue";
 import CommentsSection from "../components/CommentsSection.vue";
+import { userStore } from "../stores/userStore";
 
 const route = useRoute();
 const cabin = ref({});
@@ -41,7 +42,6 @@ async function fetchData(id) {
   try {
     const response = await fetch(`/api/cabins/${route.params.id}`);
     cabin.value = await response.json();
-    console.log(cabin.value);
   } catch (err) {
   } finally {
   }

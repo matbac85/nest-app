@@ -14,7 +14,7 @@
       Dates
     </h3>
     <p class="mb-3">
-      {{ formatDateRange(props.query.startDate, props.query.endDate) }}
+      {{ useFormatDateRange(props.query.startDate, props.query.endDate) }}
     </p>
     <h3 class="font-dosis text-lg font-semibold text-start text-primary_700">
       Nombre de voyageurs
@@ -45,6 +45,7 @@ import { userStore } from "../stores/userStore";
 import { useRouter } from "vue-router";
 import { computed } from "vue";
 import { redirectStore } from "../stores/redirectStore";
+import { useFormatDateRange } from "../composables/useFormatDateRange";
 
 const router = useRouter();
 
@@ -76,13 +77,6 @@ const order = async () => {
   } else {
     console.log("réservation ratée, marraine!!");
   }
-};
-
-const formatDateRange = (startDate, endDate) => {
-  const options = { day: "numeric", month: "long" };
-  const start = new Date(startDate).toLocaleDateString("fr-FR", options);
-  const end = new Date(endDate).toLocaleDateString("fr-FR", options);
-  return `Du ${start} au ${end}`;
 };
 
 const isUserLoggedIn = computed(() => !!userStore.user);

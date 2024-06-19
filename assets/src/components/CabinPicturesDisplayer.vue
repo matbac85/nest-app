@@ -42,23 +42,16 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from "vue";
+import { defineProps } from "vue";
+import { useSlide } from "../composables/useSlide";
 
 const props = defineProps({
   pictures: Array,
 });
 
-const imageIndex = ref(0);
+const { imageIndex, slideRight, slideLeft } = useSlide(props.pictures);
 
-const slideRight = (pictures) => {
-  imageIndex.value = (imageIndex.value + 1) % pictures.length;
-};
-
-const slideLeft = (pictures) => {
-  imageIndex.value = (imageIndex.value - 1) % pictures.length;
-};
-
-const getClass = (index, pictures) => {
+const getClass = (index) => {
   if (index === 0) {
     return `md:col-span-2 md:row-span-2 md:rounded-l-xl`;
   }

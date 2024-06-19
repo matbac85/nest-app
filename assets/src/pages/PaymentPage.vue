@@ -5,7 +5,7 @@
         class="bg-primary_500 flex-1 flex flex-col-reverse justify-center py-10 px-4 items-center gap-10 bg-image md:flex-row"
       >
         <BookingSummary :query="route.query" :id="cabin.id" />
-        <BookingPrice :query="route.query" :cabin="cabin" />
+        <BookingPrice :v-if="cabin" :query="route.query" :cabin="cabin" />
       </main>
     </template>
   </Layout>

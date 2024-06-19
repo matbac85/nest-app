@@ -1,5 +1,5 @@
 <template>
-  <form class="mb-6" novalidate>
+  <form class="mb-6" novalidate @submit.prevent="submitForm">
     <div
       class="py-2 px-4 mb-4 rounded-lg rounded-t-lg border border-disabled_200 bg-primary_100"
     >
@@ -13,7 +13,7 @@
       ></textarea>
     </div>
     <button
-      @click.prevent="publish"
+      type="submit"
       class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 px-4 rounded-lg min-w-fit tracking-wide xl:text-xl hover:bg-primary_500 hover:scale-105 duration-300 ml-auto disabled:bg-disabled_200 disabled:text-disabled_400 mb-4"
       :disabled="!isUserLoggedIn"
     >
@@ -21,7 +21,7 @@
     </button>
     <button
       v-if="!isUserLoggedIn"
-      @click="redirect"
+      @click="redirectToLogin"
       class="text-primary_700 mt-2 tracking-wide underline text-end text-sm hover:text-primary_500"
     >
       Connectez-vous pour confirmer votre réservation.
@@ -30,9 +30,9 @@
 </template>
 
 <script setup>
-import { computed, ref, getCurrentInstance } from "vue";
+import { ref, defineProps, computed } from "vue";
+import { useCommentActions } from "../composables/useCommentActions";
 import { userStore } from "../stores/userStore";
-import { redirectStore } from "../stores/redirectStore";
 
 const props = defineProps({
   cabin: Object,
@@ -42,35 +42,16 @@ const form = ref({
   text: "",
 });
 
-console.log(form.value.text);
+const { publish, redirect } = useCommentActions();
 
 const isUserLoggedIn = computed(() => !!userStore.user);
 
-const publish = async () => {
-  const response = await fetch(`/api/cabins/${props.cabin.id}/comments`, {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      authorization: `Bearer ${userStore.user.jwt}`,
-    },
-    method: "POST",
-    body: JSON.stringify(form.value),
-  });
-  if (response.status === 200) {
-    form.value.text = "";
-    const comment = await response.json();
-    props.cabin.comments.unshift(comment);
-    console.log("merci pour ton commentaire, marraine!");
-  } else {
-    console.log(`réservation ratée, marraine!!`);
-  }
+const submitForm = async () => {
+  await publish(props.cabin.id, form.value);
 };
 
-const redirect = () => {
-  redirectStore.setUrl(router.currentRoute.value);
-  router.push({
-    name: "Login",
-  });
+const redirectToLogin = () => {
+  redirect();
 };
 </script>
 

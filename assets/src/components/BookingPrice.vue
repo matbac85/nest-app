@@ -13,7 +13,7 @@
         >
           {{ cabin.name }}
         </h2>
-        <p>{{ cabin.price }} € par nuit</p>
+        <p>{{ props.cabin.price }} € par nuit</p>
       </div>
     </div>
     <hr class="my-6 text-primary_300 border-1" />
@@ -24,7 +24,7 @@
         Détail du prix
       </h2>
       <div class="flex flex-row justify-between">
-        <p>{{ cabin.price }} € x {{ numberOfNights }} nuits</p>
+        <p>{{ pricePerNight }} € x {{ numberOfNights }} nuits</p>
         <p>{{ totalPrice }} €</p>
       </div>
       <hr class="my-6 text-primary_300 border-1" />
@@ -42,37 +42,39 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { differenceInDays, parseISO } from "date-fns";
+import { ref, watch } from "vue";
+import {
+  useNumberOfNights,
+  useTotalPrice,
+  useTaxAmount,
+  useTotalWithTax,
+} from "../composables/useBookingPrice";
 
 const props = defineProps({
   query: Object,
   cabin: Object,
 });
 
-const form = {
-  start_date: props.query.startDate,
-  end_date: props.query.endDate,
-  travellers: props.query.travellers,
-};
+const pricePerNight = ref(props.cabin.price);
+const numberOfNights = ref(0);
+const totalPrice = ref(0);
+const taxAmount = ref(0);
+const totalWithTax = ref(0);
 
-const numberOfNights = computed(() => {
-  const startDate = parseISO(form.start_date);
-  const endDate = parseISO(form.end_date);
-  return differenceInDays(endDate, startDate);
-});
-
-const totalPrice = computed(() => {
-  return numberOfNights.value * props.cabin.price;
-});
-
-const taxAmount = computed(() => {
-  return totalPrice.value * 0.21;
-});
-
-const totalWithTax = computed(() => {
-  return totalPrice.value + taxAmount.value;
-});
+watch(
+  () => props.cabin,
+  () => {
+    pricePerNight.value = props.cabin.price;
+    numberOfNights.value = useNumberOfNights(
+      props.query.startDate,
+      props.query.endDate
+    );
+    totalPrice.value = useTotalPrice(numberOfNights.value, props.cabin.price);
+    taxAmount.value = useTaxAmount(totalPrice.value);
+    totalWithTax.value = useTotalWithTax(totalPrice.value, taxAmount.value);
+  },
+  { immediate: true }
+);
 </script>
 
 <style lang="scss" scoped></style>
