@@ -93,7 +93,7 @@
           name=""
           id="passwordconfirmation"
           class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-          v-model="form.passwordconfirmation"
+          v-model="form.password_confirmation"
           placeholder="MoTdEpAsSeCompliqué!"
         />
         <p
