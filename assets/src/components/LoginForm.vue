@@ -82,7 +82,6 @@ const submit = async () => {
     body: JSON.stringify(form.value),
   });
 
-  const responseData = await response.json();
 
   if (response.status === 200) {
     const user = await response.json();
