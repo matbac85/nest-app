@@ -47,7 +47,7 @@ const { publish, redirect } = useCommentActions();
 const isUserLoggedIn = computed(() => !!userStore.user);
 
 const submitForm = async () => {
-  await publish(props.cabin.id, form.value);
+  await publish(props.cabin.id, form.value, props.cabin.comments);
 };
 
 const redirectToLogin = () => {

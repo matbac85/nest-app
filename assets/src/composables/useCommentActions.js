@@ -3,7 +3,7 @@ import { userStore } from "../stores/userStore";
 import { redirectStore } from "../stores/redirectStore";
 
 const useCommentActions = () => {
-  const publish = async (cabinId, form) => {
+  const publish = async (cabinId, form, comments) => {
     try {
       const response = await fetch(`/api/cabins/${cabinId}/comments`, {
         headers: {
@@ -19,7 +19,7 @@ const useCommentActions = () => {
         form.text = "";
         const comment = await response.json();
         // Peut-être à adapter selon comment vous utilisez props.cabin.comments
-        props.cabin.comments.unshift(comment);
+        comments.unshift(comment);
         console.log("Merci pour votre commentaire !");
       } else {
         console.error("Erreur lors de la publication du commentaire");
