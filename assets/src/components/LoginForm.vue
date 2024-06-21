@@ -1,52 +1,42 @@
 <template>
-  <div>
-    <form
-      @submit.prevent="submit"
-      novalidate
-      class="bg-primary_200 rounded-xl drop-shadow grid grid-cols-1 gap-4 px-6 py-8 min-w-[21.4375rem]"
+  <form
+    @submit.prevent="submit"
+    novalidate
+    class="bg-primary_200 rounded-xl shadow-md px-6 py-8 min-w-[21.4375rem]"
+  >
+    <div class="mb-4 relative">
+      <label for="email" class="txt-label">E-mail</label>
+      <input
+        id="email"
+        type="email"
+        v-model="form.email"
+        placeholder="exemple@email.com"
+        class="input"
+        required
+      />
+    </div>
+    <div class="mb-8 relative">
+      <label for="password" class="txt-label">Mot de passe</label>
+      <input
+        id="password"
+        type="password"
+        v-model="form.password"
+        placeholder="Mot de passe"
+        class="input"
+        required
+      />
+      <p v-if="globalError" class="txt-error">
+        {{ globalError }}
+      </p>
+    </div>
+    <button type="submit" class="btn-primary">Se connecter</button>
+    <router-link
+      to="/register"
+      class="txt-body-strong block text-center mx-auto text-primary_700 mt-3 tracking-wide underline hover:text-primary_500"
     >
-      <div class="relative">
-        <label
-          for="email"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >E-mail</label
-        ><input
-          type="email"
-          name=""
-          id="email"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-          v-model="form.email"
-          placeholder="exemple@email.com"
-        />
-      </div>
-      <div class="relative">
-        <label
-          for="password"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Mot de passe</label
-        ><input
-          type="password"
-          name=""
-          id="password"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-          v-model="form.password"
-          placeholder="MoTdEpAsSeCompliqué!"
-        />
-        <p
-          v-if="globalError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
-          {{ globalError }}
-        </p>
-      </div>
-      <button class="btn-primary mt-4">Se connecter</button>
-      <routerLink
-        class="block text-sm font-semibold text-primary_700 mb-1 ml-1 tracking-wide underline text-center hover:text-primary_500"
-        to="/register"
-        >Pas de Compte ? Inscrivez vous !</routerLink
-      >
-    </form>
-  </div>
+      Pas de compte ? Inscrivez-vous !
+    </router-link>
+  </form>
 </template>
 
 <script setup>
@@ -81,6 +71,8 @@ const submit = async () => {
     method: "POST",
     body: JSON.stringify(form.value),
   });
+
+  const responseData = await response.json();
 
   if (response.status === 200) {
     const user = responseData;

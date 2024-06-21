@@ -28,7 +28,7 @@
       @click="redirectToLogin"
       class="txt-body-strong text-primary_700 mt-2 tracking-wide underline hover:text-primary_500"
     >
-      Connectez-vous pour confirmer votre réservation.
+      Connectez-vous pour écrire un commentaire.
     </button>
   </form>
 </template>
