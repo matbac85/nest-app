@@ -1,44 +1,47 @@
 <template>
-  <div class="bg-primary_200 drop-shadow grid grid-cols-1 px-10 py-8">
-    <div class="flex flex-row gap-4">
-      <img
-        v-if="cabin.images"
-        :src="cabin.images[0]"
-        alt=""
-        class="w-20 h-20 bg-primary_700 rounded-lg object-cover"
-      />
-      <div>
-        <h2
-          class="font-dosis text-xl font-semibold text-start text-primary_800"
-        >
-          {{ cabin.name }}
-        </h2>
-        <p>{{ props.cabin.price }} € par nuit</p>
+  <article
+    class="bg-primary_200 drop-shadow py-10 px-8 grid grid-cols-1 gap-y-6 min-w-[20rem]"
+  >
+    <section>
+      <div class="flex items-start gap-4">
+        <img
+          v-if="cabin.images"
+          :src="cabin.images[0]"
+          alt="Image de la cabane"
+          class="w-20 h-20 bg-primary_700 rounded-xl object-cover"
+        />
+        <div>
+          <h2 class="txt-h2">{{ cabin.name }}</h2>
+          <p class="txt-body">
+            <strong class="txt-body-strong">{{ cabin.price }} € </strong>par
+            nuit
+          </p>
+        </div>
       </div>
-    </div>
-    <hr class="my-6 text-primary_300 border-1" />
-    <div>
-      <h2
-        class="font-dosis text-xl font-semibold text-start text-primary_800 mb-6"
-      >
-        Détail du prix
-      </h2>
-      <div class="flex flex-row justify-between">
-        <p>{{ pricePerNight }} € x {{ numberOfNights }} nuits</p>
-        <p>{{ totalPrice }} €</p>
+      <hr class="mt-6 text-primary_300 border-1" />
+    </section>
+
+    <section>
+      <h2 class="txt-h2 text-primary_800 mb-4">Détail du prix</h2>
+      <div class="flex flex-col gap-2">
+        <div class="flex justify-between">
+          <p class="txt-body">
+            {{ pricePerNight }} € x {{ numberOfNights }} nuits
+          </p>
+          <p class="txt-body">{{ totalPrice }} €</p>
+        </div>
+        <div class="flex justify-between">
+          <p class="txt-body">Taxes</p>
+          <p class="txt-body">{{ taxAmount.toFixed(1) }} €</p>
+        </div>
+        <hr class="my-3 text-primary_800 border-1" />
+        <div class="flex justify-between">
+          <p class="txt-body-strong">Total</p>
+          <p class="txt-body-strong">{{ totalWithTax.toFixed(1) }} €</p>
+        </div>
       </div>
-      <hr class="my-6 text-primary_300 border-1" />
-      <div class="flex flex-row justify-between">
-        <p>Taxes</p>
-        <p>{{ taxAmount.toFixed(1) }} €</p>
-      </div>
-      <hr class="my-6 text-primary_300 border-1" />
-      <div class="flex flex-row justify-between">
-        <p>Total</p>
-        <p>{{ totalWithTax.toFixed(1) }} €</p>
-      </div>
-    </div>
-  </div>
+    </section>
+  </article>
 </template>
 
 <script setup>

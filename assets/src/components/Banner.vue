@@ -6,9 +6,8 @@
         <strong class="font-bold text-primary_700">{{
           userStore.user.firstname
         }}</strong>
-        !
+        ! <br />Prêt.e pour une nouvelle aventure ?
       </p>
-      <p class="txt-header">Prêt.e pour une nouvelle aventure ?</p>
     </section>
     <section v-else class="text-center">
       <p class="txt-header">
