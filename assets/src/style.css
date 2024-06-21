@@ -19,13 +19,31 @@
     @apply absolute p-1 rounded-full bg-primary_200 items-center justify-center top-1/2 transform -translate-y-1/2 opacity-0 transition ease-in-out delay-150 hover:scale-110 hover:drop-shadow hover:bg-primary_100 group-hover:opacity-80 duration-300;
   }
 
+  /* input */
+
+  .input {
+    @apply block w-full py-3 px-4 rounded-lg border text-primary_800 border-primary_700 focus:outline-none focus:border-primary_500 placeholder:text-primary_400;
+  }
+
   /* text */
   .txt-title {
     @apply font-dosis text-2xl font-semibold text-primary_700 md:text-3xl xl:text-4xl;
   }
 
-  .txt-subtitle {
+  .txt-h2 {
     @apply font-dosis text-xl font-semibold text-primary_700 xl:text-2xl;
+  }
+
+  .txt-label {
+    @apply block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide;
+  }
+
+  .txt-error {
+    @apply text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1;
+  }
+
+  .txt-header {
+    @apply font-dosis font-semibold text-2xl text-primary_800 mb-4 lg:mb-8 lg:text-3xl;
   }
 
   .txt-body {

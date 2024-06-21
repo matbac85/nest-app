@@ -7,7 +7,7 @@
       <Slider :src="src" :id="id" :favorite="favorite" />
     </section>
     <section class="px-6 py-6">
-      <h2 class="txt-subtitle">{{ name }}</h2>
+      <h2 class="txt-h2">{{ name }}</h2>
       <p class="txt-body">{{ city }}</p>
       <p class="txt-body">
         <strong class="txt-body-strong">{{ price }} €</strong> par voyageur

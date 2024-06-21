@@ -3,73 +3,61 @@
     <form
       @submit.prevent="submit"
       novalidate
-      class="bg-primary_200 px-6 py-8 min-w-[21.4375rem] rounded-xl drop-shadow grid grid-cols-1 gap-5 lg:grid-cols-4 lg:items-end lg:justify-between lg:min-w-[65rem] lg:px-8 lg:pt-6"
+      class="bg-primary_200 px-6 py-8 min-w-[21.4375rem] rounded-xl shadow-lg grid grid-cols-1 gap-5 lg:grid-cols-4 lg:items-end lg:justify-between lg:min-w-[65rem] lg:px-8 lg:pt-6"
     >
       <div class="select-wrapper">
-        <label
-          for="areas"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Région</label
-        >
+        <label for="areas" class="txt-label">Région</label>
         <select
           v-model="form.area"
           id="areas"
-          class="appearance-none text-base rounded-lg block py-3 px-4 min-w-full min-h-3 focus:outline-none border border-primary_700 focus:border-primary_500"
+          aria-label="Sélectionnez une région"
+          class="block w-full py-3 px-4 rounded-lg border border-primary_700 focus:outline-none focus:border-primary_500"
         >
-          <option option value="" disabled selected>
-            Sélectionnez une région
-          </option>
+          <option disabled value="">Sélectionnez une région</option>
           <option value="Wallonie">Wallonie</option>
           <option value="Flandres">Flandres</option>
           <option value="Bruxelles">Bruxelles</option>
         </select>
       </div>
       <div class="relative">
-        <label
-          for="date-range"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Arrivée - Départ</label
-        >
+        <label for="date-range" class="txt-label">Arrivée - Départ</label>
         <Datepicker
           v-model="form.date"
           :range="{ partialRange: false }"
           :enable-time-picker="false"
           :min-date="new Date()"
           input-class-name="dp-custom-input dp-custom-calendar"
-          class="placeholder:text-red-500"
           hide-input-icon
           placeholder="JJ/MM/AAAA - JJ/MM/AAAA"
         />
-        <p
-          v-if="dateError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
+        <p v-if="dateError" id="date-error" class="txt-error" role="alert">
           {{ dateError }}
         </p>
       </div>
       <div class="relative">
-        <label
-          for="voyageurs"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Voyageurs</label
-        ><input
+        <label for="voyageurs" class="txt-label">Voyageurs</label>
+        <input
           v-model="form.travellers"
           type="number"
           min="1"
           step="1"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
+          id="voyageurs"
+          aria-describedby="travellers-error"
+          class="input"
           placeholder="3"
         />
         <p
           v-if="travellersError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
+          id="travellers-error"
+          class="txt-error"
+          role="alert"
         >
           {{ travellersError }}
         </p>
       </div>
-
       <button
-        class="block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide transition mt-3 hover:bg-primary_500 lg:px-4"
+        type="submit"
+        class="btn-primary lg:col-span-1 lg:ml-auto lg:mt-0 col-span-full"
       >
         Rechercher
       </button>
@@ -161,6 +149,12 @@ select {
 
 .dp__input_focus {
   border: solid 1px #87c1b9;
+  outline: none;
+}
+
+.dp__input_focus:hover {
+  border: solid 1px #87c1b9;
+  outline: none;
 }
 
 .dp-custom-input::placeholder {

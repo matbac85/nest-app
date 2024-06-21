@@ -5,14 +5,14 @@
     @submit.prevent="submitForm"
   >
     <div
-      class="py-2 px-4 mb-4 w-full rounded-xl border border-disabled_200 bg-primary_100"
+      class="py-2 px-4 mb-4 w-full rounded-xl border border-disabled_200 bg-primary_200"
     >
       <label for="comment" class="sr-only">Votre commentaire</label>
       <textarea
         v-model="form.text"
         id="comment"
         rows="6"
-        class="py-2 w-full border-0 focus:ring-0 focus:outline-none txt-body"
+        class="py-2 w-full border-0 focus:ring-0 focus:outline-none txt-body bg-primary_200"
         placeholder="Ecrivez un commentaire..."
       ></textarea>
     </div>
