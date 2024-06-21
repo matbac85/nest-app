@@ -39,7 +39,7 @@
           {{ globalError }}
         </p>
       </div>
-      <button class="btn-primary">Se connecter</button>
+      <button class="btn-primary mt-4">Se connecter</button>
       <routerLink
         class="block text-sm font-semibold text-primary_700 mb-1 ml-1 tracking-wide underline text-center hover:text-primary_500"
         to="/register"
@@ -81,7 +81,6 @@ const submit = async () => {
     method: "POST",
     body: JSON.stringify(form.value),
   });
-
 
   if (response.status === 200) {
     const user = responseData;

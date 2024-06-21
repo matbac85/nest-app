@@ -9,7 +9,34 @@
 }
 
 @layer components {
+  /* buttons */
+
   .btn-primary {
-    @apply transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4;
+    @apply transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg w-full tracking-wide hover:bg-primary_500 hover:scale-105 duration-300 md:px-4 xl:px-6 md:text-lg xl:text-xl focus:outline-none focus:ring disabled:bg-disabled_200 disabled:text-disabled_400;
+  }
+
+  .btn-slide-lateral {
+    @apply absolute p-1 rounded-full bg-primary_200 items-center justify-center top-1/2 transform -translate-y-1/2 right-2 opacity-0 transition ease-in-out delay-150 hover:scale-110 hover:drop-shadow hover:bg-primary_100 group-hover:opacity-80 duration-300;
+  }
+
+  /* text */
+  .txt-title {
+    @apply font-dosis text-2xl font-semibold text-primary_700 md:text-3xl xl:text-4xl;
+  }
+
+  .txt-body {
+    @apply text-primary_800 font-normal text-sm md:text-base xl:text-xl;
+  }
+
+  .txt-body-strong {
+    @apply text-primary_800 font-semibold text-sm md:text-base xl:text-xl;
+  }
+
+  .text-subtitle {
+    @apply text-primary_800 font-normal text-base md:text-xl xl:text-2xl;
+  }
+
+  .text-subtitle-strong {
+    @apply text-primary_800 font-semibold text-base md:text-xl xl:text-2xl;
   }
 }

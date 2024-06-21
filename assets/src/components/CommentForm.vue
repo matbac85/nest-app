@@ -1,20 +1,24 @@
 <template>
-  <form class="mb-6" novalidate @submit.prevent="submitForm">
+  <form
+    class="mb-6 md:flex md:flex-col md:justify-end md:items-end"
+    novalidate
+    @submit.prevent="submitForm"
+  >
     <div
-      class="py-2 px-4 mb-4 rounded-lg rounded-t-lg border border-disabled_200 bg-primary_100"
+      class="py-2 px-4 mb-4 w-full rounded-xl border border-disabled_200 bg-primary_100"
     >
-      <label for="comment" class="sr-only">Your comment</label>
+      <label for="comment" class="sr-only">Votre commentaire</label>
       <textarea
         v-model="form.text"
         id="comment"
         rows="6"
-        class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-        placeholder="Write a comment..."
+        class="py-2 w-full border-0 focus:ring-0 focus:outline-none txt-body"
+        placeholder="Ecrivez un commentaire..."
       ></textarea>
     </div>
     <button
       type="submit"
-      class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 px-4 rounded-lg min-w-fit tracking-wide xl:text-xl hover:bg-primary_500 hover:scale-105 duration-300 ml-auto disabled:bg-disabled_200 disabled:text-disabled_400 mb-4"
+      class="btn-primary text-center ml-auto md:w-fit"
       :disabled="!isUserLoggedIn"
     >
       Publier
@@ -22,7 +26,7 @@
     <button
       v-if="!isUserLoggedIn"
       @click="redirectToLogin"
-      class="text-primary_700 mt-2 tracking-wide underline text-end text-sm hover:text-primary_500"
+      class="txt-body-strong text-primary_700 mt-2 tracking-wide underline hover:text-primary_500"
     >
       Connectez-vous pour confirmer votre réservation.
     </button>

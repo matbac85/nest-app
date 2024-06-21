@@ -5,7 +5,7 @@
         class="bg-primary_300 flex-1 flex flex-col justify-start p-6 md:px-40 md:py-10 xl:p-20 md:flex-row"
       >
         <div>
-          <CabinPicturesDisplayer :pictures="cabin.images" class="mb-6" />
+          <CabinPicturesDisplayer :pictures="cabin.images" />
           <CabinDetailsDescription
             :name="cabin.name"
             :city="cabin.city"
@@ -35,7 +35,6 @@ import { userStore } from "../stores/userStore";
 const route = useRoute();
 const cabin = ref({});
 const commentsKey = ref(0);
-// watch the params of the route to fetch the data again
 watch(() => route.query, fetchData, { immediate: true });
 
 async function fetchData(id) {
