@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-t-xl relative group">
+  <section class="rounded-t-xl relative group">
     <img
       v-if="src"
       :src="src.at(imageIndex)"
@@ -17,17 +17,17 @@
         class="min-w-full min-h-full"
       />
     </button>
-    <button class="btn-slide-lateral" @click.prevent="slideRight(src)">
+    <button class="btn-slide-lateral right-2" @click.prevent="slideRight(src)">
       <img src="../assets/arrow-right.svg" alt="" />
     </button>
     <button
       v-if="imageIndex != 0"
-      class="btn-slide-lateral"
+      class="btn-slide-lateral left-2"
       @click.prevent="slideLeft(src)"
     >
       <img src="../assets/arrow-left.svg" alt="" />
     </button>
-  </div>
+  </section>
 </template>
 
 <script setup>
