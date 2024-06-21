@@ -20,7 +20,7 @@ import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
-import topbar from "../vendor/topbar"
+//import topbar from "../vendor/topbar"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
@@ -42,8 +42,8 @@ window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
 // >> liveSocket.disableLatencySim()
 //window.liveSocket = liveSocket
 
-import { createApp } from 'vue'
-import './style.css'
-import App from '../src/App.vue'
+//import { createApp } from 'vue'
+//import './css/app.css'
+//import App from '../src/App.vue'
 
-createApp(App).mount('#app')
+//createApp(App).mount('#app')

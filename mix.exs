@@ -60,7 +60,7 @@ defmodule Nest.MixProject do
       {:bandit, "~> 1.2"},
       {:argon2_elixir, "~> 4.0"},
       {:guardian, "~> 2.3"},
-      {:certmagex, "~> 1.0"}
+      {:site_encrypt, "~> 0.6"}
     ]
   end
 
