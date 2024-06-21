@@ -65,11 +65,11 @@ const visibleReservations = computed(() => {
   }
 });
 
-const showButton = () => {
-  props.favorites.length >= 4 ? true : false;
-};
+const showButton = computed(() => {
+  if (props.reservations || Array.isArray(props.reservations)) {
+    return props.reservations.length > maxVisible.value;
+  }
+});
 </script>
 
-<style scoped>
-/* Styles spécifiques peuvent être ajoutés ici si nécessaire */
-</style>
+<style scoped></style>

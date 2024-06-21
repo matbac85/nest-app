@@ -48,10 +48,6 @@ const toggleShowAll = () => {
   showAll.value = !showAll.value;
 };
 
-const showButton = () => {
-  props.favorites.length >= 4 ? true : false;
-};
-
 const visibleFavorites = computed(() => {
   if (!props.favorites || !Array.isArray(props.favorites)) {
     return [];
@@ -59,6 +55,12 @@ const visibleFavorites = computed(() => {
     return props.favorites;
   } else {
     return props.favorites.slice(0, maxVisible.value);
+  }
+});
+
+const showButton = computed(() => {
+  if (props.favorites || Array.isArray(props.favorites)) {
+    return props.favorites.length > maxVisible.value;
   }
 });
 </script>

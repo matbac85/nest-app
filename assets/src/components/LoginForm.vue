@@ -85,7 +85,7 @@ const submit = async () => {
   const responseData = await response.json();
 
   if (response.status === 200) {
-    const user = await response.json();
+    const user = responseData;
     userStore.setUser(user);
     localStorage.setItem("user", JSON.stringify(user));
     if (redirectStore.url !== null) {

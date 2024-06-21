@@ -68,7 +68,7 @@ defmodule Nest.User do
 
   def validate_confirmation(changeset) do
     if get_field(changeset, :password) != get_field(changeset, :password_confirmation) do
-      add_error(changeset, :password_confirmation, "Les mots de passes ne correspondent pas")
+      add_error(changeset, :password_confirmation, "Les mots de passe ne correspondent pas")
     else
       changeset
     end
