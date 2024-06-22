@@ -13,14 +13,14 @@
         />
       </figure>
       <button
-        class="btn-slide-lateral"
+        class="absolute p-1 rounded-full bg-primary_200 flex items-center justify-center top-1/2 transform -translate-y-1/2 right-2 opacity-80 transition ease-in-out delay-150 hover:scale-110 hover:drop-shadow hover:bg-white hover:opacity-100 duration-300"
         @click.prevent="slideRight(pictures)"
         aria-label="Next Image"
       >
         <img src="../assets/arrow-right.svg" alt="" />
       </button>
       <button
-        class="btn-slide-lateral"
+        class="absolute p-1 rounded-full bg-primary_200 flex items-center justify-center top-1/2 transform -translate-y-1/2 left-2 opacity-80 transition ease-in-out delay-150 hover:scale-110 hover:drop-shadow hover:bg-white hover:opacity-100 duration-300"
         @click.prevent="slideLeft(pictures)"
         aria-label="Previous Image"
       >
@@ -48,14 +48,20 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
-import { useSlide } from "../composables/useSlide";
+import { defineProps, ref } from "vue";
 
 const props = defineProps({
   pictures: Array,
 });
 
-const { imageIndex, slideRight, slideLeft } = useSlide(props.pictures);
+const imageIndex = ref(0);
+
+const slideRight = (pictures) => {
+  imageIndex.value = (imageIndex.value + 1) % pictures.length;
+};
+const slideLeft = (pictures) => {
+  imageIndex.value = (imageIndex.value - 1) % pictures.length;
+};
 
 const getClass = (index) => {
   if (index === 0) {

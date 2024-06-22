@@ -31,9 +31,8 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, ref } from "vue";
 import useFavorite from "../composables/useFavorite";
-import { useSlide } from "../composables/useSlide";
 import { userStore } from "../stores/userStore";
 
 const props = defineProps({
@@ -42,11 +41,19 @@ const props = defineProps({
   favorite: Boolean,
 });
 
-const { imageIndex, slideRight, slideLeft } = useSlide(props.src);
+const imageIndex = ref(0);
+
 const { favorite, toggleImageSrc, setFavorite } = useFavorite(props.favorite);
 
 const toggleFavorite = () => {
   setFavorite(props.id);
+};
+
+const slideRight = (src) => {
+  imageIndex.value = (imageIndex.value + 1) % src.length;
+};
+const slideLeft = (src) => {
+  imageIndex.value = (imageIndex.value - 1) % src.length;
 };
 </script>
 
