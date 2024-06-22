@@ -13,8 +13,8 @@
             :description="cabin.description"
           />
           <OrderForm :id="cabin.id" :query="route.query" :price="cabin.price" />
-          <CommentForm :cabin="cabin" />
-          <CommentsSection :cabin="cabin" />
+          <CommentForm :cabin="cabin" v-if="!userStore.user" />
+          <CommentsSection :cabin="cabin" v-if="!userStore.user" />
         </div>
       </main>
     </template>
