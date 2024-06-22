@@ -20,11 +20,7 @@
     <button class="btn-slide-lateral right-2" @click.prevent="slideRight(src)">
       <img src="../assets/arrow-right.svg" alt="" />
     </button>
-    <button
-      v-if="imageIndex != 0"
-      class="btn-slide-lateral left-2"
-      @click.prevent="slideLeft(src)"
-    >
+    <button class="btn-slide-lateral left-2" @click.prevent="slideLeft(src)">
       <img src="../assets/arrow-left.svg" alt="" />
     </button>
   </section>
