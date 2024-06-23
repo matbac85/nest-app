@@ -1,64 +1,69 @@
 <template>
-  <nav
-    class="fixed top-0 left-0 right-0 flex justify-between items-center bg-primary_200 py-4 px-4 flex-none drop-shadow md:px-6 xl:px-14 z-50"
-  >
-    <RouterLink to="/">
-      <img
-        src="/src/assets/images/logo-mobile.svg"
-        alt="logo"
-        class="w-[3rem] h-[3rem] lg:hidden"
-      />
-      <img
-        src="/src/assets/images/logo-desktop.svg"
-        alt=""
-        class="hidden h-[3rem] lg:block"
-      />
-    </RouterLink>
-    <button>
-      <burgerMenu class="lg:hidden" />
-    </button>
-    <ul
-      class="hidden items-center flex-row gap-6 text-primary_800 text-lg lg:flex"
-    >
-      <li>
-        <RouterLink class="nav-link" to="/">Accueil</RouterLink>
-      </li>
-      <li>
-        <button @click="toggleMenu" class="flex items-center">
-          <LoggedInIcon v-if="userStore.user" />
-          <User v-else />
-        </button>
-        <DropDownMenu v-if="isOpen">
-          <RouterLink
-            class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
-            to="/login"
-            v-if="!userStore.user"
-            >Se connecter</RouterLink
-          >
-          <RouterLink
-            class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
-            to="/profile"
-            v-if="userStore.user"
-            >Compte</RouterLink
-          >
+  <header class="fixed top-0 left-0 right-0 bg-primary_200 drop-shadow z-50">
+    <nav class="flex justify-between items-center py-4 px-4 md:px-6 xl:px-14">
+      <RouterLink to="/" aria-label="Homepage">
+        <img
+          src="/src/assets/imageslogo-mobile.svg"
+          alt="logo mobile"
+          class="w-[3rem] h-[3rem] lg:hidden"
+        />
+        <img
+          src="/src/assets/images/logo-desktop.svg"
+          alt="logo desktop"
+          class="hidden h-[3rem] lg:block"
+        />
+      </RouterLink>
+      <button aria-label="Open menu" class="lg:hidden">
+        <burgerMenu />
+      </button>
+      <ul
+        class="hidden items-center flex-row gap-6 text-primary_800 text-lg lg:flex"
+      >
+        <li>
+          <RouterLink class="nav-link" to="/">Accueil</RouterLink>
+        </li>
+        <li>
           <button
-            class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
-            to="/login"
-            v-if="userStore.user"
-            @click="userStore.logOut()"
+            @click="toggleMenu"
+            class="flex items-center"
+            aria-expanded="isOpen"
+            aria-haspopup="true"
+            aria-label="User menu"
           >
-            Se déconnecter
+            <LoggedInIcon v-if="userStore.user" />
+            <User v-else />
           </button>
-          <RouterLink
-            class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
-            to="/register"
-            v-if="!userStore.user"
-            >S'enregistrer</RouterLink
-          >
-        </DropDownMenu>
-      </li>
-    </ul>
-  </nav>
+          <DropDownMenu v-if="isOpen">
+            <RouterLink
+              class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
+              to="/login"
+              v-if="!userStore.user"
+              >Se connecter</RouterLink
+            >
+            <RouterLink
+              class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
+              to="/profile"
+              v-if="userStore.user"
+              >Compte</RouterLink
+            >
+            <button
+              class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
+              v-if="userStore.user"
+              @click="userStore.logOut()"
+            >
+              Se déconnecter
+            </button>
+            <RouterLink
+              class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
+              to="/register"
+              v-if="!userStore.user"
+              >S'enregistrer</RouterLink
+            >
+          </DropDownMenu>
+        </li>
+      </ul>
+    </nav>
+  </header>
 </template>
 
 <script setup>

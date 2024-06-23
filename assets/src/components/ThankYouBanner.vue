@@ -1,20 +1,16 @@
 <template>
   <div
-    class="bg-primary_200 rounded-xl px-4 py-6 max-w-[21.4375rem] md:py-8 md:px-6 md:max-w-fit drop-shadow"
+    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 md:py-12 md:px-10 txt-header m-0 text-center"
+    v-if="userStore.user"
   >
-    <div
-      class="font-dosis text-2xl font-semibold text-center text-primary_800"
-      v-if="userStore.user"
-    >
-      <p>
-        Merci
-        <strong class="font-bold text-primary_700">{{
-          userStore.user.firstname
-        }}</strong>
-        !
-      </p>
-      <p>Bon séjour et à très bientôt sur Nest !</p>
-    </div>
+    <p>
+      Merci
+      <strong class="font-bold text-primary_700">{{
+        userStore.user.firstname
+      }}</strong>
+      !
+    </p>
+    <p>Bon séjour et à très bientôt sur Nest !</p>
   </div>
 </template>
 
