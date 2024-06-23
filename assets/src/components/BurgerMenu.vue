@@ -24,8 +24,8 @@
         >
         <RouterLink
           class="block px-8 py-4 text-xl font-semibold text-primary_700"
-          to="/registercabin"
-          >Enregistrer une cabane</RouterLink
+          to="/register"
+          >S'enregistrer</RouterLink
         >
         <RouterLink
           class="block px-8 py-4 text-xl font-semibold text-primary_700"
@@ -43,9 +43,9 @@
         </button>
         <RouterLink
           class="block px-8 py-4 text-xl font-semibold text-primary_700"
-          to="/register"
-          v-if="!userStore.user"
-          >S'enregistrer</RouterLink
+          to="/profile"
+          v-if="userStore.user"
+          >Compte</RouterLink
         >
       </div>
     </div>

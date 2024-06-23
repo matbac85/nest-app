@@ -9,7 +9,7 @@ const useFetchData = () => {
   const error = ref(null);
 
   const fetchData = async () => {
-    error.value = cabins.value = null;
+    //error.value = cabins.value = null;
     loading.value = true;
 
     let headers = {

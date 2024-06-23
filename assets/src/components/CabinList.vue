@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div v-if="cabins">
     <ul
       class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-6 xl:grid-cols-5"
+      v-if="cabins.length > 0"
     >
       <li v-for="cabin in cabins" :key="cabin.id">
         <CabinDetails
@@ -15,6 +16,7 @@
         />
       </li>
     </ul>
+    <ErrorMessage v-else />
   </div>
 </template>
 
@@ -23,6 +25,7 @@ import { watch } from "vue";
 import { useRoute } from "vue-router";
 import { useFetchData } from "../composables/useFetchData";
 import CabinDetails from "./CabinDetails.vue";
+import ErrorMessage from "../components/ErrorMessage.vue";
 
 const route = useRoute();
 const { loading, cabins, error, fetchData } = useFetchData();

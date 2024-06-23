@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 md:py-12 md:px-10 txt-header m-0 text-center"
+    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 font-dosis text-base lg:text-lg xl:text-xl m-0 text-center"
     v-if="userStore.user"
   >
     <p>
