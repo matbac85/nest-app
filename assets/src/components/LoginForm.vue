@@ -10,7 +10,7 @@
         id="email"
         type="email"
         v-model="form.email"
-        placeholder="exemple@email.com"
+        placeholder="exemple@domaine.com"
         class="input"
         required
       />
@@ -21,7 +21,7 @@
         id="password"
         type="password"
         v-model="form.password"
-        placeholder="Mot de passe"
+        placeholder="Entrez votre mot de passe"
         class="input"
         required
       />

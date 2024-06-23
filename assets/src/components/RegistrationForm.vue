@@ -88,7 +88,7 @@
     </div>
     <button
       type="submit"
-      class="btn-primary mt-4 min-w-full lg:px-4 md:col-start-2 md:mt-2 md place-self-end md:max-w-fit"
+      class="btn-primary mt-4 min-w-full lg:px-4 md:col-start-2 md:mt-2 md:max-w-fit"
     >
       S'inscrire
     </button>
