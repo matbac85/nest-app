@@ -84,6 +84,7 @@ const toggleMenu = () => {
 };
 
 const logOutAndRedirect = () => {
+  toggleMenu();
   userStore.logOut();
   router.push({
     name: "Home",
