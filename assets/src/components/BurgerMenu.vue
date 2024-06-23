@@ -25,6 +25,7 @@
         <RouterLink
           class="block px-8 py-4 text-xl font-semibold text-primary_700"
           to="/register"
+          v-if="!userStore.user"
           >S'enregistrer</RouterLink
         >
         <RouterLink

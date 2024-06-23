@@ -1,16 +1,23 @@
 <template>
   <div
-    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 font-dosis text-base lg:text-lg xl:text-xl m-0 text-center"
+    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 text-center"
     v-if="userStore.user"
   >
-    <p>
+    <p class="font-dosis text-lg lg:text-xl xl:text-2xl m-0">
       Merci
       <strong class="font-bold text-primary_700">{{
         userStore.user.firstname
       }}</strong>
       !
     </p>
-    <p>Bon séjour et à très bientôt sur Nest !</p>
+    <p class="font-dosis text-lg lg:text-xl xl:text-2xl mb-2">
+      Bon séjour et à très bientôt sur Nest !
+    </p>
+    <RouterLink
+      class="text-primary_700 txt-body-strong underline hover:text-primary_500"
+      to="/"
+      >Retour à l'accueil</RouterLink
+    >
   </div>
 </template>
 
