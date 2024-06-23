@@ -1,13 +1,11 @@
 <template>
   <div class="bg-primary_200 rounded-xl drop-shadow px-6 py-8">
-    <h2 class="font-dosis font-semibold text-xl text-primary_700 mb-4">
-      Mes favoris
-    </h2>
-    <ul class="grid gap-y-4 md:grid-cols-4 md:gap-x-4">
+    <h2 class="txt-title mb-4">Mes favoris</h2>
+    <ul class="grid gap-y-4 md:grid-cols-2 lg:grid-cols-4 md:gap-x-4">
       <li
         v-for="(favorite, index) in visibleFavorites"
         :key="index"
-        class="flex flex-col shadow-lg rounded-xl md:w-60"
+        class="flex flex-col shadow-lg rounded-xl"
       >
         <img
           :src="favorite.cabin.images[0]"
@@ -15,21 +13,25 @@
           class="w-full h-44 object-cover rounded-t-xl"
         />
         <div class="p-4 flex flex-col justify-between flex-grow">
-          <h2 class="text-primary_700 font-dosis font-bold text-xl">
+          <h2 class="txt-h2">
             {{ favorite.cabin.name }}
           </h2>
-          <p class="text-primary_800 font-normal text-base">
+          <p class="txt-body">
             {{ favorite.cabin.city }}
           </p>
         </div>
       </li>
-      <button
+      <div
         v-if="showButton"
-        @click="toggleShowAll"
-        class="font-medium underline mt-2 text-primary_700 md:col-span-4 flex justify-end"
+        class="md:col-span-2 lg:col-span-4 flex justify-end"
       >
-        {{ showAll ? "Voir moins" : "Voir plus" }}
-      </button>
+        <button
+          @click="toggleShowAll"
+          class="font-medium underline mt-2 text-primary_700"
+        >
+          {{ showAll ? "Voir moins" : "Voir plus" }}
+        </button>
+      </div>
     </ul>
   </div>
 </template>

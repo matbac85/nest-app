@@ -4,10 +4,10 @@
   >
     <LoggedInIcon />
     <div>
-      <h2 class="text-base font-medium text-primary_800">
+      <h2 class="txt-body-strong">
         {{ props.userData.firstname }} {{ props.userData.lastname }}
       </h2>
-      <p class="text-sm font-normal text-primary_800">
+      <p class="txt-body">
         {{ props.userData.email }}
       </p>
     </div>
