@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
   </head>
-  <%= if true do %>
+  <%= if !System.get_env("PHX_SERVER") do %>
     <script type="module">
       //  import RefreshRuntime from "http://localhost:5173/@react-refresh";
       //  RefreshRuntime.injectIntoGlobalHook(window);
