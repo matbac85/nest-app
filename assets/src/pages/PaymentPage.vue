@@ -2,7 +2,7 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_500 flex-1 flex flex-col-reverse justify-start py-10 px-4 items-center gap-10 bg-image md:flex-row md:justify-center"
+        class="bg-primary_500 flex-1 flex flex-col-reverse justify-center py-10 px-4 items-center gap-10 bg-image md:flex-row md:justify-center"
       >
         <BookingSummary
           v-if="cabin"

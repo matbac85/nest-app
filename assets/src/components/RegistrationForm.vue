@@ -1,115 +1,98 @@
 <template>
-  <div>
-    <form
-      @submit.prevent="submit"
-      novalidate
-      class="bg-primary_200 rounded-xl drop-shadow grid grid-cols-1 gap-4 px-6 py-8 min-w-[21.4375rem] md:min-w-[48rem] md:grid-cols-2 mt-10 mb-10 md:m-0 md:gap-y-6"
-    >
-      <div class="relative">
-        <label
-          for="lastname"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Nom</label
-        ><input
-          id="lastname"
-          type="text"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-          v-model="form.lastname"
-          placeholder="Baclin"
-        />
-        <p
-          v-if="lastnameError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
-          {{ lastnameError }}
-        </p>
-      </div>
-      <div class="relative">
-        <label
-          for="firstname"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Prénom</label
-        ><input
-          id="firstname"
-          type="text"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-          v-model="form.firstname"
-          placeholder="Mathilde"
-        />
-        <p
-          v-if="firstnameError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
-          {{ firstnameError }}
-        </p>
-      </div>
-      <div class="md:col-span-2 relative">
-        <label
-          for="email"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide md:col-span-2"
-          >E-mail</label
-        ><input
-          type="email"
-          name=""
-          id="email"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-          v-model="form.email"
-          placeholder="exemple@email.com"
-        />
-        <p
-          v-if="emailError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
-          {{ emailError }}
-        </p>
-      </div>
-      <div class="relative">
-        <label
-          for="password"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Mot de passe</label
-        ><input
-          type="password"
-          name=""
-          id="password"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-          v-model="form.password"
-          placeholder="MoTdEpAsSeCompliqué!"
-        />
-        <p
-          v-if="passwordError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
-          {{ passwordError }}
-        </p>
-      </div>
-      <div class="relative">
-        <label
-          for="passwordconfirmation"
-          class="block text-base font-medium text-primary_700 mb-1 ml-1 tracking-wide"
-          >Confirmer votre mot de passe</label
-        ><input
-          type="password"
-          name=""
-          id="passwordconfirmation"
-          class="py-3 px-4 rounded-lg min-w-full focus:outline-none border border-primary_700 focus:border-primary_500 placeholder:text-primary_400"
-          v-model="form.password_confirmation"
-          placeholder="MoTdEpAsSeCompliqué!"
-        />
-        <p
-          v-if="passwordconfirmationError"
-          class="text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1"
-        >
-          {{ passwordconfirmationError }}
-        </p>
-      </div>
-      <button
-        class="transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg min-w-full tracking-wide hover:bg-primary_500 mt-4 hover:scale-105 duration-300 lg:px-4 md:col-start-2 md:mt-2 md place-self-end md:max-w-fit"
+  <form
+    @submit.prevent="submit"
+    novalidate
+    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 grid grid-cols-1 gap-4 min-w-[21.4375rem] md:min-w-[48rem] md:grid-cols-2 mt-10 mb-10 md:m-0 md:gap-y-6"
+  >
+    <div class="relative">
+      <label for="lastname" class="txt-label">Nom</label>
+      <input
+        id="lastname"
+        type="text"
+        class="input"
+        v-model="form.lastname"
+        placeholder="Ex: Dupont"
+        aria-describedby="lastnameError"
+      />
+      <p v-if="lastnameError" id="lastnameError" class="txt-error" role="alert">
+        {{ lastnameError }}
+      </p>
+    </div>
+    <div class="relative">
+      <label for="firstname" class="txt-label">Prénom</label>
+      <input
+        id="firstname"
+        type="text"
+        class="input"
+        v-model="form.firstname"
+        placeholder="Ex: Marie"
+        aria-describedby="firstnameError"
+      />
+      <p
+        v-if="firstnameError"
+        id="firstnameError"
+        class="txt-error"
+        role="alert"
       >
-        S'inscrire
-      </button>
-    </form>
-  </div>
+        {{ firstnameError }}
+      </p>
+    </div>
+    <div class="md:col-span-2 relative">
+      <label for="email" class="txt-label">E-mail</label>
+      <input
+        type="email"
+        id="email"
+        class="input"
+        v-model="form.email"
+        placeholder="exemple@domaine.com"
+        aria-describedby="emailError"
+      />
+      <p v-if="emailError" id="emailError" class="txt-error" role="alert">
+        {{ emailError }}
+      </p>
+    </div>
+    <div class="relative">
+      <label for="password" class="txt-label">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        class="input"
+        v-model="form.password"
+        placeholder="Entrez un mot de passe sécurisé"
+        aria-describedby="passwordError"
+      />
+      <p v-if="passwordError" id="passwordError" class="txt-error" role="alert">
+        {{ passwordError }}
+      </p>
+    </div>
+    <div class="relative">
+      <label for="passwordconfirmation" class="txt-label"
+        >Confirmer votre mot de passe</label
+      >
+      <input
+        type="password"
+        id="passwordconfirmation"
+        class="input"
+        v-model="form.password_confirmation"
+        placeholder="Répétez le mot de passe"
+        aria-describedby="passwordconfirmationError"
+      />
+      <p
+        v-if="passwordconfirmationError"
+        id="passwordconfirmationError"
+        class="txt-error"
+        role="alert"
+      >
+        {{ passwordconfirmationError }}
+      </p>
+    </div>
+    <button
+      type="submit"
+      class="btn-primary mt-4 min-w-full lg:px-4 md:col-start-2 md:mt-2 md place-self-end md:max-w-fit"
+    >
+      S'inscrire
+    </button>
+  </form>
 </template>
 
 <script setup>
