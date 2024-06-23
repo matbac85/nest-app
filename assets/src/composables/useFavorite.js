@@ -6,8 +6,8 @@ const useFavorite = (initialFavoriteState) => {
 
   const toggleImageSrc = () => {
     return favorite.value
-      ? "images/favorite-filled.svg"
-      : "images/favorite-border.svg";
+      ? "/src/assets/images/favorite-filled.svg"
+      : "/src/assets/images/favorite-border.svg";
   };
 
   const setFavorite = async (id) => {

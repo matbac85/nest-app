@@ -196,7 +196,7 @@ select {
   -webkit-appearance: none; /* Pour Safari */
   -moz-appearance: none; /* Pour Firefox */
   padding-right: 2.5rem; /* Ajoute un espace pour la flèche */
-  background-image: url("/images/arrow_drop_down.svg");
+  background-image: url("/src/assets/images/arrow_drop_down.svg");
   background-repeat: no-repeat;
   background-position: right 0.5rem center; /* Positionne la flèche à droite et centrée verticalement */
   background-size: 1.5rem; /* Ajuste la taille de l'image de la flèche */

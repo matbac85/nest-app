@@ -14,11 +14,12 @@ export default function defineConfig({ command }) {
   }
 
   return {
-    publicDir: "./static",
+    root: './',
+    publicDir: "./src/assets",
     plugins: [vue()],
     build: {
       target: "esnext", // build for recent browsers
-      outDir: "../priv/static", // emit assets to priv/static
+      outDir: "../priv/static/src/assets", // emit assets to priv/static
       emptyOutDir: true,
       sourcemap: isDev, // enable source map in dev build
       manifest: false, // do not generate manifest.json

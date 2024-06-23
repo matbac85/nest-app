@@ -18,10 +18,10 @@
       />
     </button>
     <button class="btn-slide-lateral right-2" @click.prevent="slideRight(src)">
-      <img src="/images/arrow-right.svg" alt="" />
+      <img src="/src/assets/images/arrow-right.svg" alt="" />
     </button>
     <button class="btn-slide-lateral left-2" @click.prevent="slideLeft(src)">
-      <img src="/images/arrow-left.svg" alt="" />
+      <img src="/src/assets/images/arrow-left.svg" alt="" />
     </button>
   </section>
 </template>
