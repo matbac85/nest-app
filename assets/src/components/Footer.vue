@@ -6,14 +6,14 @@
     <div class="flex gap-4">
       <a href="https://www.instagram.com/matbac/">
         <img
-          src="../assets/instagram-icon.svg"
+          src="/images/instagram-icon.svg"
           alt=""
           class="block min-w-[1.5rem]"
         />
       </a>
       <a href="https://www.facebook.com/">
         <img
-          src="../assets/facebook-icon.svg"
+          src="/images/facebook-icon.svg"
           alt=""
           class="block min-w-[1.5rem]"
         />

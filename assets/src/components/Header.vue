@@ -4,12 +4,12 @@
   >
     <RouterLink to="/">
       <img
-        src="../assets/logo-mobile.svg"
+        src="/images/logo-mobile.svg"
         alt="logo"
         class="w-[3rem] h-[3rem] lg:hidden"
       />
       <img
-        src="../assets/logo-desktop.svg"
+        src="/images/logo-desktop.svg"
         alt=""
         class="hidden h-[3rem] lg:block"
       />

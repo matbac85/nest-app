@@ -14,7 +14,7 @@ export default function defineConfig({ command }) {
   }
 
   return {
-    publicDir: "static",
+    publicDir: "./static",
     plugins: [vue()],
     build: {
       target: "esnext", // build for recent browsers

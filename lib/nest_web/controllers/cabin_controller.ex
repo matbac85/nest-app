@@ -35,7 +35,7 @@ defmodule NestWeb.CabinController do
       favorite: favorite == 1,
       images:
         Enum.map(1..5, fn image_id ->
-          "../cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp"
+          static_path(NestWeb.Endpoint, "/cabins/#{resize(cabin.id)}/#{resize(cabin.id)}-#{image_id}.webp")
         end),
       comments:
         Enum.map(cabin.comments, fn comment ->
