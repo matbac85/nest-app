@@ -1,7 +1,10 @@
 <template>
-  <div class="bg-primary_200 rounded-xl drop-shadow px-6 py-8">
+  <div class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 min-w-full">
     <h2 class="txt-title mb-4">Mes réservations</h2>
-    <ul class="grid gap-y-4 md:grid-cols-2 lg:grid-cols-4 md:gap-x-4">
+    <ul
+      class="grid gap-y-4 md:grid-cols-2 lg:grid-cols-4 md:gap-x-4"
+      v-if="visibleReservations.length > 0"
+    >
       <li
         v-for="(reservation, index) in visibleReservations"
         :key="index"
@@ -39,12 +42,14 @@
         </button>
       </div>
     </ul>
+    <EmptyReservationsSection v-else />
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
 import { useFormatDateRange } from "../composables/useFormatDateRange";
+import EmptyReservationsSection from "../components/EmptyReservationsSection.vue";
 
 const props = defineProps({
   reservations: Array,

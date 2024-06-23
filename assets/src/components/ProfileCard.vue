@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 flex gap-4 items-center"
+    class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 flex gap-4 items-center min-w-full"
   >
     <LoggedInIcon />
     <div>

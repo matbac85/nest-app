@@ -2,13 +2,11 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_500 flex-1 flex flex-col justify-center items-center p-6 md:px-40 md:py-10 xl:p-20 md:flex-row"
+        class="bg-primary_500 flex-1 flex flex-col items-start p-6 gap-4 md:px-40 md:py-10 xl:p-20"
       >
-        <div class="grid gap-4">
-          <ProfileCard :userData="userData" />
-          <ReservationsSection :reservations="userData.reservations" />
-          <FavoritesSection :favorites="userData.favorites" />
-        </div>
+        <ProfileCard :userData="userData" />
+        <ReservationsSection :reservations="userData.reservations" />
+        <FavoritesSection :favorites="userData.favorites" />
       </main>
     </template>
   </Layout>
@@ -22,6 +20,8 @@ import Layout from "../components/Layout.vue";
 import ProfileCard from "../components/ProfileCard.vue";
 import ReservationsSection from "../components/ReservationsSection.vue";
 import FavoritesSection from "../components/FavoritesSection.vue";
+import EmptyReservationsSection from "../components/EmptyReservationsSection.vue";
+import EmptyFavoritesSection from "../components/EmptyFavoritesSection.vue";
 
 const route = useRoute();
 const userData = ref({});

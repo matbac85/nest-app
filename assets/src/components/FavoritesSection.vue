@@ -1,7 +1,10 @@
 <template>
-  <div class="bg-primary_200 rounded-xl drop-shadow px-6 py-8">
+  <div class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 min-w-full">
     <h2 class="txt-title mb-4">Mes favoris</h2>
-    <ul class="grid gap-y-4 md:grid-cols-2 lg:grid-cols-4 md:gap-x-4">
+    <ul
+      class="grid gap-y-4 md:grid-cols-2 lg:grid-cols-4 md:gap-x-4"
+      v-if="visibleFavorites.length > 0"
+    >
       <li
         v-for="(favorite, index) in visibleFavorites"
         :key="index"
@@ -33,11 +36,13 @@
         </button>
       </div>
     </ul>
+    <EmptyFavoritesSection />
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
+import EmptyFavoritesSection from "./EmptyFavoritesSection.vue";
 
 const props = defineProps({
   favorites: Array,
