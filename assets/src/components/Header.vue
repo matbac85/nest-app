@@ -49,7 +49,7 @@
             <button
               class="text-primary_700 block px-6 py-2 text-base font-medium hover:bg-primary_300"
               v-if="userStore.user"
-              @click="userStore.logOut()"
+              @click="logOutAndRedirect"
             >
               Se déconnecter
             </button>
@@ -69,16 +69,25 @@
 <script setup>
 import { ref } from "vue";
 import BurgerMenu from "./BurgerMenu.vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import User from "./User.vue";
 import DropDownMenu from "./DropDownMenu.vue";
 import { userStore } from "../stores/userStore";
 import LoggedInIcon from "./LoggedInIcon.vue";
 
+const router = useRouter();
+
 const isOpen = ref(false);
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value;
+};
+
+const logOutAndRedirect = () => {
+  userStore.logOut();
+  router.push({
+    name: "Home",
+  });
 };
 </script>
 

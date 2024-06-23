@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 min-w-full">
+  <section class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 min-w-full">
     <h2 class="txt-title mb-4">Mes réservations</h2>
     <ul
       class="grid gap-y-4 md:grid-cols-2 lg:grid-cols-4 md:gap-x-4"
@@ -36,14 +36,14 @@
       >
         <button
           @click="toggleShowAll"
-          class="font-medium underline mt-2 text-primary_700"
+          class="txt-body-strong underline mt-2 text-primary_700 hover:text-primary_500"
         >
           {{ showAll ? "Voir moins" : "Voir plus" }}
         </button>
       </div>
     </ul>
     <EmptyReservationsSection v-else />
-  </div>
+  </section>
 </template>
 
 <script setup>

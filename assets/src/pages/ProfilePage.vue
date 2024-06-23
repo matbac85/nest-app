@@ -3,6 +3,7 @@
     <template #content>
       <main
         class="bg-primary_500 flex-1 flex flex-col items-start p-6 gap-4 md:px-40 md:py-10 xl:p-20"
+        v-if="userData"
       >
         <ProfileCard :userData="userData" />
         <ReservationsSection :reservations="userData.reservations" />
@@ -20,8 +21,6 @@ import Layout from "../components/Layout.vue";
 import ProfileCard from "../components/ProfileCard.vue";
 import ReservationsSection from "../components/ReservationsSection.vue";
 import FavoritesSection from "../components/FavoritesSection.vue";
-import EmptyReservationsSection from "../components/EmptyReservationsSection.vue";
-import EmptyFavoritesSection from "../components/EmptyFavoritesSection.vue";
 
 const route = useRoute();
 const userData = ref({});

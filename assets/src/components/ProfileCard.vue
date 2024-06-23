@@ -1,17 +1,17 @@
 <template>
-  <div
+  <figure
     class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 flex gap-4 items-center min-w-full"
   >
     <LoggedInIcon />
-    <div>
+    <figcaption>
       <h2 class="txt-body-strong">
         {{ props.userData.firstname }} {{ props.userData.lastname }}
       </h2>
       <p class="txt-body">
         {{ props.userData.email }}
       </p>
-    </div>
-  </div>
+    </figcaption>
+  </figure>
 </template>
 
 <script setup>

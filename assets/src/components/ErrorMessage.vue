@@ -1,5 +1,5 @@
 <template>
-  <div
+  <section
     class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 md:py-12 md:px-10 text-center font-dosis text-base lg:text-lg xl:text-xl"
   >
     <p>
@@ -11,7 +11,7 @@
         >Réessayez !</RouterLink
       >
     </p>
-  </div>
+  </section>
 </template>
 
 <script setup>
