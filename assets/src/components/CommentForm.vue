@@ -1,6 +1,6 @@
 <template>
   <form
-    class="mb-6 md:flex md:flex-col md:justify-end md:items-end"
+    class="mb-10 md:flex md:flex-col md:justify-end md:items-end"
     novalidate
     @submit.prevent="submitForm"
   >
@@ -11,7 +11,7 @@
       <textarea
         v-model="form.text"
         id="comment"
-        rows="6"
+        rows="4"
         class="py-2 w-full border-0 focus:ring-0 focus:outline-none txt-body bg-primary_200"
         placeholder="Ecrivez un commentaire..."
       ></textarea>

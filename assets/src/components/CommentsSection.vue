@@ -1,26 +1,33 @@
 <template>
-  <div>
-    <ul class="flex flex-col items-start gap-4 w-full">
-      <li v-for="(comment, index) in props.cabin.comments" :key="index">
-        <div class="w-full flex items-center justify-between">
-          <p
-            class="inline-flex gap-2 mb-2 items-center mr-3 text-sm text-gray-900 font-semibold"
-          >
-            <LoggedInIcon />{{ comment.user_firstname }}
-            {{ comment.user_lastname }}
-          </p>
-          <p class="text-sm text-gray-600 dark:text-gray-400">
-            <time pubdate datetime="2022-02-08" title="February 8th, 2022">{{
-              useDateFormat(comment.created_at)
-            }}</time>
-          </p>
-        </div>
-        <p class="text-gray-500 dark:text-gray-400">
-          {{ comment.text }}
-        </p>
-      </li>
-    </ul>
-  </div>
+  <ul
+    v-if="props.cabin.comments && props.cabin.comments.length > 0"
+    class="grid grid-cols-1 gap-y-4 gap-x-4 md:grid-cols-2"
+  >
+    <li
+      v-for="(comment, index) in props.cabin.comments"
+      :key="index"
+      class="bg-primary_200 rounded-xl shadow-lg p-4"
+    >
+      <div class="w-full flex items-center justify-between">
+        <figure class="inline-flex gap-4 mb-4 items-center">
+          <LoggedInIcon />
+          <figcaption>
+            <h2 class="txt-body-strong -mb-1">
+              {{ comment.user_firstname }} {{ comment.user_lastname }}
+            </h2>
+            <p class="txt-body">
+              <time pubdate datetime="2022-02-08" title="February 8th, 2022">{{
+                useDateFormat(comment.created_at)
+              }}</time>
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="txt-body ml-2">
+        {{ comment.text }}
+      </p>
+    </li>
+  </ul>
 </template>
 
 <script setup>
