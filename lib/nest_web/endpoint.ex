@@ -10,7 +10,7 @@ defmodule NestWeb.Endpoint do
       # host machine.
       client: :certbot,
 
-      domains: ["nest.mathildebaclin.com", "nest2.mathildebaclin.com"],
+      domains: ["nest.mathildebaclin.com", "nest3.mathildebaclin.com"],
       emails: ["mathildebaclin@gmail.com"],
 
       # By default the certs will be stored in tmp/site_encrypt_db, which is convenient for
