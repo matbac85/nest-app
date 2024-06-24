@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="csrf-token" content={get_csrf_token()} />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" type="image/svg+xml" href="/src/assets/images/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"
       rel="stylesheet"
     />
+    <title>Nest</title>
   </head>
   <%= if !System.get_env("PHX_SERVER") do %>
     <script type="module">
