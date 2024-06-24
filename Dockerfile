@@ -46,7 +46,6 @@ RUN mix deps.get --only $MIX_ENV
 RUN mkdir config
 RUN mkdir build
 
-
 # copy compile-time config files before we compile dependencies
 # to ensure any relevant config change will trigger the dependencies
 # to be re-compiled.
@@ -91,6 +90,10 @@ RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+
+RUN mkdir /etc/certbot
+RUN chown nobody /etc/certbot
+
 
 WORKDIR "/app"
 RUN chown nobody /app
