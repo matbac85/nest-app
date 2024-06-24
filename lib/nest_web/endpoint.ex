@@ -11,7 +11,7 @@ defmodule NestWeb.Endpoint do
       client: :certbot,
 
       domains: ["nest.mathildebaclin.com", "nest2.mathildebaclin.com"],
-      emails: ["christophe.belpaire@gmail.com", "mathildebaclin@gmail.com"],
+      emails: ["mathildebaclin@gmail.com"],
 
       # By default the certs will be stored in tmp/site_encrypt_db, which is convenient for
       # local development. Make sure that tmp folder is gitignored.
