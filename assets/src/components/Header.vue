@@ -3,12 +3,12 @@
     <nav class="flex justify-between items-center py-4 px-4 md:px-6 xl:px-14">
       <RouterLink to="/" aria-label="Homepage">
         <img
-          src="/src/assets/logo-mobile.svg"
+          src="/images/logo-mobile.svg"
           alt="logo mobile"
           class="w-[3rem] h-[3rem] lg:hidden"
         />
         <img
-          src="/src/assets/logo-desktop.svg"
+          src="/images/logo-desktop.svg"
           alt="logo desktop"
           class="hidden h-[3rem] lg:block"
         />
