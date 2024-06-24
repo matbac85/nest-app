@@ -9,7 +9,7 @@
           v-if="pictures"
           :src="pictures.at(imageIndex)"
           alt=""
-          class="object-cover rounded-xl"
+          class="object-cover rounded-xl h-[218px] w-full"
         />
       </figure>
       <button

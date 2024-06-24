@@ -10,7 +10,10 @@
     >
       <div class="w-full flex items-center justify-between">
         <figure class="inline-flex gap-4 mb-4 items-center">
-          <LoggedInIcon />
+          <CommentUserIcon
+            :firstname="comment.user_firstname"
+            :lastname="comment.user_lastname"
+          />
           <figcaption>
             <h2 class="txt-body-strong -mb-1">
               {{ comment.user_firstname }} {{ comment.user_lastname }}
@@ -33,6 +36,7 @@
 <script setup>
 import LoggedInIcon from "../components/LoggedInIcon.vue";
 import { useDateFormat } from "../composables/useDateFormat";
+import CommentUserIcon from "./CommentUserIcon.vue";
 
 const props = defineProps({
   cabin: Object,

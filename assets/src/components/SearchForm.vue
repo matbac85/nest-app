@@ -56,7 +56,7 @@
     </div>
     <button
       type="submit"
-      class="btn-primary lg:col-span-1 lg:ml-auto lg:mt-0 col-span-full"
+      class="btn-primary mt-4 lg:col-span-1 lg:ml-auto lg:mt-0 col-span-full"
     >
       Rechercher
     </button>
