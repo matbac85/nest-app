@@ -92,7 +92,13 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN mkdir /etc/certbot
+RUN mkdir /etc/certbot/certs
+RUN mkdir /etc/certbot/certbot
+
 RUN chown nobody /etc/certbot
+RUN chown nobody /etc/certbot/certbot
+RUN chown nobody /etc/certbot/certs
+
 
 
 WORKDIR "/app"
