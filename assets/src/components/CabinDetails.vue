@@ -1,7 +1,7 @@
 <template>
   <RouterLink
     :to="{ name: 'CabinDetails', params: { id: id }, query: props.query }"
-    class="block bg-primary_200 rounded-xl shadow-lg transform transition ease-in-out delay-150 hover:scale-105 duration-300"
+    class="block bg-primary_200 rounded-xl shadow-lg transform transition ease-in-out delay-150 lg:hover:scale-105 duration-300"
   >
     <section class="overflow-hidden rounded-t-xl">
       <Slider :src="src" :id="id" :favorite="favorite" />

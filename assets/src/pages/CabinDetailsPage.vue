@@ -2,7 +2,7 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_300 flex-1 flex flex-col justify-start p-6 md:px-40 md:py-10 xl:py-20 xl:px-[15rem] md:flex-row"
+        class="bg-primary_300 flex-1 flex flex-col justify-start p-6 md:px-36 md:py-10 xl:py-20 xl:px-[15rem] md:flex-row"
       >
         <div>
           <CabinPicturesDisplayer :pictures="cabin.images" />

@@ -15,7 +15,7 @@
           alt=""
           class="w-full h-44 object-cover rounded-t-xl"
         />
-        <div class="p-4 flex flex-col justify-between flex-grow">
+        <div class="p-4 flex flex-col flex-grow">
           <h2 class="txt-h2">
             {{ favorite.cabin.name }}
           </h2>

@@ -16,7 +16,7 @@
   }
 
   .btn-slide-lateral {
-    @apply absolute p-1 rounded-full bg-primary_200 items-center justify-center top-1/2 transform -translate-y-1/2 opacity-80 transition ease-in-out delay-150 lg:hover:scale-110 lg:hover:drop-shadow lg:hover:bg-primary_100 lg:group-hover:opacity-80 duration-300;
+    @apply absolute p-1 rounded-full bg-primary_200 items-center justify-center top-1/2 transform -translate-y-1/2 opacity-80 transition ease-in-out delay-150 lg:hover:scale-110 lg:hover:drop-shadow lg:hover:bg-primary_100 lg:group-hover:opacity-100 duration-300;
   }
 
   /* input */
