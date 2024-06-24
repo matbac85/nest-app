@@ -14,7 +14,7 @@ import Layout from "../components/Layout.vue";
 
 <style scoped>
 .bg-image {
-  background-image: url("/src/assets/images/bg-404-mobile.svg");
+  background-image: url("/images/bg-404-mobile.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-size: contain;
@@ -22,7 +22,7 @@ import Layout from "../components/Layout.vue";
 }
 @media (min-width: 40rem) {
   .bg-image {
-    background-image: url("/src/assets/images/bg-404-desktop.svg");
+    background-image: url("/images/bg-404-desktop.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

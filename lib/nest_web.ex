@@ -17,7 +17,7 @@ defmodule NestWeb do
   those modules here.
   """
 
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt src static)
+  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt src cabins)
 
   def router do
     quote do

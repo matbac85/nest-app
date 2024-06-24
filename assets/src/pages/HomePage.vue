@@ -20,7 +20,7 @@ import Banner from "../components/Banner.vue";
 <style>
 @media (min-width: 40rem) {
   .bg-image {
-    background-image: url("../assets/bg-desktop.svg");
+    background-image: url("/images/bg-desktop.svg");
     background-repeat: no-repeat;
     background-size: cover;
   }
