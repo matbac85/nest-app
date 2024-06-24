@@ -36,8 +36,7 @@
         >
         <button
           class="block px-8 py-4 text-xl font-semibold text-primary_700"
-          to="/login"
-          @click="userStore.logOut()"
+          @click="logOutAndRedirect"
           v-if="userStore.user"
         >
           Se déconnecter
@@ -56,11 +55,20 @@
 <script setup>
 import { ref } from "vue";
 import { userStore } from "../stores/userStore";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const isActive = ref(false);
 
 const toggleActive = () => {
   isActive.value = !isActive.value;
+};
+
+const logOutAndRedirect = () => {
+  userStore.logOut();
+  router.push({
+    name: "Home",
+  });
 };
 </script>
 
