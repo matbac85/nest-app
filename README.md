@@ -1,19 +1,35 @@
-# nest-app
+# 🚀 Cabin Booking Web App 🏕️
 
+Here is a project that I have revisited. This is a cabin booking web app that I originally co-designed and co-coded at the end of my front-end development training. This year, I took the time to enhance and completely re-code it in Vue.js, making it responsive and accessible.
 
-To start your Phoenix server:
+## 🌟 Features
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+- **User Registration and Account Management**
+- **Filter Cabins by Region, Date Range, and Number of Travelers**
+- **Select Favorite Cabins**
+- **Scroll Through Photos and Get Additional Details on Each Cabin**
+- **Write Comments and Make Reservations Once Logged In**
+- **Store Favorites and Reservations on the User Account Page**
+- **Interact with Forms that Display Error Messages for Empty or Incorrect Fields**
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## 👨‍💻 Technologies
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+- **Vue.js** (vue-router, vue-date-picker, userstore, composables, modular components)
+- **Tailwind CSS** (tailwind config, reusable styles)
+- **Elixir for the Backend** (special thanks to Christophe Belpaire for his valuable assistance!)
 
-## Learn more
+## 📈 Possible Improvements
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Since this is a fictional school project, several improvements could still be considered, such as:
+
+- **Integration of a Secure Payment System**
+- **Performance and SEO Optimization**
+- **Addition of New Advanced Search Features**
+- **Enhancement of the User Interface for a Better User Experience**
+
+## 🔗 Check out the Web App
+
+👉 [Check out the Web App here](https://nest.mathildebaclin.com/)
+
+Feel free to take a look and share your feedback! 🙌
+
