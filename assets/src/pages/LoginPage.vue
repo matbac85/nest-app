@@ -2,7 +2,7 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_500 flex-1 flex flex-col justify-center items-center bg-image"
+        class="bg-primary_500 flex-1 flex flex-col justify-center items-center bg-image overflow-auto"
       >
         <LoginForm />
       </main>

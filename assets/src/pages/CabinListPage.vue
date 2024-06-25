@@ -2,7 +2,7 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_500 flex-1 flex flex-col justify-start items-center p-6 md:p-10"
+        class="bg-primary_500 flex-1 flex flex-col justify-start items-center p-6 md:p-10 overflow-auto"
       >
         <CabinList />
       </main>
