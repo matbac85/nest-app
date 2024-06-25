@@ -24,6 +24,7 @@ config :nest, NestWeb.Endpoint,
   watchers: [
     node: [
       "node_modules/vite/bin/vite.js",
+      "--host",
       cd: Path.expand("../assets", __DIR__)
     ]
   ]
