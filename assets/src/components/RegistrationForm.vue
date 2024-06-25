@@ -2,7 +2,7 @@
   <form
     @submit.prevent="submit"
     novalidate
-    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 grid grid-cols-1 gap-4 min-w-[21.4375rem] md:min-w-[48rem] md:grid-cols-2 mt-10 mb-10 md:m-0 md:gap-y-6"
+    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 grid grid-cols-1 gap-4 min-w-[21.4375rem] md:min-w-[48rem] md:grid-cols-2 md:m-0 md:gap-y-6"
   >
     <div class="relative">
       <label for="lastname" class="txt-label">Nom</label>

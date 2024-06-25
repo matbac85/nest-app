@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-screen pt-[5rem]">
+  <div class="flex flex-col h-[100dvh] pt-[5rem]">
     <Header />
     <slot name="content"></slot>
     <Footer />

@@ -1,5 +1,7 @@
 <template>
-  <header class="fixed top-0 left-0 right-0 bg-primary_200 drop-shadow z-50">
+  <header
+    class="fixed top-0 left-0 right-0 bg-primary_200 drop-shadow z-50 h-20"
+  >
     <nav class="flex justify-between items-center py-4 px-4 md:px-6 xl:px-14">
       <RouterLink to="/" aria-label="Homepage">
         <img

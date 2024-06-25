@@ -1,7 +1,7 @@
 <template>
   <ul
     v-if="props.cabin.comments && props.cabin.comments.length > 0"
-    class="grid grid-cols-1 gap-y-4 gap-x-4 md:grid-cols-2"
+    class="grid grid-cols-1 gap-y-4 gap-x-4 md:grid-cols-2 mt-10"
   >
     <li
       v-for="(comment, index) in props.cabin.comments"

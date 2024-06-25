@@ -2,7 +2,7 @@
   <form
     @submit.prevent="submit"
     novalidate
-    class="bg-primary_200 px-6 py-8 min-w-[21.4375rem] rounded-xl shadow-lg grid grid-cols-1 gap-5 lg:grid-cols-4 lg:items-end lg:justify-between lg:min-w-[65rem] lg:px-8 lg:pt-6"
+    class="bg-primary_200 px-6 py-8 rounded-xl shadow-lg grid grid-cols-1 gap-5 min-w-[21.4375rem] lg:grid-cols-4 lg:items-end lg:justify-between lg:min-w-[65rem] lg:px-8 lg:pt-6"
   >
     <div class="select-wrapper">
       <label for="areas" class="txt-label">Région</label>

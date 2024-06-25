@@ -1,6 +1,6 @@
 <template>
   <form
-    class="mb-10 md:flex md:flex-col md:justify-end md:items-end"
+    class="mt-10 md:flex md:flex-col md:justify-end md:items-end"
     novalidate
     @submit.prevent="submitForm"
   >

@@ -2,7 +2,7 @@
   <Layout>
     <template #content>
       <main
-        class="bg-primary_500 flex-1 flex flex-col items-start p-6 gap-4 md:px-36 md:py-10 xl:p-20 overflow-auto"
+        class="bg-primary_500 flex-1 flex flex-col items-start px-4 gap-4 md:px-36 py-10 xl:p-20"
         v-if="userData"
       >
         <ProfileCard :userData="userData" />

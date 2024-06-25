@@ -12,11 +12,11 @@
   /* buttons */
 
   .btn-primary {
-    @apply transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg w-full tracking-wide hover:bg-primary_500 hover:scale-105 duration-300 md:px-4 xl:px-6 md:text-lg xl:text-xl focus:outline-none focus:ring disabled:bg-disabled_200 disabled:text-disabled_400;
+    @apply transition ease-in-out delay-150 block text-base font-semibold text-primary_200 bg-primary_700 py-3 rounded-lg w-full tracking-wide lg:hover:bg-primary_500 lg:hover:scale-105 duration-300 md:px-4 xl:px-6 md:text-lg xl:text-xl focus:outline-none focus:ring disabled:bg-disabled_200 disabled:text-disabled_400;
   }
 
   .btn-slide-lateral {
-    @apply absolute p-1 rounded-full bg-primary_200 items-center justify-center top-1/2 transform -translate-y-1/2 opacity-80 transition ease-in-out delay-150 lg:hover:scale-110 lg:hover:drop-shadow lg:hover:bg-primary_100 lg:group-hover:opacity-100 duration-300;
+    @apply absolute p-1 rounded-full bg-primary_200 items-center justify-center top-1/2 transform -translate-y-1/2 opacity-80 transition ease-in-out delay-150 lg:hover:scale-110 lg:hover:drop-shadow lg:hover:bg-primary_200 lg:hover:opacity-100 duration-300;
   }
 
   /* input */

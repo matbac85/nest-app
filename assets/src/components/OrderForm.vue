@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="min-w-full flex justify-between items-end gap-3 md:justify-start mb-10"
-  >
+  <div class="min-w-full flex justify-between items-end gap-3 md:justify-start">
     <div class="text-base flex justify-center">
       <p class="txt-body">
         <strong class="txt-body-strong">{{ props.price }} €</strong>
