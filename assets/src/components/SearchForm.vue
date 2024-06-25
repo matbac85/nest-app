@@ -43,6 +43,7 @@
         id="voyageurs"
         aria-describedby="travellers-error"
         class="input"
+        pattern="\d*"
         placeholder="Nombre de voyageurs"
       />
       <p
