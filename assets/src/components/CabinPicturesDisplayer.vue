@@ -6,6 +6,7 @@
     >
       <figure>
         <img
+          loading="lazy"
           v-if="pictures"
           :src="pictures.at(imageIndex)"
           alt=""
@@ -17,14 +18,14 @@
         @click.prevent="slideRight(pictures)"
         aria-label="Next Image"
       >
-        <img src="/public/arrow-right.svg" alt="" />
+        <img loading="lazy" src="/public/arrow-right.svg" alt="" />
       </button>
       <button
         class="absolute p-1 rounded-full bg-primary_200 flex items-center justify-center top-1/2 transform -translate-y-1/2 left-2 opacity-80 transition ease-in-out delay-150 hover:scale-110 hover:drop-shadow hover:bg-white hover:opacity-100 duration-300"
         @click.prevent="slideLeft(pictures)"
         aria-label="Previous Image"
       >
-        <img src="/public/arrow-left.svg" alt="" />
+        <img loading="lazy" src="/public/arrow-left.svg" alt="" />
       </button>
     </div>
 
@@ -38,6 +39,7 @@
         :class="getClass(index, pictures)"
       >
         <img
+          loading="lazy"
           :src="picture"
           alt=""
           class="w-full h-full object-cover rounded-xl"

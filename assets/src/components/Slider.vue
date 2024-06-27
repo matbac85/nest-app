@@ -1,6 +1,7 @@
 <template>
   <section class="rounded-t-xl relative group">
     <img
+      loading="lazy"
       v-if="src"
       :src="src.at(imageIndex)"
       alt=""
@@ -12,16 +13,17 @@
       v-if="userStore.user"
     >
       <img
+        loading="lazy"
         :src="toggleImageSrc(favorite)"
         alt=""
         class="min-w-full min-h-full"
       />
     </button>
     <button class="btn-slide-lateral right-2" @click.prevent="slideRight(src)">
-      <img src="/images/arrow-right.svg" alt="" />
+      <img loading="lazy" src="/images/arrow-right.svg" alt="" />
     </button>
     <button class="btn-slide-lateral left-2" @click.prevent="slideLeft(src)">
-      <img src="/images/arrow-left.svg" alt="" />
+      <img loading="lazy" src="/images/arrow-left.svg" alt="" />
     </button>
   </section>
 </template>

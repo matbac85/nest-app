@@ -11,6 +11,7 @@
         class="flex flex-col shadow-lg rounded-xl"
       >
         <img
+          loading="lazy"
           :src="favorite.cabin.images[0]"
           alt=""
           class="w-full h-44 object-cover rounded-t-xl"

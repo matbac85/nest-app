@@ -11,6 +11,7 @@
         class="flex flex-col shadow-lg rounded-xl"
       >
         <img
+          loading="lazy"
           v-if="reservation.cabin.images"
           :src="reservation.cabin.images[0]"
           alt=""

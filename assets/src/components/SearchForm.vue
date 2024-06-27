@@ -2,7 +2,7 @@
   <form
     @submit.prevent="submit"
     novalidate
-    class="bg-primary_200 px-6 py-8 rounded-xl shadow-lg grid grid-cols-1 gap-5 min-w-[21.4375rem] lg:grid-cols-4 lg:items-end lg:justify-between lg:min-w-[65rem] lg:px-8 lg:pt-6"
+    class="w-full bg-primary_200 px-6 py-8 rounded-xl shadow-lg grid grid-cols-1 gap-5 max-w-[22rem] lg:grid-cols-4 lg:items-end lg:justify-between lg:max-w-[70rem] lg:px-8 lg:pt-6"
   >
     <div class="select-wrapper">
       <label for="areas" class="txt-label">Région</label>
@@ -10,7 +10,7 @@
         v-model="form.area"
         id="areas"
         aria-label="Sélectionnez une région"
-        class="block w-full py-3 px-4 rounded-lg border border-primary_700 focus:outline-none focus:border-primary_500"
+        class="block w-full py-3 px-4 rounded-lg border border-primary_700 focus:outline-2 focus:outline-primary_700"
       >
         <option disabled value="">Sélectionnez une région</option>
         <option value="Wallonie">Wallonie</option>
@@ -45,6 +45,7 @@
         class="input"
         pattern="\d*"
         placeholder="Nombre de voyageurs"
+        @input="checkTravellers"
       />
       <p
         v-if="travellersError"
@@ -79,6 +80,12 @@ const form = ref({
   travellers: null,
   area: "",
 });
+
+const checkTravellers = () => {
+  if (form.value.travellers < 1) {
+    form.value.travellers = 1;
+  }
+};
 
 const validateTravellers = () => {
   if (form.value.travellers === null) {
@@ -147,13 +154,10 @@ select {
 }
 
 .dp__input_focus {
-  border: solid 1px #87c1b9;
-  outline: none;
-}
-
-.dp__input_focus:hover {
-  border: solid 1px #87c1b9;
-  outline: none;
+  outline-width: 2px;
+  outline-color: #51746f;
+  outline-style: solid;
+  border: none;
 }
 
 .dp-custom-input::placeholder {
@@ -189,7 +193,7 @@ select {
 .select-wrapper {
   position: relative;
   display: inline-block;
-  width: 100%;
+  min-width: 100%;
 }
 
 .select-wrapper select {

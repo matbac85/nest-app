@@ -1,14 +1,15 @@
 <template>
   <article
-    class="bg-primary_200 rounded-xl drop-shadow py-10 px-8 min-w-[20rem] grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-14 lg:p-10"
+    class="w-full bg-primary_200 rounded-xl drop-shadow py-10 px-8 max-w-[22rem] grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:max-w-[36rem] lg:gap-x-14 lg:p-10"
   >
     <div class="grid grid-cols-1 gap-y-6 lg:gap-y-4 lg:h-fit">
       <section id="image" class="lg:flex lg:items-center lg:h-fit">
         <h2 class="txt-title md:text-2xl text-primary_800 mb-3 lg:hidden">
           Votre séjour
         </h2>
-        <div class="flex items-start gap-4 lg:flex-col">
+        <div class="flex items-start gap-4 lg:flex-col lg:w-full">
           <img
+            loading="lazy"
             v-if="cabin.images"
             :src="cabin.images[0]"
             alt="Image de la cabane"
@@ -144,7 +145,6 @@ const totalWithTax = ref(0);
 watch(
   () => props.cabin,
   () => {
-    console.log(props.cabin, "CABIN");
     pricePerNight.value = props.cabin.price;
     numberOfNights.value = useNumberOfNights(
       props.query.startDate,

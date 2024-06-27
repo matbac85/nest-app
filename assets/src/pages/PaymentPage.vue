@@ -29,7 +29,6 @@ async function fetchData(id) {
   try {
     const response = await fetch(`/api/cabins/${route.params.id}`);
     cabin.value = await response.json();
-    console.log(cabin.value.id);
   } catch (err) {
   } finally {
   }

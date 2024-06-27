@@ -5,6 +5,7 @@
     <section>
       <div class="flex items-start gap-4">
         <img
+          loading="lazy"
           v-if="cabin.images"
           :src="cabin.images[0]"
           alt="Image de la cabane"

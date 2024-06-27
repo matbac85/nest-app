@@ -6,6 +6,7 @@
     <div class="flex gap-4">
       <a href="https://www.instagram.com/matbac/">
         <img
+          loading="lazy"
           src="/images/instagram-icon.svg"
           alt=""
           class="block min-w-[1.5rem]"
@@ -13,6 +14,7 @@
       </a>
       <a href="https://www.facebook.com/">
         <img
+          loading="lazy"
           src="/images/facebook-icon.svg"
           alt=""
           class="block min-w-[1.5rem]"

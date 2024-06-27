@@ -22,7 +22,7 @@
   /* input */
 
   .input {
-    @apply block w-full py-3 px-4 rounded-lg border text-primary_800 border-primary_700 focus:outline-none focus:border-primary_500 placeholder:text-primary_400;
+    @apply block w-full py-3 px-4 rounded-lg border text-primary_800 border-primary_700 focus:outline-2 focus:outline-primary_700  placeholder:text-primary_400;
   }
 
   /* text */
@@ -39,7 +39,7 @@
   }
 
   .txt-error {
-    @apply text-accent text-xs italic font-thin text-end px-2 absolute right-0 pt-1;
+    @apply text-accent text-xs font-medium text-end px-2 absolute right-0 pt-1;
   }
 
   .txt-header {

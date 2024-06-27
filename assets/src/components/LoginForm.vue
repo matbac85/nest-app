@@ -2,7 +2,7 @@
   <form
     @submit.prevent="submit"
     novalidate
-    class="bg-primary_200 rounded-xl shadow-lg py-10 px-8 min-w-[21.4375rem]"
+    class="bg-primary_200 rounded-xl w-full shadow-lg py-10 px-8 max-w-[22rem]"
   >
     <div class="mb-4 relative">
       <label for="email" class="txt-label">E-mail</label>
