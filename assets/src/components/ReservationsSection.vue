@@ -1,5 +1,7 @@
 <template>
-  <section class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 min-w-full">
+  <section
+    class="bg-primary_200 rounded-xl drop-shadow px-6 py-8 w-full max-w-[70rem]"
+  >
     <h2 class="txt-title mb-4">Mes réservations</h2>
     <ul
       class="grid gap-y-4 md:grid-cols-2 lg:grid-cols-4 md:gap-x-4"
@@ -8,7 +10,7 @@
       <li
         v-for="(reservation, index) in visibleReservations"
         :key="index"
-        class="flex flex-col shadow-lg rounded-xl"
+        class="flex flex-col shadow-lg rounded-xl max-w-[18rem]"
       >
         <img
           loading="lazy"
