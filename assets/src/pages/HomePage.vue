@@ -4,6 +4,7 @@
       <main
         class="bg-primary_500 flex-1 flex flex-col justify-center items-center bg-image px-4 md:px-36"
       >
+        <DisclaimerModal />
         <Banner />
         <SearchForm />
       </main>
@@ -15,6 +16,7 @@
 import Layout from "../components/Layout.vue";
 import SearchForm from "../components/SearchForm.vue";
 import Banner from "../components/Banner.vue";
+import DisclaimerModal from "../components/DisclaimerModal.vue";
 </script>
 
 <style>
