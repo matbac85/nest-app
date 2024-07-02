@@ -23,7 +23,7 @@ module.exports = {
       disabled_400: "#868989",
     },
     fontFamily: {
-      ubuntu: ["Ubuntu Sans", "sans-serif"],
+      ubuntu: ["Ubuntu", "sans-serif"],
       dosis: ["Dosis", "sans-serif"],
     },
     screens: {
